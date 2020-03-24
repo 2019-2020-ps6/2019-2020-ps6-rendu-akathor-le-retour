@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landingPage/landingPage.component';
 import { LoginPageComponent } from './loginPage/loginPage.component';
 import { CreateQuizzComponent } from './createQuizz/createQuizz.component';
+import { AddQuestionComponent } from './addQuestion/addQuestion.component';
+import { SettingsPageComponent } from './settingsPage/settingsPage.component';
 
 @NgModule({
   declarations: [
