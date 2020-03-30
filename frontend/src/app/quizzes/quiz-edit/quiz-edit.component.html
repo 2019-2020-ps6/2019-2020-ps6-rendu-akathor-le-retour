@@ -1,0 +1,11 @@
+<body>
+<div *ngIf="quizCalled!=null">
+ <h2>    {{quizCalled.name}}</h2>
+  <app-question-form [quiz]="quizCalled"></app-question-form>
+  <app-question-list [quiz]="quizCalled"></app-question-list>
+</div>
+
+<div *ngIf="quizCalled==null">
+</div>
+
+</body>

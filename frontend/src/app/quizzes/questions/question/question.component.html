@@ -1,0 +1,13 @@
+<div class="card">
+<h2>
+  <i class="fab fa-angular"></i>   {{question.label}}
+</h2>
+
+    <li *ngFor="let answer of question.answers; index as i">
+      {{i+1}} {{answer.value}}      <span *ngIf="answer.isCorrect"> <i class="far fa-check-square"></i></span>
+
+    </li>
+  <nav>
+  </nav>
+  <button class="button-card" (click)="deleteQuiz()">Delete</button>
+</div>

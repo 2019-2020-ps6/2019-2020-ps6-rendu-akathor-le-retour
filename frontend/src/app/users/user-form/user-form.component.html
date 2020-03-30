@@ -1,0 +1,21 @@
+<div class="card">
+  <h2><i class="fas fa-user"></i> Create a new user </h2>
+
+  <form class="quiz-form" [formGroup]="userForm">
+    <div></div>
+    Username: <br>
+    <input class="input-custom" type="text" id="username" [formControlName]="'username'">
+    <br>
+    First name: <br>
+    <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
+    <br>
+    Last name: <br>
+<input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
+    <br>
+    Email: <br>
+<input class="input-custom" type="text" id="email" [formControlName]="'email'">
+    <br>
+    <button type="submit" class="button-card" (click)="addUser()">Create</button>
+    <br>
+  </form>
+</div>
