@@ -3,7 +3,7 @@
   <h2>    {{quizCalled.name}}</h2>
 
   <div *ngIf="current<questions.length">
-    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" value="{{currentProgress}}"></mat-progress-bar>
 
     <app-play-question [question]="questions[current]" [mode] ="correctMode" (answer)="answerSomething($event.isCorrect)" (nextAnswer)="nextAnswer()" ></app-play-question>
   </div>

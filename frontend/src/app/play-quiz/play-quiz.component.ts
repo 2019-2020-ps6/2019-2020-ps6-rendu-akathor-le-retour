@@ -19,6 +19,7 @@ export class PlayQuizComponent implements OnInit {
   // public questions$: BehaviorSubject<Question[]> = new BehaviorSubject(this.questions);
   current: number;
   correctMode: boolean;
+  currentProgress: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +47,7 @@ export class PlayQuizComponent implements OnInit {
     this.answers.push(answer);
     if (this.current < this.questions.length) {
       this.current++;
+      this.currentProgressUpdate();
     }
   }
 
@@ -53,6 +55,7 @@ export class PlayQuizComponent implements OnInit {
     if (answer) {
       this.current = 0;
       this.correctMode = true;
+      this.currentProgressUpdate();
     }
   }
 
@@ -60,17 +63,24 @@ export class PlayQuizComponent implements OnInit {
     if (answer) {
       this.current = 0;
       this.correctMode = false;
+      this.currentProgressUpdate();
     }
   }
 
   nextAnswer() {
     if (this.current < this.quizCalled.questions.length) {
       this.current++;
+      this.currentProgressUpdate();
     }
+  }
+
+  currentProgressUpdate() {
+    this.currentProgress = this.current * 100 / this.questions.length;
   }
 
   redoQuiz() {
     this.current = 0;
+    this.currentProgressUpdate();
     this.correctMode = false;
     this.answers = [];
   }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -22,7 +22,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { SelectThemeComponent } from './select-theme/select-theme.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import {PlayQuestionComponent} from './play-question/play-question.component';
-import {PlayResultsComponent} from "./play-results/play-results.component";
+import {PlayResultsComponent} from './play-results/play-results.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +53,12 @@ import {PlayResultsComponent} from "./play-results/play-results.component";
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [AppComponent],
   bootstrap: [AppComponent]
