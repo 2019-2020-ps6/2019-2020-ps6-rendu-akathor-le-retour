@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import { QuizService } from '../../services/quiz.service';
+import {Quiz} from '../../models/quiz.model';
+import {Answer, Question} from '../../models/question.model';
+import {BehaviorSubject, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-play-quiz',
@@ -7,14 +12,66 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PlayQuizComponent implements OnInit {
+  private quizCalled: Quiz;
+  private questions: Question[] = [];
+  private answers: boolean[] = [];
+  questionSubscription: Subscription;
+  // public questions$: BehaviorSubject<Question[]> = new BehaviorSubject(this.questions);
+  current: number;
+  correctMode: boolean;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private quizService: QuizService,
+  ) {
+    this.quizService.quizSelected$.subscribe((quiz) => {
+
+      this.quizCalled = quiz;
+      this.questions = quiz.questions;
+    });
+    this.current = 0;
+    this.correctMode = false;
+  }
+
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.quizService.setSelectedQuiz(id);
+
   }
 
-  goToAdmin() {
-  console.log('goToAdminTest');
+
+  answerSomething(answer: boolean) {
+    console.log('user answer:', answer);
+    this.answers.push(answer);
+    if (this.current < this.questions.length) {
+      this.current++;
+    }
   }
 
+  seeAnswers(answer: boolean) {
+    if (answer) {
+      this.current = 0;
+      this.correctMode = true;
+    }
+  }
+
+  restartQuiz(answer: boolean) {
+    if (answer) {
+      this.current = 0;
+      this.correctMode = false;
+    }
+  }
+
+  nextAnswer() {
+    if (this.current < this.quizCalled.questions.length) {
+      this.current++;
+    }
+  }
+
+  redoQuiz() {
+    this.current = 0;
+    this.correctMode = false;
+    this.answers = [];
+  }
 }

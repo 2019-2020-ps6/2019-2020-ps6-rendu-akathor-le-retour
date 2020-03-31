@@ -1,0 +1,18 @@
+<body>
+<div *ngIf="quizCalled!=null">
+  <h2>    {{quizCalled.name}}</h2>
+
+  <div *ngIf="current<questions.length">
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+    <app-play-question [question]="questions[current]" [mode] ="correctMode" (answer)="answerSomething($event.isCorrect)" (nextAnswer)="nextAnswer()" ></app-play-question>
+  </div>
+  <div *ngIf="current==questions.length">
+    <app-play-results [answers]="answers"(askAnswers)="seeAnswers($event)" (askRedoingQuiz)="redoQuiz()"></app-play-results>
+  </div>
+</div>
+
+<div *ngIf="quizCalled==null">
+</div>
+
+</body>

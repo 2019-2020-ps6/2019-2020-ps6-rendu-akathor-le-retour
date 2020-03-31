@@ -21,6 +21,8 @@ import { AdministrationComponent } from './administration/administration.compone
 import { SettingsComponent } from './settings/settings.component';
 import { SelectThemeComponent } from './select-theme/select-theme.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import {PlayQuestionComponent} from './play-question/play-question.component';
+import {PlayResultsComponent} from "./play-results/play-results.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
     AdministrationComponent,
     SettingsComponent,
     SelectThemeComponent,
-    PlayQuizComponent
+    PlayQuizComponent,
+    PlayQuestionComponent,
+    PlayResultsComponent
   ],
   imports: [
     BrowserModule,
