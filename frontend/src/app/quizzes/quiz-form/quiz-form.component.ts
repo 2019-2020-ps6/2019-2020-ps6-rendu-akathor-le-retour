@@ -24,6 +24,7 @@ export class QuizFormComponent implements OnInit {
   public quizForm: FormGroup;
   themes: typeof Themes = Themes;
   keys = Object.keys;
+  public DIFICULTE: string[] = ['facile', 'moyen', 'difficile'];
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation

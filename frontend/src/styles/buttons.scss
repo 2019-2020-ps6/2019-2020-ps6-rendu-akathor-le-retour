@@ -1,0 +1,51 @@
+@import "./variables";
+
+#body{
+  padding : 0.3em;
+}
+
+.bigButton{
+  background: #ffffff;
+  border-radius: 10px;
+  margin: auto;
+  margin-right : 5em;
+  font-size : 20px;
+
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 0 1em 1em 1em;
+  width : 25em;
+  height : 20em;
+}
+
+.smallButton{
+  background: #ffffff;
+  border-radius: 10px;
+  margin: auto;
+  margin-right : 1em;
+  font-size : 20px;
+
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 0 1em 1em 1em;
+  width : 5em;
+  height : 2em;
+}
+
+.buttonRow{
+  margin-top : 5em;
+  padding : 5em;
+  text-align : center;
+}
+
+.button-card {
+  background-color: $white;
+  border: solid 1px $blue;
+  color: $blue;
+  font-weight: bold;
+  padding: 0.5em 1em;
+}
+
+.button-card:hover {
+  cursor: pointer;
+}

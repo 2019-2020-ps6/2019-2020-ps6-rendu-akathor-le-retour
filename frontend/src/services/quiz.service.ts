@@ -71,4 +71,7 @@ export class QuizService {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
+  getRandomId() {
+    return  this.quizzes[0].id ;
+  }
 }

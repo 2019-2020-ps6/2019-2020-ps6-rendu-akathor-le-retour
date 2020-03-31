@@ -16,6 +16,11 @@ import {QuestionListComponent} from './quizzes/questions/question-list/question-
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserComponent } from './users/user/user.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
+import { HomeComponent } from './home/home.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SelectThemeComponent } from './select-theme/select-theme.component';
+import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { UserFormComponent } from './users/user-form/user-form.component';
     QuestionListComponent,
     UserComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    HomeComponent,
+    AdministrationComponent,
+    SettingsComponent,
+    SelectThemeComponent,
+    PlayQuizComponent
   ],
   imports: [
     BrowserModule,

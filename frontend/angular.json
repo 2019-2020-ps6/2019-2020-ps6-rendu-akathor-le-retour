@@ -93,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "starter-quiz"
+    }
+  },
+  "defaultProject": "starter-quiz",
+  "cli": {
+    "analytics": false
+  }
 }
