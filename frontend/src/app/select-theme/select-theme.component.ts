@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/services/quiz.service';
 import { ActivatedRoute } from '@angular/router';
+import {Quiz} from '../../models/quiz.model';
 
 @Component({
   selector: 'app-select-theme',
@@ -9,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class SelectThemeComponent implements OnInit {
-    id: string ;
 
 
   constructor(private quizService: QuizService) {
@@ -17,14 +17,13 @@ export class SelectThemeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.getId() ;
   }
 
   goToAdmin() {
   console.log('goToAdminTest');
   }
 
-  getId() {
+  getRandomId() {
       return this.quizService.getRandomId() ;
   }
 
