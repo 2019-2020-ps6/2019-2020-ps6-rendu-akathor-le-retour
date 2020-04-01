@@ -1,6 +1,6 @@
 <div class="card">
   <h1>Réglages</h1>
-  <span [ngStyle]="{color : mycolor , 'background-color':mybackgroundcolor, 'font-size': style}">
+  <span [ngStyle]="setting">
     Taille
   </span>
   <br> <br>
@@ -8,7 +8,7 @@
   <button class="smallButton" style="font-size:25px; " (click)="changeSize(styleMedium)">Moyen</button>
   <button class="smallButton" style="font-size:30px; " (click)="changeSize(styleBig)">Grand</button>
   <br> <br>
-  <span [ngStyle]="{color : mycolor , 'background-color':mybackgroundcolor, 'font-size': style}">
+  <span [ngStyle]="setting">
     Couleur
   </span>
   <br> <br>
@@ -28,12 +28,13 @@
   <h1>
     <a href="/select-theme">
       <button class="button-card"
-              [ngStyle]="{color : mycolor , 'background-color':mybackgroundcolor, 'font-size' : style}">Confirmer
+              [ngStyle]="setting" >Confirmer
       </button>
     </a>
   </h1>
 </div>
 
 <!--
+(click)="confirmer()"
   <link rel="stylesheet" type="text/css" href="settings.component.scss" id="mycss" />
 -->

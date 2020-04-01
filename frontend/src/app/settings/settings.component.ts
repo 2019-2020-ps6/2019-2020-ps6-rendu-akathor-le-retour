@@ -6,48 +6,40 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./settings.component.scss']
   })
   export class SettingsComponent implements OnInit {
-  mycolor: string;
-  mybackgroundcolor: string;
-  taille: string;
+  textColor: string;
+  backgroundColor: string;
+  textSize: string;
 
   styleSmall: string;
   styleMedium: string;
   styleBig: string;
-  style: string;
-
+  setting: any;
 
     constructor() {
-      this.mycolor = 'black';
-      this.mybackgroundcolor = 'white';
-      this.taille = 'Taille';
+      this.textColor = 'black'; // par défaut
+      this.backgroundColor = 'white'; // par défaut
 
       this.styleSmall = '20px';
       this.styleMedium = '25px';
       this.styleBig = '30px';
-      this.style = '25px';
+      this.textSize = this.styleMedium; // par défaut
+
+      this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
+        'font-size' : localStorage.getItem('textSize')};
     }
 
     ngOnInit() {
     }
 
-    goToAdmin() {
-    console.log('goToAdminTest');
-    }
-
-    switchStyle(style) {
-      document.getElementById('mycss').setAttribute('href', style);
-    }
-
-  changeColor() {
-    return {color: 'yellow', 'background-color': 'orange'};
-  }
-
   change(val1, val2) {
-    this.mycolor = val1;
-    this.mybackgroundcolor = val2;
+      this.setting.color = val1;
+      this.setting['background-color'] = val2;
+      localStorage.setItem('textColor', val1);
+      localStorage.setItem('backgroundColor', val2);
   }
 
-  changeSize(style: string) {
-    this.style = style;
+  changeSize(textSize: string) {
+    this.setting['font-size'] = textSize;
+    localStorage.setItem('textSize', textSize);
   }
 }

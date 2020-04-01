@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/services/quiz.service';
-import { ActivatedRoute } from '@angular/router';
-import {Quiz} from '../../models/quiz.model';
 
 @Component({
   selector: 'app-select-theme',
@@ -10,10 +8,11 @@ import {Quiz} from '../../models/quiz.model';
 })
 
 export class SelectThemeComponent implements OnInit {
-
+  setting: any;
 
   constructor(private quizService: QuizService) {
-
+    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
+      'font-size' : localStorage.getItem('textSize')};
   }
 
   ngOnInit() {
