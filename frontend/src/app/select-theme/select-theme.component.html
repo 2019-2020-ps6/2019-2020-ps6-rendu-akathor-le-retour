@@ -1,8 +1,16 @@
 <div class="card">
   <h1 [ngStyle] = setting>Choix d'un quiz</h1>
-<nav>
-    <a routerLink="/play-quiz/{{getRandomId()}}">
-      <button class="button-card">Choix aléatoire</button>
-    </a>
-  </nav>
+  <button class="button-card"(click)="getQuizbyDif('facile')">facile</button>
+  <button class="button-card"(click)="getQuizbyDif('moyen')">moyen</button>
+  <button class="button-card"(click)="getQuizbyDif('difficile')">difficile</button>
+  <br>
+  <div class="quiz" *ngFor="let quiz of quizList">
+    <!--Inputs & Output allow communication between parent & child components.-->
+    <!--More information: https://angular.io/guide/component-interaction-->
+  <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
+  </div>
+
+  
+  <button class="button-card"(click)="randomQuiz()">Choix aléatoire</button>
+
 </div>

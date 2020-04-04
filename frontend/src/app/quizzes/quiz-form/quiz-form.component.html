@@ -14,6 +14,16 @@
         </select>
     </label>
     <br>
+    <label for="difficulte">
+      Difficulte: <br>
+      <select name="difficulte" id="difficulte" [formControlName]="'difficulte'">
+        <option value="">Please choose a difficulte</option>
+        <option *ngFor="let difficulte of DIFICULTE" [value]="difficulte">
+          {{difficulte}}
+        </option>
+      </select>
+    </label>
+    <br>
     <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
     <br>
 

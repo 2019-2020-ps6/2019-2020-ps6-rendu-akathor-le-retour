@@ -3,6 +3,6 @@
     <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
-      <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (quizDeleted)="deleteQuiz(quiz)" ></app-quiz>
+      <app-quiz [quiz]="quiz" [lecture]="true" (quizSelected)="quizSelected($event)" (quizDeleted)="deleteQuiz(quiz)" ></app-quiz>
     </div>
-  </div>
+ </div>

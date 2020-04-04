@@ -72,6 +72,13 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
   getRandomId() {
-    return  this.quizzes[0].id ;
+  let min = Math.ceil(0);
+  const i :number = this.quizzes.length ; 
+  let max = Math.floor(i);
+  let val :number =  Math.floor(Math.random() * (max - min)) + min;
+  
+    return  this.quizzes[val].id ;
   }
+
+
 }
