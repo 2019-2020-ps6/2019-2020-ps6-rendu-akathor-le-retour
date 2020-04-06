@@ -8,6 +8,8 @@ import { AdministrationComponent } from './administration/administration.compone
 import { SettingsComponent } from './settings/settings.component';
 import { SelectThemeComponent } from './select-theme/select-theme.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import {ReadableComponent} from './readable/readable.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

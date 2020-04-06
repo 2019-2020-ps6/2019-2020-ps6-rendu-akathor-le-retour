@@ -15,7 +15,7 @@ export class SelectThemeComponent implements OnInit {
 
   setting: any;
 
-  constructor(private quizService: QuizService,public router: Router) {
+  constructor(private quizService: QuizService, public router: Router) {
     this.getQuizbyDif('difficile');
     this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
       'font-size' : localStorage.getItem('textSize')};
@@ -31,27 +31,28 @@ export class SelectThemeComponent implements OnInit {
   getRandomId() {
       return this.quizService.getRandomId() ;
   }
-  
-  getQuizbyDif(dif:string){
-    this.quizList=[];
+
+  getQuizbyDif(dif: string) {
+    this.quizList = [];
     this.quizService.quizzes$.subscribe((quiz) => {
-       let i :number = 0 ; 
-      for( i ; i<quiz.length;i++){
-        if(quiz[i].difficulte === dif)
+       let i = 0 ;
+       for ( i ; i < quiz.length; i++) {
+        if (quiz[i].difficulte === dif) {
           this.quizList.push(quiz[i]);
-      } 
+        }
+      }
     });
 
 
   }
   quizSelected(selected: string) {
     console.log('event received from child:', selected);
-    this.router.navigate(['/play-quiz/'+selected]);
+    this.router.navigate(['/play-quiz/' + selected]);
   }
 
-  randomQuiz(){
+  randomQuiz() {
     const i: string = this.getRandomId() ;
-    this.router.navigate(['/play-quiz/'+i]);
+    this.router.navigate(['/play-quiz/' + i]);
 
   }
 

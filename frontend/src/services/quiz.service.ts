@@ -72,12 +72,12 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
   getRandomId() {
-  let min = Math.ceil(0);
-  const i :number = this.quizzes.length ; 
-  let max = Math.floor(i);
-  let val :number =  Math.floor(Math.random() * (max - min)) + min;
-  
-    return  this.quizzes[val].id ;
+  const min = Math.ceil(0);
+  const i: number = this.quizzes.length ;
+  const max = Math.floor(i);
+  const val: number =  Math.floor(Math.random() * (max - min)) + min;
+
+  return  this.quizzes[val].id ;
   }
 
 

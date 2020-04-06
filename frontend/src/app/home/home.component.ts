@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Speech from 'speak-tts';
+import { QuizService } from 'src/services/quiz.service';
+
+
 
 @Component({
   selector: 'app-home',
@@ -8,15 +11,10 @@ import Speech from 'speak-tts';
 })
 
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor() {
+    }
 
   ngOnInit() {
-  }
-
-  ngTalk() {
-  const speech = new Speech();
-  speech.speak({text: 'Test du son ?'});
   }
 
   goToAdmin() {

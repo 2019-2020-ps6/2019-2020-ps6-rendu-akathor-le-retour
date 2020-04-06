@@ -7,7 +7,7 @@ export interface Quiz {
     theme: Themes;
     questions: Question[];
     creationDate?: Date;
-    difficulte?:string ;
+    difficulte?: string ;
 }
 
 

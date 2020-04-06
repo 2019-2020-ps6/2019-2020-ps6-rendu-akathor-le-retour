@@ -13,7 +13,7 @@ export class QuizComponent implements OnInit {
   quiz: Quiz;
 
   @Input()
-  lecture:boolean ; 
+  lecture: boolean ;
 
   theme: typeof Themes = Themes;
 

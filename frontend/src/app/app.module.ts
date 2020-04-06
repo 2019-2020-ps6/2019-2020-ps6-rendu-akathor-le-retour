@@ -47,7 +47,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     SelectThemeComponent,
     PlayQuizComponent,
     PlayQuestionComponent,
-    PlayResultsComponent
+    PlayResultsComponent,
   ],
   imports: [
     BrowserModule,
