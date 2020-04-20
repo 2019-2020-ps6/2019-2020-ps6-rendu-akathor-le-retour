@@ -9,7 +9,7 @@ import Speech from 'speak-tts';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  private compteur: number;
   constructor() {
   }
 
