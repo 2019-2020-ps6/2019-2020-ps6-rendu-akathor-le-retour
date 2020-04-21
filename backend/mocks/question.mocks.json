@@ -1,0 +1,441 @@
+[
+  {
+    "label": "Quelle est la capitale de l'Espagne ?",
+    "answers": [
+      "Madrid",
+      "Barcelone",
+      "Marbella"
+    ],
+    "quizId": "1583014477437",
+    "id": 1583014548336
+  },
+  {
+    "label": "Quelle est la capitale du Brésil ?",
+    "answers": [
+      "Saõ Paulo",
+      "Rio de Janeiro",
+      "Brasilia"
+    ],
+    "quizId": "1583014477437",
+    "id": 1583014556822
+  },
+  {
+    "label": "Quelle est la capitale de la Turquie ?",
+    "answers": [
+      "Istanbul",
+      "Ankara",
+      "Izmir"
+    ],
+    "quizId": "1583014477437",
+    "id": 1583014687753
+  },
+  {
+    "label": "Dans quel quartier de New York se déroule la série Friends ?",
+    "answers": [
+      "Brooklyn",
+      "Manhattan",
+      "Bronx"
+    ],
+    "quizId": "1583014477437",
+    "id": 1585513968298
+  },
+  {
+    "label": "Dans quel quartier de New York se déroule la série Friends ?",
+    "answers": [
+      {
+        "value": "Brooklyn",
+        "isCorrect": false
+      },
+      {
+        "value": "Manhattan",
+        "isCorrect": true
+      },
+      {
+        "value": "Bronx",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1583014566035",
+    "id": 1585594834340
+  },
+  {
+    "label": "Où se trouvent les glandes sudoripares d'un chien ?",
+    "answers": [
+      {
+        "value": "Sous ses pattes",
+        "isCorrect": true
+      },
+      {
+        "value": "Sur ses oreilles",
+        "isCorrect": false
+      },
+      {
+        "value": "Sous son ventre",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453336664
+  },
+  {
+    "label": "Qui raconte les aventures de Sherlock Holmes ?",
+    "answers": [
+      {
+        "value": "Holmes",
+        "isCorrect": false
+      },
+      {
+        "value": "Watson",
+        "isCorrect": true
+      },
+      {
+        "value": "Moriarty",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453391314
+  },
+  {
+    "label": "Qui fut le quarantième président des USA ?",
+    "answers": [
+      {
+        "value": "Bill Clinton",
+        "isCorrect": false
+      },
+      {
+        "value": "Jimmy Carter",
+        "isCorrect": false
+      },
+      {
+        "value": "Ronald Reagan",
+        "isCorrect": true
+      },
+      {
+        "value": "Richard Nixon",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453454180
+  },
+  {
+    "label": "Que signifie \"Bistro\" en russe ?",
+    "answers": [
+      {
+        "value": "Vite",
+        "isCorrect": true
+      },
+      {
+        "value": "Alcool",
+        "isCorrect": false
+      },
+      {
+        "value": "Bonjour",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453487110
+  },
+  {
+    "label": "Combien y a-t-il de miles marins dans un degré de latitude ?",
+    "answers": [
+      {
+        "value": "100",
+        "isCorrect": false
+      },
+      {
+        "value": "80",
+        "isCorrect": false
+      },
+      {
+        "value": "60",
+        "isCorrect": true
+      },
+      {
+        "value": "35",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453514503
+  },
+  {
+    "label": "Qui a fondé l'Académie Française ?",
+    "answers": [
+      {
+        "value": "Le cardinal de Richelieu",
+        "isCorrect": true
+      },
+      {
+        "value": "Henri IV",
+        "isCorrect": false
+      },
+      {
+        "value": "Anne d'Autriche",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453572688
+  },
+  {
+    "label": "Quel est le plus long fleuve d'Europe occidentale ?",
+    "answers": [
+      {
+        "value": "La Loire",
+        "isCorrect": false
+      },
+      {
+        "value": "Le Rhin",
+        "isCorrect": true
+      },
+      {
+        "value": "La Meuse",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453613484
+  },
+  {
+    "label": "Qui est inséparable de Bonnie Parker ?",
+    "answers": [
+      {
+        "value": "Raymond Hamilton",
+        "isCorrect": false
+      },
+      {
+        "value": "Ralph Fults",
+        "isCorrect": false
+      },
+      {
+        "value": "Clyde Barrow",
+        "isCorrect": true
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453765334
+  },
+  {
+    "label": "Comment appelle-t-on le versant Nord d'une vallee ?",
+    "answers": [
+      {
+        "value": "L'ubac",
+        "isCorrect": true
+      },
+      {
+        "value": "L'adret",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453808964
+  },
+  {
+    "label": "Qui est le dieu du Soleil dans l'ancienne Egypte ?",
+    "answers": [
+      {
+        "value": "Seth",
+        "isCorrect": false
+      },
+      {
+        "value": "Osiris",
+        "isCorrect": false
+      },
+      {
+        "value": "Râ",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453843446
+  },
+  {
+    "label": " Quel est le nom du docteur dans Cluedo ?",
+    "answers": [
+      {
+        "value": "Docteur Moutarde",
+        "isCorrect": false
+      },
+      {
+        "value": "Docteur Olive",
+        "isCorrect": true
+      },
+      {
+        "value": "Docteur Pervenche",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453894406
+  },
+  {
+    "label": "Quelle est la capitale des Bermudes ?",
+    "answers": [
+      {
+        "value": "Hamilton",
+        "isCorrect": true
+      },
+      {
+        "value": "Honolulu",
+        "isCorrect": false
+      },
+      {
+        "value": "Wellington",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587453270861",
+    "id": 1587453935175
+  },
+  {
+    "label": "Quel insecte produit le miel ?",
+    "answers": [
+      {
+        "value": "Bourdon",
+        "isCorrect": false
+      },
+      {
+        "value": "Abeille",
+        "isCorrect": true
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454325836
+  },
+  {
+    "label": "Quel fleuve traverse l'Égypte ?",
+    "answers": [
+      {
+        "value": "Le Nil",
+        "isCorrect": true
+      },
+      {
+        "value": "Le Danube",
+        "isCorrect": false
+      },
+      {
+        "value": "Le Kibo",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454356612
+  },
+  {
+    "label": "Quel est le nom de l'agence spatiale américaine ?",
+    "answers": [
+      {
+        "value": "La Lufthansa",
+        "isCorrect": false
+      },
+      {
+        "value": "La NASA",
+        "isCorrect": true
+      },
+      {
+        "value": "La Mir",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454383855
+  },
+  {
+    "label": "La Vespa créé en 1946, est un célèbre...",
+    "answers": [
+      {
+        "value": "Scooter",
+        "isCorrect": true
+      },
+      {
+        "value": "Camion",
+        "isCorrect": false
+      },
+      {
+        "value": "Vélo",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454427928
+  },
+  {
+    "label": "Quel était le prénom du peintre Van Gogh. ?",
+    "answers": [
+      {
+        "value": "Vincent",
+        "isCorrect": true
+      },
+      {
+        "value": "Paul",
+        "isCorrect": false
+      },
+      {
+        "value": "Christian",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454450261
+  },
+  {
+    "label": "Quelle est la capitale de la Syrie ?",
+    "answers": [
+      {
+        "value": "Tripoli",
+        "isCorrect": false
+      },
+      {
+        "value": "Damas",
+        "isCorrect": true
+      },
+      {
+        "value": "Téhéran",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454480239
+  },
+  {
+    "label": "Qu'est-ce qui est en général balsamique sur une table italienne ?",
+    "answers": [
+      {
+        "value": "Le vinaigre",
+        "isCorrect": true
+      },
+      {
+        "value": "L'huile",
+        "isCorrect": false
+      },
+      {
+        "value": "Le sel",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454510907
+  },
+  {
+    "label": " Dans quel sport Karpov a-t-il affronté Kasparov ?",
+    "answers": [
+      {
+        "value": " À la lutte gréco-romaine",
+        "isCorrect": false
+      },
+      {
+        "value": "Aux échecs",
+        "isCorrect": true
+      },
+      {
+        "value": "À la course automobile",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1587454573162
+  }
+]
