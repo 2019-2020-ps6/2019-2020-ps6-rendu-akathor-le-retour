@@ -20,6 +20,7 @@ export class PlayQuizComponent implements OnInit {
   current: number;
   correctMode: boolean;
   currentProgress: number;
+  setting: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,8 @@ export class PlayQuizComponent implements OnInit {
     });
     this.current = 0;
     this.correctMode = false;
+    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
+      'font-size' : localStorage.getItem('textSize')};
   }
 
 

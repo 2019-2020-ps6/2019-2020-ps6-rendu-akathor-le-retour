@@ -1,3 +1,4 @@
+<div [ngStyle]="setting">
 <div class="card">
   <h1> <span [ngStyle] = setting>Choix d'un quiz</span></h1>
   <button class="button-card"(click)="getQuizbyDif('facile')" [ngStyle] = setting>facile</button>
@@ -13,4 +14,5 @@
 
   <button class="button-card"(click)="randomQuiz()" [ngStyle] = setting>Choix aléatoire</button>
 
+</div>
 </div>

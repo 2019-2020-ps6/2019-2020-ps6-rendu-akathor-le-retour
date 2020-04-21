@@ -1,4 +1,5 @@
 <body>
+<div  class="container" [ngStyle]="setting">
 <div *ngIf="quizCalled!=null">
   <h2>    {{quizCalled.name}}</h2>
 
@@ -14,5 +15,5 @@
 
 <div *ngIf="quizCalled==null">
 </div>
-
+</div>
 </body>

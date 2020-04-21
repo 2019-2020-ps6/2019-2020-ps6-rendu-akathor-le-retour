@@ -1,19 +1,19 @@
 <div class="card">
-<h2 [ngStyle]="setting">
+<div>
   <i class="fab fa-angular"></i> {{question.label}}
-</h2>
+</div>
     <div *ngFor="let answer of question.answers; index as i">
       <br>
       <div *ngIf="!mode">
-        <div>{{i+1}} <button class="button-card" (click)="answerSomething(answer)" [ngStyle]="setting">   {{answer.value}} </button></div>
+        <div>{{i+1}} <button class="button-card" (click)="answerSomething(answer)">   {{answer.value}} </button></div>
       </div>
       <div *ngIf="mode">
-        <span [ngStyle]="setting"> {{i+1}} {{answer.value}} <span *ngIf="answer.isCorrect">  <span *ngIf="answer.isCorrect"> <i class="far fa-check-square"></i></span></span></span>
+        <span> {{i+1}} {{answer.value}} <span *ngIf="answer.isCorrect">  <span *ngIf="answer.isCorrect"> <i class="far fa-check-square"></i></span></span></span>
       </div>
     </div>
   <div *ngIf="mode">
     <div *ngIf="question">
-    <button (click)="askNextAnswer()" class="button-card" [ngStyle]="setting">Suivant</button>
+    <button (click)="askNextAnswer()" class="button-card">Suivant</button>
   </div>
   <nav>
   </nav>

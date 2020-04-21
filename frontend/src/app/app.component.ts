@@ -10,9 +10,13 @@ import Speech from 'speak-tts';
 })
 export class AppComponent {
   private compteur: number;
-  constructor() {
-  }
 
+  private setting: any;
+
+  constructor() {
+    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
+      'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
+  }
   ngTalk(x) {
     const speech = new Speech();
     console.log(x);

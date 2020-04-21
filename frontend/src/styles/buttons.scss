@@ -19,17 +19,17 @@
 }
 
 .smallButton{
-  background: #ffffff;
+  background: inherit;
   border-radius: 10px;
   margin: auto;
   margin-right : 1em;
-  font-size : 20px;
-
+  font-size : inherit;
   position: relative;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-  padding: 0 1em 1em 1em;
   width : 5em;
   height : 2em;
+  border-color: inherit;
+  color:inherit;
 }
 
 .buttonRow{
@@ -39,9 +39,9 @@
 }
 
 .button-card {
-  background-color: $white;
-  border: solid 1px $blue;
-  color: $blue;
+  background-color: inherit;
+  border: solid 1px inherit;
+  color: inherit;
   font-weight: bold;
   padding: 0.5em 1em;
 }

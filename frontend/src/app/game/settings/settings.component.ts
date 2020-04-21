@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   textColor: string;
   backgroundColor: string;
   textSize: string;
-
+  borderColor: string;
   styleSmall: string;
   styleMedium: string;
   styleBig: string;
@@ -18,14 +18,14 @@ import { Component, OnInit } from '@angular/core';
     constructor() {
       this.textColor = 'black'; // par défaut
       this.backgroundColor = 'white'; // par défaut
-
-      this.styleSmall = '20px';
-      this.styleMedium = '25px';
-      this.styleBig = '30px';
+      this.borderColor = this.textColor;
+      this.styleSmall = '25px';
+      this.styleMedium = '30px';
+      this.styleBig = '35px';
       this.textSize = this.styleMedium; // par défaut
 
       this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-        'font-size' : localStorage.getItem('textSize')};
+        'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
     }
 
     ngOnInit() {
@@ -34,6 +34,7 @@ import { Component, OnInit } from '@angular/core';
   change(val1, val2) {
       this.setting.color = val1;
       this.setting['background-color'] = val2;
+      this.setting['border-color'] = val1;
       localStorage.setItem('textColor', val1);
       localStorage.setItem('backgroundColor', val2);
   }

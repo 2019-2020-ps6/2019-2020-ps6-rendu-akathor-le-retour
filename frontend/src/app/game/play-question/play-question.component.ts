@@ -23,12 +23,7 @@ export class PlayQuestionComponent implements OnInit {
 
   @Output()
   nextAnswer: EventEmitter<boolean> = new EventEmitter<boolean>();
-  setting: any;
 
-  constructor() {
-    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-      'font-size' : localStorage.getItem('textSize')};
-  }
 
   ngOnInit() {
   }
