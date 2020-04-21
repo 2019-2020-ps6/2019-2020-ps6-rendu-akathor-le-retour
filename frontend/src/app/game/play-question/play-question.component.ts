@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Answer, Question} from '../../../models/question.model';
-
+import {MatDialog } from '@angular/material';
+import { Affichage } from '../affichage/affichage.component';
 
 @Component({
   selector: 'app-play-question',
@@ -25,7 +26,7 @@ export class PlayQuestionComponent implements OnInit {
   nextAnswer: EventEmitter<boolean> = new EventEmitter<boolean>();
   setting: any;
 
-  constructor() {
+  constructor(public dialog :MatDialog) {
     this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
       'font-size' : localStorage.getItem('textSize')};
   }
@@ -40,6 +41,12 @@ export class PlayQuestionComponent implements OnInit {
 
   askNextAnswer() {
     this.nextAnswer.emit(true);
+  }
+
+  open(){
+    this.dialog.open(Affichage,{
+      data:{name:this.question.label}
+    });
   }
 
 }

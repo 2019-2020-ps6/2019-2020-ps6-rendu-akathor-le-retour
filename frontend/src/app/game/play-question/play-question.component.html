@@ -1,6 +1,9 @@
 <div class="card">
 <h2 [ngStyle]="setting">
-  <i class="fab fa-angular"></i> {{question.label}}
+  <div mat-raised-button (click)="open()">
+    <i class="fab fa-angular" ></i> {{question.label}}
+  </div>
+  
 </h2>
     <div *ngFor="let answer of question.answers; index as i">
       <br>

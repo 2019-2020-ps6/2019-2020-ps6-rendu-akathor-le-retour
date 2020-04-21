@@ -24,7 +24,8 @@ import { PlayQuizComponent } from './game/play-quiz/play-quiz.component';
 import {PlayQuestionComponent} from './game/play-question/play-question.component';
 import {PlayResultsComponent} from './game/play-results/play-results.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressBarModule,MatDialogModule} from '@angular/material';
+import { Affichage } from './game/affichage/affichage.component';
 
 
 @NgModule({
@@ -48,14 +49,19 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     PlayQuizComponent,
     PlayQuestionComponent,
     PlayResultsComponent,
+    Affichage
+    
   ],
+  entryComponents:[Affichage],
+
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     MatProgressBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
