@@ -1,0 +1,29 @@
+<div class="card">
+    <h2>
+      <span> <div *ngIf="quiz.theme==theme.Actor">
+<i class="fas fa-film"></i>
+      </div> <div *ngIf="quiz.theme==theme.Sport">
+<i class="fas fa-running"></i>
+      </div>Theme: {{quiz.theme}} </span>
+      <br>
+       Nom du quiz: {{quiz.name}}
+      <br>
+      Nombre de questions: {{quiz.questions.length}}
+      <div *ngIf="quiz.creationDate!=null">
+        Date de création: {{quiz.creationDate | date}}
+      </div>
+    </h2>
+    <div *ngIf="lecture===true">
+       <nav>
+        <a routerLink="/quiz-edit/{{quiz.id}}">Modifier</a>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+      <div *ngIf="lecture===false">
+            <button class="button-card" (click)="selectQuiz()">Lancer le quiz</button>
+      </div>
+      <div *ngIf="lecture===true">
+    <button class="button-card" (click)="deleteQuiz()">Supprimer</button>
+  </div>
+
+</div>

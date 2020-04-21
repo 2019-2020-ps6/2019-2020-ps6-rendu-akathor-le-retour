@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {QuizListComponent} from './quizzes/quiz-list/quiz-list.component';
-import {QuizEditComponent} from './quizzes/quiz-edit/quiz-edit.component';
-import {UserListComponent} from './users/user-list/user-list.component';
-import {HomeComponent} from './home/home.component';
-import { AdministrationComponent } from './administration/administration.component';
-import { SettingsComponent } from './settings/settings.component';
-import { SelectThemeComponent } from './select-theme/select-theme.component';
-import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import {QuizListComponent} from './admin/quizzes/quiz-list/quiz-list.component';
+import {QuizEditComponent} from './admin/quizzes/quiz-edit/quiz-edit.component';
+import {UserListComponent} from './admin/users/user-list/user-list.component';
+import {HomeComponent} from './admin/home/home.component';
+import { AdministrationComponent } from './admin/administration/administration.component';
+import { SettingsComponent } from './game/settings/settings.component';
+import { SelectThemeComponent } from './game/select-theme/select-theme.component';
+import { PlayQuizComponent } from './game/play-quiz/play-quiz.component';
 
 
 const routes: Routes = [

@@ -1,0 +1,40 @@
+<div class="card">
+  <h1>Réglages</h1>
+  <span [ngStyle]="setting">
+    Taille
+  </span>
+  <br> <br>
+  <button class="smallButton" style="font-size:1rem" (click)="changeSize(styleSmall)">Petit</button>
+  <button class="smallButton" style="font-size:1rem " (click)="changeSize(styleMedium)">Moyen</button>
+  <button class="smallButton" style="font-size:1rem " (click)="changeSize(styleBig)">Grand</button>
+  <br> <br>
+  <span [ngStyle]="setting">
+    Couleur
+  </span>
+  <br> <br>
+  <button class="smallButton" style="background-color: #000000; color:#ffffff;" (click)="change('#ffffff', '#000000')">
+    A
+  </button>
+
+  <button class="smallButton" style="background-color: #ffff00;" (click)="change('#000000', '#ffff00')">A</button>
+  <button class="smallButton" style="background-color: #ff0000; color:#ffffff;" (click)="change('#ffffff', '#ff0000')">
+    A
+  </button>
+  <button class="smallButton" style="background-color: #0000ff; color:#ffffff;" (click)="change('#ffffff', '#0000ff')">
+    A
+  </button>
+  <button class="smallButton" style="background-color: #ffffff;" (click)="change('#000000', '#ffffff')">A</button>
+  <br> <br>
+  <h1>
+    <a href="/select-theme">
+      <button class="button-card"
+              [ngStyle]="setting" >Confirmer
+      </button>
+    </a>
+  </h1>
+</div>
+
+<!--
+(click)="confirmer()"
+  <link rel="stylesheet" type="text/css" href="settings.component.scss" id="mycss" />
+-->
