@@ -1,8 +1,8 @@
 <div class="card">
-  <h1 [ngStyle] = setting>Choix d'un quiz</h1>
-  <button class="button-card"(click)="getQuizbyDif('facile')">facile</button>
-  <button class="button-card"(click)="getQuizbyDif('moyen')">moyen</button>
-  <button class="button-card"(click)="getQuizbyDif('difficile')">difficile</button>
+  <h1> <span [ngStyle] = setting>Choix d'un quiz</span></h1>
+  <button class="button-card"(click)="getQuizbyDif('facile')" [ngStyle] = setting>facile</button>
+  <button class="button-card"(click)="getQuizbyDif('moyen')" [ngStyle] = setting>moyen</button>
+  <button class="button-card"(click)="getQuizbyDif('difficile')" [ngStyle] = setting>difficile</button>
   <br>
   <div class="quiz" *ngFor="let quiz of quizList">
     <!--Inputs & Output allow communication between parent & child components.-->
@@ -10,7 +10,7 @@
   <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
   </div>
 
-  
-  <button class="button-card"(click)="randomQuiz()">Choix aléatoire</button>
+
+  <button class="button-card"(click)="randomQuiz()" [ngStyle] = setting>Choix aléatoire</button>
 
 </div>

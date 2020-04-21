@@ -29,12 +29,15 @@ export class PlayResultsComponent implements OnInit {
   questionSubscription: Subscription;
   // public questions$: BehaviorSubject<Question[]> = new BehaviorSubject(this.questions);
   goodAnswer: number;
+  private setting: any;
 
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
   ) {
     this.goodAnswer = 0;
+    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
+      'font-size' : localStorage.getItem('textSize')};
     }
 
   ngOnInit(): void {
