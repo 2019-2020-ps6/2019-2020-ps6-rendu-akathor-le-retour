@@ -1,21 +1,52 @@
-<div class="card">
-<div>
-  <i class="fab fa-angular"></i> {{question.label}}
-</div>
-    <div *ngFor="let answer of question.answers; index as i">
-      <br>
-      <div *ngIf="!mode">
-        <div>{{i+1}} <button class="button-card" (click)="answerSomething(answer)">   {{answer.value}} </button></div>
-      </div>
-      <div *ngIf="mode">
-        <span> {{i+1}} {{answer.value}} <span *ngIf="answer.isCorrect">  <span *ngIf="answer.isCorrect"> <i class="far fa-check-square"></i></span></span></span>
-      </div>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+      <div mat-raised-button (click)="open()">
+      <h1>{{question.label}}</h1>
     </div>
-  <div *ngIf="mode">
-    <div *ngIf="question">
-    <button (click)="askNextAnswer()" class="button-card">Suivant</button>
   </div>
+
+</div>
+
+  <code *ngFor="let answer of question.answers; index as i">
+    <div class="row">
+    <ng-template [ngIf]="!mode">
+
+        <button class="col-lg-12 no-side-margin button-card text-center" (click)="answerSomething(answer)">
+          <div class="row">
+          <div class="col-lg-1 answerNumber">{{i+1}}</div>
+             <div class="col-lg-9 no-side-margin text-center bold"> {{answer.value}}</div>
+            <div class="col-lg-2"></div>
+          </div>
+        </button>
+    </ng-template>
+
+    <ng-template [ngIf]="mode">
+      <div class="col-lg-12 no-side-margin button-card align-content-center">
+          <div class="row">
+            <div class="col-lg-1 answerNumber">{{i+1}}</div>
+          <div class="col-lg-10"> {{answer.value}} </div>
+          <div class="col-lg-1">
+              <code *ngIf="answer.isCorrect">
+                <i class="far fa-check-square"></i>
+              </code></div>
+          </div>
+
+        </div>
+      </ng-template>
+    <br>
+    </div>
+
+    </code>
+
+  <code *ngIf="mode">
+    <div class="row float-lg-right">
+    <code *ngIf="question">
+
+      <button (click)="askNextAnswer()" class="button-card">Suivant</button>
+  </code>
   <nav>
   </nav>
-</div>
-</div>
+    </div>
+</code>
+  </div>

@@ -1,6 +1,14 @@
-<app-header></app-header>
-<div class="content" #toRead >
+<body>
+<div class="container-fluid">
+  <div class="row justify-content-center" #toRead>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
   <router-outlet></router-outlet>
-
+  </div>
+  <div class="col-lg-1"></div>
 </div>
+
 <button class="bigButton" (click)="ngTalk(toRead)"  >Son</button>
+</div>
+
+</body>

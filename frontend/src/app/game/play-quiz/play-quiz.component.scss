@@ -1,12 +1,39 @@
 @import 'src/styles/card';
+
+:root{
+  --backgroundColor: white;
+  --textColor: black;
+  --size: 25px;
+}
 ::ng-deep .mat-progress-bar-fill::after {
-  background-color: #1E457C;
+  background-color: var(--backgroundColor);
+
 }
 
 ::ng-deep .mat-progress-bar-buffer {
-  background: blue;
+  background-color:var(--textColor);
+
 }
 
 ::ng-deep .mat-progress-bar {
+  height: 40px!important;
+  border-style: solid;
+  border-color: var(--textColor);
   border-radius: 10px;
+  display: block;
+}
+
+div{
+  color:inherit;
+  background-color:inherit;
+  font-size: inherit;
+}
+
+.customContainerDialog .mat-dialog-container{
+  background-color: inherit;
+  border-style: solid;
+}
+#quizTitle {
+  margin: 0.5em;
+  font-weight: bold;
 }

@@ -1,11 +1,51 @@
 @import './styles/variables.scss';
 @import '~bootstrap/dist/css/bootstrap.css';
+@import './src/app/game/play-quiz/play-quiz.component';
 /* You can add global styles to this file, and also import other style files */
+
 html {
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
 }
-
+h1 {
+  font-weight: bold;
+}
 body {
   margin: 0;
   background-color: inherit;
 }
+.color .mat-dialog-container {
+  color: black;
+}
+
+a{
+  color: inherit;
+  cursor: auto;
+}
+
+a:hover {
+  color:inherit;
+}
+
+
+code {
+  color:inherit;
+  border-color: inherit;
+  background-color: inherit;
+  font: inherit;
+}
+
+
+.no-side-margin{
+  margin-left: 0!important;
+  margin-right: 0!important;
+}
+
+.no-margin{
+  margin: 0!important;
+}
+
+
+.customDialog {
+  backdrop-filter: blur(15px);
+}
+

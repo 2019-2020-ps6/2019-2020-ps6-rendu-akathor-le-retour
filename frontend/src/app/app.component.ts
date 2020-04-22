@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import Speech from 'speak-tts';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class AppComponent {
 
   private setting: any;
 
-  constructor() {
+  constructor(private router: Router) {
     this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
       'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
   }

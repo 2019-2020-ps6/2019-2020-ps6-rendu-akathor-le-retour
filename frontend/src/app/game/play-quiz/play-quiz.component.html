@@ -1,19 +1,22 @@
-<body>
-<div  class="container" [ngStyle]="setting">
-<div *ngIf="quizCalled!=null">
-  <h2>    {{quizCalled.name}}</h2>
+<div  class="container" >
+  <div class="row ">
+    <div class="col-lg-12 card" [ngStyle]="setting">
+  <ng-template [ngIf]="quizCalled!=null">
+  <div class="row">
+<div class="col-lg-12 text-center" id="quizTitle">
+  <h1>{{quizCalled.name}} <ng-template [ngIf]="current<questions.length">- Question {{current+1}} </ng-template></h1>
+</div>
 
-  <div *ngIf="current<questions.length">
+  </div>
+  <ng-template [ngIf]="current<questions.length">
     <mat-progress-bar mode="determinate" value="{{currentProgress}}"></mat-progress-bar>
 
     <app-play-question [question]="questions[current]" [mode] ="correctMode" (answer)="answerSomething($event.isCorrect)" (nextAnswer)="nextAnswer()" ></app-play-question>
-  </div>
-  <div *ngIf="current==questions.length">
+  </ng-template>
+  <ng-template [ngIf]="current==questions.length">
     <app-play-results [answers]="answers"(askAnswers)="seeAnswers($event)" (askRedoingQuiz)="redoQuiz()"></app-play-results>
+  </ng-template>
+</ng-template>
+  </div>
   </div>
 </div>
-
-<div *ngIf="quizCalled==null">
-</div>
-</div>
-</body>

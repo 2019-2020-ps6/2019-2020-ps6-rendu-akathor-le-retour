@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
@@ -21,10 +21,10 @@ export class PlayQuizComponent implements OnInit {
   correctMode: boolean;
   currentProgress: number;
   setting: any;
-
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
+    private elementRef: ElementRef
   ) {
     this.quizService.quizSelected$.subscribe((quiz) => {
 
@@ -35,6 +35,10 @@ export class PlayQuizComponent implements OnInit {
     this.correctMode = false;
     this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
       'font-size' : localStorage.getItem('textSize')};
+    this.elementRef.nativeElement.style.setProperty('--textColor', this.setting.color);
+    this.elementRef.nativeElement.style.setProperty('--backgroundColor', this.setting['background-color']);
+    this.elementRef.nativeElement.style.setProperty('--size', this.setting['font-size']);
+
   }
 
 

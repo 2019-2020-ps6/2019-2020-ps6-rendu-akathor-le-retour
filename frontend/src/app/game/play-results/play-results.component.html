@@ -1,12 +1,21 @@
-<body>
-<div class="card">
-  <h2><span [ngStyle]="setting" >Votre score: {{goodAnswer}}/{{answers.length}} </span></h2>
-  <button class="button-card" (click)="seeAnswers()" [ngStyle]="setting">  Voir les réponses </button>
-  <br>
-    <a routerLink="/select-theme/"> <button class="button-card" (click)="backTheme()" [ngStyle]="setting">  Retour à la sélection de thèmes </button>
+<div class="container-fluid">
+  <div class="row align-content-center d-block">
+<div class="card" [ngStyle]="setting">
+  <div class="row">
+    <div class="col-lg-11 justify-content-center">
+  <h1>Vous avez eu {{goodAnswer}}/{{answers.length}} réponses justes</h1>
+    </div>
+  </div>
+  <div class="row">
+  <button class="button-card col-lg-11" (click)="seeAnswers()">Voir les réponses</button>
+  </div>
+  <div class="row">
+  <button class="button-card col-lg-11" (click)="redoQuiz()">Refaire le quiz</button>
+  </div>
+  <div class="row">
+    <a routerLink="/select-theme/"> <button class="button-card col-lg-11" (click)="backTheme()">  Retour à la sélection de thèmes </button>
     </a>
-  <br>
-  <button class="button-card" (click)="redoQuiz()" [ngStyle]="setting">  Refaire le quiz </button>
-
+  </div>
 </div>
-</body>
+  </div>
+</div>

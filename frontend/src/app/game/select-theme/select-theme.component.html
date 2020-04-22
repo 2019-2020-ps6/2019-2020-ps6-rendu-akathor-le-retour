@@ -1,18 +1,61 @@
-<div [ngStyle]="setting">
-<div class="card">
-  <h1> <span [ngStyle] = setting>Choix d'un quiz</span></h1>
-  <button class="button-card"(click)="getQuizbyDif('facile')" [ngStyle] = setting>facile</button>
-  <button class="button-card"(click)="getQuizbyDif('moyen')" [ngStyle] = setting>moyen</button>
-  <button class="button-card"(click)="getQuizbyDif('difficile')" [ngStyle] = setting>difficile</button>
-  <br>
-  <div class="quiz" *ngFor="let quiz of quizList">
-    <!--Inputs & Output allow communication between parent & child components.-->
-    <!--More information: https://angular.io/guide/component-interaction-->
-  <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
-  </div>
+<div class="container-fluid">
+        <div class="row">
+                    <div class="col-lg-12 card" [ngStyle]="setting">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <h1> Choix d'un quiz</h1>
+                          </div>
+                        </div>
+            <br />
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <button class="button-card"(click)="getQuizbyDif('facile')">Facile</button>
+                          </div>
+                        </div>
 
+                        <div class="row">
+                          <div class="col-lg-12">
+                          <button class="button-card"(click)="getQuizbyDif('moyen')">Moyen</button>
+                          </div>
+                        </div>
 
-  <button class="button-card"(click)="randomQuiz()" [ngStyle] = setting>Choix aléatoire</button>
+                        <div class="row">
+                          <div class="col-lg-12">
+                          <button class="button-card"(click)="getQuizbyDif('difficile')">Difficile</button>
+                          </div>
+                        </div>
 
-</div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                          <button class="button-card"(click)="randomQuiz()">Choix aléatoire</button>
+                          </div>
+                        </div>
+
+                        </div>
+
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="col-lg-12">
+                    <div class="quiz" *ngFor="let quiz of quizList">
+                        <!--Inputs & Output allow communication between parent & child components.-->
+                        <!--More information: https://angular.io/guide/component-interaction-->
+                        <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+          <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-10">
+                <a href="/settings">
+                <button class="button-card">Changer les réglages</button>
+                </a>
+                </div>
+                </div>
+          </div>
+    </div>
 </div>

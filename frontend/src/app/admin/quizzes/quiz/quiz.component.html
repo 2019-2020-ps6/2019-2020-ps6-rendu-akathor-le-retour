@@ -1,29 +1,30 @@
-<div class="card">
-    <h2>
-      <span> <div *ngIf="quiz.theme==theme.Actor">
-<i class="fas fa-film"></i>
-      </div> <div *ngIf="quiz.theme==theme.Sport">
-<i class="fas fa-running"></i>
-      </div>Theme: {{quiz.theme}} </span>
-      <br>
+<div class="card container-fluid">
+    <div class="row ">
+    Theme: {{quiz.theme}}
+    </div>
+    <div class="row">
        Nom du quiz: {{quiz.name}}
-      <br>
+    </div>
+    <div class="row">
       Nombre de questions: {{quiz.questions.length}}
-      <div *ngIf="quiz.creationDate!=null">
+    </div>
+    <div class="row" *ngIf="quiz.creationDate!=null">
         Date de création: {{quiz.creationDate | date}}
       </div>
-    </h2>
-    <div *ngIf="lecture===true">
+  <div class="row">
+    <ng-template [ngIf]="lecture===true">
        <nav>
-        <a routerLink="/quiz-edit/{{quiz.id}}">Modifier</a>
+        <a routerLink="/quiz-edit/{{quiz.id}}">
+          <button class="button-card no-side-margin" >Modifier</button>
+        </a>
       </nav>
       <router-outlet></router-outlet>
-    </div>
-      <div *ngIf="lecture===false">
+    </ng-template>
+      <ng-template [ngIf]="lecture===false">
             <button class="button-card" (click)="selectQuiz()">Lancer le quiz</button>
-      </div>
-      <div *ngIf="lecture===true">
-    <button class="button-card" (click)="deleteQuiz()">Supprimer</button>
-  </div>
+      </ng-template>
+      <ng-template [ngIf]="lecture===true">
+    <button class="button-card no-side-margin" (click)="deleteQuiz()">Supprimer</button>
+  </ng-template></div>
 
 </div>

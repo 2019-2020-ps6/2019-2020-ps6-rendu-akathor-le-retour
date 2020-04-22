@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
     constructor() {
       this.textColor = 'black'; // par défaut
       this.backgroundColor = 'white'; // par défaut
-      this.borderColor = this.textColor;
+      this.borderColor = 'white';
       this.styleSmall = '25px';
       this.styleMedium = '30px';
       this.styleBig = '35px';
@@ -36,10 +36,12 @@ import { Component, OnInit } from '@angular/core';
       this.setting['background-color'] = val2;
       this.setting['border-color'] = val1;
       localStorage.setItem('textColor', val1);
+      localStorage.setItem('borderColor', val1);
       localStorage.setItem('backgroundColor', val2);
   }
 
   changeSize(textSize: string) {
+    console.log(textSize);
     this.setting['font-size'] = textSize;
     localStorage.setItem('textSize', textSize);
   }

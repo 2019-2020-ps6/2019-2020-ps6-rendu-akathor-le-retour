@@ -1,3 +1,11 @@
 .quiz-list {
   display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+
+}
+
+.quiz{
+  margin: 1em;
+
 }

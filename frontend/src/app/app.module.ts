@@ -24,7 +24,10 @@ import { PlayQuizComponent } from './game/play-quiz/play-quiz.component';
 import {PlayQuestionComponent} from './game/play-question/play-question.component';
 import {PlayResultsComponent} from './game/play-results/play-results.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressBarModule, MatDialogModule} from '@angular/material';
+import { DisplayComponent } from './game/display/display.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -48,14 +51,20 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     PlayQuizComponent,
     PlayQuestionComponent,
     PlayResultsComponent,
+    DisplayComponent
   ],
+  entryComponents: [DisplayComponent],
+
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     MatProgressBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatIconModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

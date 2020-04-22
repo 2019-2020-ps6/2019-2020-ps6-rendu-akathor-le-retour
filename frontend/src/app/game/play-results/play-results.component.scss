@@ -1,1 +1,13 @@
 @import 'src/styles/card';
+
+h1{
+  border-style: dot-dash;
+  border-color: inherit;
+  text-align: center;
+}
+.card{
+  display: flex;
+}
+a{
+  display: contents;
+}

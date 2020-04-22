@@ -6,3 +6,11 @@ h1{
     font-size: inherit;
 }
 
+.container-fluid{
+  transform: scale(0.8) !important;
+  transform-origin: top!important;
+}
+
+.row{
+  display: block;
+}
