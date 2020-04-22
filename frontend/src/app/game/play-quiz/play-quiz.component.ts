@@ -38,7 +38,6 @@ export class PlayQuizComponent implements OnInit {
     this.elementRef.nativeElement.style.setProperty('--textColor', this.setting.color);
     this.elementRef.nativeElement.style.setProperty('--backgroundColor', this.setting['background-color']);
     this.elementRef.nativeElement.style.setProperty('--size', this.setting['font-size']);
-
   }
 
 

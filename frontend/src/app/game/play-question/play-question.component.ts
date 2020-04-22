@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
 import {Answer, Question} from '../../../models/question.model';
 import {MatDialog } from '@angular/material';
 import { DisplayComponent } from '../display/display.component';
+import {root} from 'rxjs/internal-compatibility';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -11,13 +12,13 @@ import { DisplayComponent } from '../display/display.component';
 })
 
 export class PlayQuestionComponent implements OnInit {
+  setting: any;
 
   @Input()
   question: Question;
 
   @Input()
   mode: boolean;
-
 
   @Output()
   answer: EventEmitter<Answer> = new EventEmitter<Answer>();
@@ -27,6 +28,8 @@ export class PlayQuestionComponent implements OnInit {
 
 
   constructor(public dialog: MatDialog) {
+    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
+      'font-size' : localStorage.getItem('textSize')};
     }
 
   ngOnInit() {
@@ -42,6 +45,7 @@ export class PlayQuestionComponent implements OnInit {
   }
 
   open() {
+    document.documentElement.style.setProperty('--backgroundColor', this.setting['background-color']);
     this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '500px',
       data: {name: this.question.label }, backdropClass: 'customDialog', panelClass: 'customContainerDialog', autoFocus: true
     });

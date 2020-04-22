@@ -3,6 +3,9 @@
 @import './src/app/game/play-quiz/play-quiz.component';
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+  --backgroundColor: red;
+}
 html {
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
 }

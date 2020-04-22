@@ -30,7 +30,7 @@ div{
 }
 
 .customContainerDialog .mat-dialog-container{
-  background-color: inherit;
+  background-color: var(--backgroundColor);
   border-style: solid;
 }
 #quizTitle {

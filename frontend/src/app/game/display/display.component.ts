@@ -17,9 +17,8 @@ export class DisplayComponent implements OnInit {
     ngOnInit() {
 
     }
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private refs: MatDialogRef<any>) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
       this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
         'font-size' : localStorage.getItem('textSize')};
-      refs.addPanelClass('customClass');
     }
 }
