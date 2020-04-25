@@ -31,6 +31,7 @@ export class PlayResultsComponent implements OnInit {
   goodAnswer: number;
   private setting: any;
 
+
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,

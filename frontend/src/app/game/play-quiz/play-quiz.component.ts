@@ -21,6 +21,8 @@ export class PlayQuizComponent implements OnInit {
   correctMode: boolean;
   currentProgress: number;
   setting: any;
+  private automatique = true ;
+
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
@@ -90,5 +92,10 @@ export class PlayQuizComponent implements OnInit {
     this.currentProgressUpdate();
     this.correctMode = false;
     this.answers = [];
+  }
+
+  changeauto() {
+    this.automatique = !(this.automatique) ;
+    console.log('know ' + this.automatique) ;
   }
 }
