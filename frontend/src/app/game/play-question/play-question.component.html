@@ -14,7 +14,7 @@
     <div class="row">
     <ng-template [ngIf]="!mode">
 
-        <button class="col-lg-12 no-side-margin button-card text-center" (click)="answerSomething(answer)">
+        <button class="col-lg-12 no-side-margin button-card text-center answer{{i}}" (click)="answerSomething(answer)">
           <div class="row">
           <div class="col-lg-1 answerNumber">{{i+1}}</div>
              <div class="col-lg-9 no-side-margin text-center bold"> {{answer.value}}</div>

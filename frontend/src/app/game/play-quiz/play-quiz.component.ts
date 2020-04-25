@@ -4,6 +4,7 @@ import { QuizService } from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {Answer, Question} from '../../../models/question.model';
 import {BehaviorSubject, Subscription} from 'rxjs';
+import {SettingsService} from '../../../services/settings.service';
 
 @Component({
   selector: 'app-play-quiz',
@@ -15,31 +16,25 @@ export class PlayQuizComponent implements OnInit {
   private quizCalled: Quiz;
   private questions: Question[] = [];
   private answers: boolean[] = [];
-  questionSubscription: Subscription;
-  // public questions$: BehaviorSubject<Question[]> = new BehaviorSubject(this.questions);
   current: number;
   correctMode: boolean;
   currentProgress: number;
-  setting: any;
+  settings: any;
   private automatique = true ;
 
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
-    private elementRef: ElementRef
-  ) {
+    private elementRef: ElementRef,
+    public settingsService: SettingsService) {
+    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+    console.log(' paramètres ' + this.settings);
     this.quizService.quizSelected$.subscribe((quiz) => {
-
       this.quizCalled = quiz;
       this.questions = quiz.questions;
     });
     this.current = 0;
     this.correctMode = false;
-    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-      'font-size' : localStorage.getItem('textSize')};
-    this.elementRef.nativeElement.style.setProperty('--textColor', this.setting.color);
-    this.elementRef.nativeElement.style.setProperty('--backgroundColor', this.setting['background-color']);
-    this.elementRef.nativeElement.style.setProperty('--size', this.setting['font-size']);
   }
 
 

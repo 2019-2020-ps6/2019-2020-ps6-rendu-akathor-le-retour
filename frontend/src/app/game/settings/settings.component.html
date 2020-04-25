@@ -1,14 +1,14 @@
 <div class="container-fluid">
 <div class="row">
-<div class="card col-lg-12"  [ngStyle]="setting">
+<div class="card col-lg-12"  [ngStyle]="settings">
   <h1>Réglages</h1>
   <span>
     Taille
   </span>
   <br> <br>
-  <button class="smallButton" (click)="changeSize(styleSmall)">Petit</button>
-  <button class="smallButton" (click)="changeSize(styleMedium)">Moyen</button>
-  <button class="smallButton" (click)="changeSize(styleBig)">Grand</button>
+  <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
+  <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
+  <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
   <br> <br>
   <span>
     Couleur
@@ -27,8 +27,8 @@
   </button>
   <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
   <br> <br>
-  Lecture automatique : 
-  
+  Lecture automatique :
+
   <h1>
     <a href="/select-theme">
       <button class="button-card">Confirmer

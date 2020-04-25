@@ -2,6 +2,7 @@ import {Component, OnInit, Inject, ViewEncapsulation, Input} from '@angular/core
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {style} from '@angular/animations';
 import {MatDialogRef} from '@angular/material/dialog';
+import {SettingsService} from '../../../services/settings.service';
 
 
 @Component({
@@ -12,13 +13,15 @@ import {MatDialogRef} from '@angular/material/dialog';
 
 
 export class DisplayComponent implements OnInit {
-  private setting: any;
+  private settings: any;
 
-    ngOnInit() {
+  ngOnInit() {
 
-    }
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-      this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-        'font-size' : localStorage.getItem('textSize')};
-    }
+  }
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public settingsService: SettingsService) {
+    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+  }
+
+
 }

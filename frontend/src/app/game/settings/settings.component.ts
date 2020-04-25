@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SettingsService} from '../../../services/settings.service';
 
 @Component({
     selector: 'app-settings',
@@ -6,43 +7,20 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./settings.component.scss']
   })
   export class SettingsComponent implements OnInit {
-  textColor: string;
-  backgroundColor: string;
-  textSize: string;
-  borderColor: string;
-  styleSmall: string;
-  styleMedium: string;
-  styleBig: string;
-  setting: any;
+  settings: any;
 
-    constructor() {
-      this.textColor = 'black'; // par défaut
-      this.backgroundColor = 'white'; // par défaut
-      this.borderColor = 'white';
-      this.styleSmall = '25px';
-      this.styleMedium = '30px';
-      this.styleBig = '35px';
-      this.textSize = this.styleMedium; // par défaut
+  constructor(public settingsService: SettingsService) {
+    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+  }
 
-      this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-        'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
-    }
-
-    ngOnInit() {
+  ngOnInit() {
     }
 
   change(val1, val2) {
-      this.setting.color = val1;
-      this.setting['background-color'] = val2;
-      this.setting['border-color'] = val1;
-      localStorage.setItem('textColor', val1);
-      localStorage.setItem('borderColor', val1);
-      localStorage.setItem('backgroundColor', val2);
+    this.settingsService.changeColor(val1, val2);
   }
 
   changeSize(textSize: string) {
-    console.log(textSize);
-    this.setting['font-size'] = textSize;
-    localStorage.setItem('textSize', textSize);
+    this.settingsService.changeSize(textSize);
   }
 }

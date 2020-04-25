@@ -11,7 +11,8 @@ import {
 import {Answer, Question} from '../../../models/question.model';
 import {MatDialog } from '@angular/material';
 import { DisplayComponent } from '../display/display.component';
-import {AudioSevice} from '../../../services/audio.service';
+import {AudioService} from '../../../services/audio.service';
+import {SettingsService} from '../../../services/settings.service';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'app-play-question',
@@ -20,7 +21,7 @@ import {AudioSevice} from '../../../services/audio.service';
 })
 
 export class PlayQuestionComponent implements OnInit , OnChanges {
-  setting: any;
+  settings: any;
 
   @Input()
   question: Question;
@@ -39,11 +40,9 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   nextAnswer: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  constructor(public dialog: MatDialog, public lecture: AudioSevice) {
-    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-      'font-size' : localStorage.getItem('textSize')};
-
-    console.log(this.question);
+  constructor(public dialog: MatDialog, public lecture: AudioService, public settingsService: SettingsService) {
+     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+     console.log(this.question);
 
     }
 
@@ -80,10 +79,11 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   }
 
   open() {
-    document.documentElement.style.setProperty('--backgroundColor', this.setting['background-color']);
+    document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
     this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '500px',
       data: {name: this.question.label }, backdropClass: 'customDialog', panelClass: 'customContainerDialog', autoFocus: true
     });
+    document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 
   read() {

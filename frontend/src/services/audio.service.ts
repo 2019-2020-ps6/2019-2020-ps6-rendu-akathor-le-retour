@@ -11,13 +11,12 @@ import {Question, Answer} from '../models/question.model';
 @Injectable({
     providedIn: 'root'
   })
-  export class AudioSevice {
+  export class AudioService {
     private speech = new Speech();
 
       constructor() {
         this.speech.setLanguage('fr-FR');
         this.speech.setRate(0.7);
-
         this.speech.init({
              splitSentences: false
      });
@@ -78,34 +77,34 @@ import {Question, Answer} from '../models/question.model';
         this.speech.setRate(0.7);
 
         let text = '';
-        text = '' + question.label + ' \n' ;
+        text = '' + question.label + ' \n';
 
         question.answers.forEach((value, index) => {
           switch (index) {
             case 0 :
-            text = text + 'première réponse ' ;
-            break ;
+              text = text + 'première réponse:  ';
+              break;
 
             case 1 :
-              text = text + 'deuxième réponse ' ;
-              break ;
+              text = text + 'deuxième réponse: ';
+              break;
 
             case 2 :
-              text = text + 'troisième réponse ' ;
-              break ;
+              text = text + 'troisième répons: ';
+              break;
             case 3 :
-              text = text + 'quatrième réponse ' ;
-              break ;
+              text = text + 'quatrième réponse: ';
+              break;
             default :
-            text = text + 'réponse ' + (index + 1) ;
+              text = text + 'réponse ' + (index + 1);
 
           }
-          text = text  + (value .value) + '\n . ';
+          text = text + (value.value) + '\n . ';
         });
-
-
-        this.speech.speak({text,
-          queue: false});
+        this.speech.speak({
+          text,
+          queue: false
+        });
 
       }
 

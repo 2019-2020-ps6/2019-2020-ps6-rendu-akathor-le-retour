@@ -4,6 +4,7 @@ import { QuizService } from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {Answer, Question} from '../../../models/question.model';
 import {BehaviorSubject, Subscription} from 'rxjs';
+import {SettingsService} from '../../../services/settings.service';
 
 @Component({
   selector: 'app-play-results',
@@ -29,16 +30,14 @@ export class PlayResultsComponent implements OnInit {
   questionSubscription: Subscription;
   // public questions$: BehaviorSubject<Question[]> = new BehaviorSubject(this.questions);
   goodAnswer: number;
-  private setting: any;
+  private settings: any;
 
 
   constructor(
     private route: ActivatedRoute,
-    private quizService: QuizService,
-  ) {
+    private quizService: QuizService, public settingsService: SettingsService) {
+    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
     this.goodAnswer = 0;
-    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-      'font-size' : localStorage.getItem('textSize')};
     }
 
   ngOnInit(): void {

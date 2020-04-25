@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import {SettingsService} from '../../../services/settings.service';
 
 @Component({
   selector: 'app-select-theme',
@@ -13,12 +14,12 @@ export class SelectThemeComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  setting: any;
+  settings: any;
 
-  constructor(private quizService: QuizService, public router: Router) {
+  constructor(private quizService: QuizService, public router: Router, public settingsService: SettingsService) {
+    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+    console.log(' paramètres ' + this.settings);
     this.getQuizbyDif('difficile');
-    this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-      'font-size' : localStorage.getItem('textSize')};
   }
 
   ngOnInit() {
