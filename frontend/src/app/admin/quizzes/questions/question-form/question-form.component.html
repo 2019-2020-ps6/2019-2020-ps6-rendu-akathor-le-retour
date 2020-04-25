@@ -16,11 +16,21 @@
             <input type="checkbox" [formControlName]="'isCorrect'">
           </label>
         </div>
+        <button (click)="remove(i)"> Delete </button>
       </div>
     </div>
-    <button class="button-card" (click)="addAnswer()">Add Answer</button>
+    <button class="button-card" [disabled]="valide"(click)="addAnswer()">Add Answer</button>
     <div *ngIf="answers.length!=0">
       <button class="button-card" (click)="createQuestion()">Create</button>
+    </div>
+    <div *ngIf="labelVide">
+      <h2> veuillez saisir une question </h2>
+    </div>
+    <div *ngIf="videAnsewer">
+      <h2>une réponse est vide </h2>
+    </div>
+    <div *ngIf="OneCorrect">
+      <h2> au plus une seule réponse doir étre correcte  </h2>
     </div>
   </form>
 </div>
