@@ -1,33 +1,38 @@
 <div class="card">
-  <h2>Create a new Quiz</h2>
-  <form class="quiz-form" [formGroup]="quizForm">
-    <label for="title">
-      Title <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-    </label>
-    <div></div>
-    <label for="theme">
-    Theme <br>
-      <select name="theme" id="theme" [formControlName]="'theme'">
-        <option value="">Please choose a theme</option>
+  <h2>Créer un Quiz</h2>
+  <form class="quiz-form" [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+      <label>Titre</label>
+      <input type="text" formControlName="name" class="form-control" [ngClass]="{'is-invalid': submitted && f.name.errors }"/>
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Veuillez entrer un titre</div>
+      </div>
+  </div>
+
+    <div class="form-row">
+      <label>Thème</label>
+      <select formControlName="theme" class="form-control" [ngClass]="{'is-invalid': submitted && f.theme.errors }">
+        <option value="">Choisir un thème</option>
         <option *ngFor="let theme of keys(themes)" [ngValue]="themes[theme]">{{theme}}</option>
-        </select>
-    </label>
-    <br>
-    <label for="difficulte">
-      Difficulte: <br>
-      <select name="difficulte" id="difficulte" [formControlName]="'difficulte'">
-        <option value="">Please choose a difficulte</option>
+      </select>
+      <div *ngIf="submitted && f.theme.errors" class="invalid-feedback">
+        <div *ngIf="f.theme.errors.required">Veuillez choisir un thème</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Difficulté</label>
+      <select formControlName="difficulte" class="form-control" [ngClass]="{'is-invalid': submitted && f.difficulte.errors }">
+        <option value="">Niveau de difficulté</option>
         <option *ngFor="let difficulte of DIFICULTE" [value]="difficulte">
           {{difficulte}}
-        </option>
-      </select>
-    </label>
-    <br>
-    <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
-    <br>
+        </option>      </select>
+      <div *ngIf="submitted && f.difficulte.errors" class="invalid-feedback">
+        <div *ngIf="f.difficulte.errors.required">Veuillez choisir un niveau de difficulté</div>
+      </div>
+    </div>
 
-  </form>
-</div>
+  <button type="submit" class="button-card">Créer le quiz</button>
+    <br>
+  </form></div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->
