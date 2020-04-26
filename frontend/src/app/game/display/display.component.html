@@ -6,7 +6,23 @@
 
 </mat-dialog-content>
 
-<mat-dialog-actions  [ngStyle]=settings>
-  <button class="button-card" mat-button [mat-dialog-close]="true">Continuer le quiz !</button>
-</mat-dialog-actions>
+  <div class="col-lg-12 no-side-margin  align-content-center">
+    <div class="row">
+      <div class="col-lg-6 ">
+        <mat-dialog-actions  [ngStyle]=settings>
+          <button  class="button-card mat-button " (click)="close(false)"> Continuer le quiz !</button>
+        </mat-dialog-actions>
+      </div>
+
+      <div  *ngIf=" !data.quest" class="col-lg-6">
+        <mat-dialog-actions  [ngStyle]=settings>
+          <button class="button-card mat-button" (click)="close(true)"  > confirmer la réponse </button>
+        </mat-dialog-actions>
+      </div>
+    </div>
+
+  </div>
+
+
+
 </div>

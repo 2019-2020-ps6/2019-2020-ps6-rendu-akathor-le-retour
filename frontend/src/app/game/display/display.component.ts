@@ -18,9 +18,12 @@ export class DisplayComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public settingsService: SettingsService) {
+  constructor(public dialogRef: MatDialogRef<DisplayComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any, public settingsService: SettingsService) {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+  }
+  close(b: boolean) {
+    this.dialogRef.close(b);
   }
 
 

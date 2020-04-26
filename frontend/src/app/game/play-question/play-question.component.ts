@@ -107,10 +107,17 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   openAnswer(index: number) {
     console.log(index);
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
-    this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '1000px',
+    const dialogRef = this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '1000px', minWidth: '400px',
       data: {name: this.question.answers[index].value , quest: false }, backdropClass: 'customDialog', panelClass: 'customContainerDialog',
       autoFocus: true
     });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        console.log('confirmation');
+        this.answerSomething(this.question.answers[index]);
+      }
+    });
+
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 
