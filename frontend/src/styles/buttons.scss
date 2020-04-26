@@ -16,6 +16,7 @@
   padding: 0 1em 1em 1em;
   width : 25em;
   height : 20em;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
 }
 
 .smallButton{
@@ -30,6 +31,7 @@
   height : 2em;
   border-color: inherit;
   color:inherit;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
 }
 
 .buttonRow{
@@ -48,5 +50,5 @@
 }
 
 .button-card:hover {
-  cursor: pointer;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
 }

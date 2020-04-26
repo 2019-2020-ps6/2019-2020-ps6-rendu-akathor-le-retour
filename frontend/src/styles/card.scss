@@ -24,10 +24,10 @@
   font-weight: bold;
   padding: 1em 1em;
   margin: 1em 1em 1em 1em;
-
 }
 
 .button-card:hover {
   color: inherit;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
 }
 
