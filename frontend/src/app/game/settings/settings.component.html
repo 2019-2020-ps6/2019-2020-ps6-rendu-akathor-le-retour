@@ -7,32 +7,11 @@
     </div>
   </div>
   <br>
-    <div class="row">
-      <div class="col-lg-12">
-      <h1>Taille du texte</h1>
-    </div>
-    </div>
-  <div class="row">
-    <div class="col-lg-12 card no-side-margin text-center">
 
-      <div class="row">
-        <div class="col-lg-4">
-        <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
-        </div>
-        <div class="col-lg-4">
-        <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
-        </div>
-        <div class="col-lg-4">
-        <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
-        </div>
-      </div>
-  </div>
-  </div>
-  <br>
-  <br>
+  <ng-template [ngIf]="step==1">
   <div class="row">
   <div class="col-lg-12">
-    <h1>Couleur</h1></div>
+    <h1>Choissisez la couleur qui vous convient le mieux</h1></div>
 </div>
   <div class="row">
     <div class="col-lg-12 card no-side-margin text-center">
@@ -54,13 +33,14 @@
       </div>
       <br>
       <div class="row">
+        <div class="col-lg-2">
+        </div>
         <div class="col-lg-4">
         <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
           A
         </button>
       </div>
-        <div class="col-lg-4">
-        </div>
+
         <div class="col-lg-4">
         <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
       </div>
@@ -69,24 +49,73 @@
 
   </div>
   <br>
-  <div class="row">
+  </ng-template>
+  <ng-template [ngIf]="step==2">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Quel taille de texte vous convient le mieux ?</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 card no-side-margin text-center">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
+          </div>
+          <div class="col-lg-4">
+            <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
+          </div>
+          <div class="col-lg-4">
+            <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </ng-template>
+  <ng-template [ngIf]="step==3">
+    <div class="row">
     <div class="col-lg-12">
-      <h1>Lecture automatique du texte</h1>
+      <h1>Souhaitez-vous que les questions et réponses vous soit dictées à l'oral automatiquement</h1>
     </div>
   </div>
   <div class="row text-center">
       <div class="col-lg-12">
-        <button (click)="swipeSound()" class="button-card">{{settings.soundAuto ? 'Activer' : 'Désactiver'}}</button>
+        <button (click)="swipeSound()" class="button-card">{{settings.soundAuto ? 'Désactiver' : 'Activer'}}</button>
       </div>
   </div>
+  </ng-template>
   <div class="row text-center">
-    <div class="col-lg-12">
+    <ng-template [ngIf]="step>1">
+      <div class="col-lg-6">
+          <button class="button-card sameHeight" (click)="previousStep()"> Revenir{{step==3 ? ' au choix de la taille' : ' au choix de la couleur'}}
+          </button>
+      </div>
+      <ng-template [ngIf]="step<3">
+        <div class="col-lg-6">
+          <button class="button-card sameHeight" (click)="nextStep()"> Continuer
+          </button>
+        </div>
+      </ng-template>
+    <ng-template [ngIf]="step==3">
+    <div class="col-lg-6">
     <a href="/select-theme">
-      <button class="button-card"> Prêt pour un quiz !
+      <button class="button-card sameHeight"> Prêt à jouer !
       </button>
     </a>
     </div>
+  </ng-template>
+    </ng-template>
+
+    <ng-template [ngIf]="step==1">
+      <div class="col-lg-12">
+          <button class="button-card" (click)="nextStep()"> Continuer
+          </button>
+      </div>
+    </ng-template>
   </div>
+
 </div>
   </div>
 <!--

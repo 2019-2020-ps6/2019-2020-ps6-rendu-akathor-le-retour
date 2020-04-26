@@ -15,7 +15,7 @@ export class SettingsService {
   styleSmall = '25px';
   styleMedium = '30px';
   styleBig = '35px';
-  soundAuto = true;
+  soundAuto = false;
 
   /**
    * GUI PARAMS
@@ -50,6 +50,7 @@ export class SettingsService {
 
   swipeSoundAuto() {
     this.settings.soundAuto = !this.settings.soundAuto;
+    localStorage.setItem('soundAuto', this.settings.soundAuto);
     this.settings$.next(this.settings);
   }
 
