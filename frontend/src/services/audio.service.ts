@@ -90,7 +90,7 @@ import {Question, Answer} from '../models/question.model';
               break;
 
             case 2 :
-              text = text + 'troisième répons: ';
+              text = text + 'troisième réponse: ';
               break;
             case 3 :
               text = text + 'quatrième réponse: ';
