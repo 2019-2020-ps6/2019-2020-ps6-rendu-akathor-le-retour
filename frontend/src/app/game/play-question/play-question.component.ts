@@ -78,8 +78,8 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
 
   open() {
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
-    this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '500px',
-      data: {name: this.question.label }, backdropClass: 'customDialog', panelClass: 'customContainerDialog', autoFocus: true
+    this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '1000px',
+      data: {name: this.question.label , quest: true  }, backdropClass: 'customDialog', panelClass: 'customContainerDialog', autoFocus: true
     });
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
@@ -102,6 +102,16 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   readCorrection() {
     console.log('lecture reponses ');
     this.lecture.lectureReponseCorrecte(this.question);
+  }
+
+  openAnswer(index: number) {
+    console.log(index);
+    document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
+    this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '1000px',
+      data: {name: this.question.answers[index].value , quest: false }, backdropClass: 'customDialog', panelClass: 'customContainerDialog',
+      autoFocus: true
+    });
+    document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 
 }
