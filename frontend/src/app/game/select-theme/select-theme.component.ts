@@ -15,6 +15,7 @@ export class SelectThemeComponent implements OnInit {
 
   public quizList: Quiz[] = [];
   public themeList: Themes[] = [];
+  public currentDifficultie;
   settings: any;
 
   constructor(private quizService: QuizService, public router: Router, public settingsService: SettingsService) {
@@ -22,6 +23,7 @@ export class SelectThemeComponent implements OnInit {
     console.log(' paramètres ' + this.settings);
     this.getQuizbyDif('difficile');
     this.settingsService.quizDone();
+    this.currentDifficultie = null;
   }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class SelectThemeComponent implements OnInit {
   getQuizbyDif(dif: string) {
     this.quizList = [];
     this.themeList = [];
+    this.currentDifficultie = dif;
     this.quizService.quizzes$.subscribe((quiz) => {
        let i = 0 ;
        for ( i ; i < quiz.length; i++) {

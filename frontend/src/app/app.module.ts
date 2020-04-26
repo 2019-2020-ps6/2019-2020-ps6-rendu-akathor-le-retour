@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './admin/quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './admin/quizzes/quiz/quiz.component';
@@ -28,6 +27,9 @@ import {MatProgressBarModule, MatDialogModule} from '@angular/material';
 import { DisplayComponent } from './game/display/display.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { MatAutocompleteModule, MatInputModule} from '@angular/material';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -51,7 +53,7 @@ import {MatIconModule} from '@angular/material/icon';
     PlayQuizComponent,
     PlayQuestionComponent,
     PlayResultsComponent,
-    DisplayComponent
+    DisplayComponent,
   ],
   entryComponents: [DisplayComponent],
 
@@ -64,7 +66,11 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatDialogModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatButtonModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -72,4 +78,5 @@ import {MatIconModule} from '@angular/material/icon';
   providers: [AppComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
