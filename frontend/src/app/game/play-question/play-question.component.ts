@@ -62,9 +62,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
       }
     } else {
       this.read();
-
     }
-
   }
 
 

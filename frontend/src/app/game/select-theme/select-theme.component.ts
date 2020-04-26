@@ -20,6 +20,7 @@ export class SelectThemeComponent implements OnInit {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
     console.log(' paramètres ' + this.settings);
     this.getQuizbyDif('difficile');
+    this.settingsService.quizDone();
   }
 
   ngOnInit() {

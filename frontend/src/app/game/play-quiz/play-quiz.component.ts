@@ -16,6 +16,7 @@ export class PlayQuizComponent implements OnInit {
   private quizCalled: Quiz;
   private questions: Question[] = [];
   private answers: boolean[] = [];
+  private save: any;
   current: number;
   correctMode: boolean;
   currentProgress: number;
@@ -27,21 +28,27 @@ export class PlayQuizComponent implements OnInit {
     private quizService: QuizService,
     private elementRef: ElementRef,
     public settingsService: SettingsService) {
-    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
-    console.log(' paramètres ' + this.settings);
+    this.settingsService.settings$.subscribe((settings) => {
+      this.settings = settings;
+    });
+    this.save = this.settingsService.saveQuiz;
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quizCalled = quiz;
       this.questions = quiz.questions;
     });
-    this.current = 0;
-    this.correctMode = false;
+    if (this.save != null) {
+      this.backupProgress();
+    } else {
+      this.current = 0;
+      this.correctMode = false;
+    }
   }
 
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
-
+    console.log('init');
   }
 
 
@@ -52,6 +59,7 @@ export class PlayQuizComponent implements OnInit {
       this.current++;
       this.currentProgressUpdate();
     }
+    this.saveProgress();
   }
 
   seeAnswers(answer: boolean) {
@@ -59,6 +67,7 @@ export class PlayQuizComponent implements OnInit {
       this.current = 0;
       this.correctMode = true;
       this.currentProgressUpdate();
+      this.saveProgress();
     }
   }
 
@@ -67,6 +76,7 @@ export class PlayQuizComponent implements OnInit {
       this.current = 0;
       this.correctMode = false;
       this.currentProgressUpdate();
+      this.quizDone();
     }
   }
 
@@ -86,10 +96,26 @@ export class PlayQuizComponent implements OnInit {
     this.currentProgressUpdate();
     this.correctMode = false;
     this.answers = [];
+    this.quizDone();
   }
 
   changeauto() {
     this.automatique = !(this.automatique) ;
-    console.log('know ' + this.automatique) ;
+  }
+
+  saveProgress() {
+    this.save = { answers : this.answers, correctMode : this.correctMode, current : this.current , currentProgress : this.currentProgress };
+    this.settingsService.saveQuizProgress(this.save);
+  }
+
+  quizDone() {
+    this.settingsService.quizDone();
+  }
+
+  backupProgress() {
+    this.answers = this.save.answers;
+    this.correctMode = this.save.correctMode;
+    this.current = this.save.current;
+    this.currentProgress = this.save.currentProgress;
   }
 }

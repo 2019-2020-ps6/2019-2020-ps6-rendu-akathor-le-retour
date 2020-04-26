@@ -21,12 +21,13 @@ export class SettingsService {
    */
 
   settings: any;
+  saveQuiz: any;
   settings$: BehaviorSubject<any> = new BehaviorSubject(this.settings);
 
 
   constructor() {
-    this.settings$.next(this.settings);
     this.initLastSettings();
+    this.initLastQuiz();
   }
 
 
@@ -55,4 +56,17 @@ export class SettingsService {
    this.settings$.next(this.settings);
  }
 
+  saveQuizProgress(save: any) {
+    this.saveQuiz = save;
+    localStorage.setItem('inProgress', JSON.stringify(this.saveQuiz));
+  }
+
+  quizDone() {
+    this.saveQuiz = null;
+    localStorage.removeItem('inProgress');
+  }
+
+  private initLastQuiz() {
+    this.saveQuiz = JSON.parse(localStorage.getItem('inProgress'));
+  }
 }
