@@ -6,32 +6,29 @@ import {Quiz} from '../models/quiz.model';
   providedIn: 'root'
 })
 export class SettingsService {
-  textColor: string;
-  backgroundColor: string;
-  textSize: string;
-  borderColor: string;
-  styleSmall: string;
-  styleMedium: string;
-  styleBig: string;
+  /**
+   * DEFAULT VALUES
+   */
+  textColor = 'black';
+  backgroundColor = 'white';
+  borderColor = 'white';
+  styleSmall = '25px';
+  styleMedium = '30px';
+  styleBig = '35px';
+
+  /**
+   * GUI PARAMS
+   */
+
   settings: any;
   settings$: BehaviorSubject<any> = new BehaviorSubject(this.settings);
 
 
   constructor() {
-    this.textColor = 'black'; // par défaut
-    this.backgroundColor = 'white'; // par défaut
-    this.borderColor = 'white';
-    this.styleSmall = '25px';
-    this.styleMedium = '30px';
-    this.styleBig = '35px';
-    this.textSize = this.styleMedium; // par défaut
-
-    this.settings = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
-      'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
     this.settings$.next(this.settings);
-
-
+    this.initLastSettings();
   }
+
 
   changeColor(val1: any, val2: any) {
     this.settings.color = val1;
@@ -49,4 +46,13 @@ export class SettingsService {
     this.settings$.next(this.settings);
 
   }
+
+ initLastSettings() {
+   this.settings = {color  : localStorage.getItem('textColor') != null ? localStorage.getItem('textColor') : this.textColor,
+     'background-color' : localStorage.getItem('backgroundColor') != null ? localStorage.getItem('backgroundColor') : this.backgroundColor,
+     'font-size' : localStorage.getItem('textSize') != null ? localStorage.getItem('textSize') : this.styleBig,
+     'border-color': localStorage.getItem('borderColor') != null ? localStorage.getItem('borderColor') : this.borderColor};
+   this.settings$.next(this.settings);
+ }
+
 }
