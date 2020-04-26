@@ -61,13 +61,13 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
+            <button class="smallButton" [ngStyle]="{'font-size':settingsService.styleSmall}" (click)="changeSize(settingsService.styleSmall)">Petit</button>
           </div>
           <div class="col-lg-4">
-            <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
+            <button class="smallButton" [ngStyle]="{'font-size':settingsService.styleMedium}" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
           </div>
           <div class="col-lg-4">
-            <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
+            <button class="smallButton" [ngStyle]="{'font-size':settingsService.styleBig}" (click)="changeSize(settingsService.styleBig)">Grand</button>
           </div>
         </div>
       </div>
