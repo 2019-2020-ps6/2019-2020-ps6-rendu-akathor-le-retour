@@ -5,6 +5,7 @@ import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Question} from '../models/question.model';
+import {Themes} from '../models/themeComponent';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,23 @@ export class QuizService {
   const val: number =  Math.floor(Math.random() * (max - min)) + min;
 
   return  this.quizzes[val].id ;
+  }
+  getQuizzesByTheme(theme: Themes) {
+    const quizzesByTheme: Quiz[] = [];
+    this.quizzes.forEach((quiz) => {
+      if ( quiz.theme === theme) {
+       quizzesByTheme.push(quiz); }
+    });
+    return quizzesByTheme ;
+  }
+  getRandomQuizTheme(theme: Themes) {
+    const min = Math.ceil(0);
+    const quizzesByTheme: Quiz[] = this.getQuizzesByTheme(theme);
+    const i: number = quizzesByTheme.length;
+    const max = Math.floor(i);
+    const val: number =  Math.floor(Math.random() * (max - min)) + min;
+
+    return  quizzesByTheme[val].id ;
   }
 
 

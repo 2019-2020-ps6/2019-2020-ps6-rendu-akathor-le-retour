@@ -3,6 +3,7 @@ import { QuizService } from 'src/services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import {SettingsService} from '../../../services/settings.service';
+import {Themes} from '../../../models/themeComponent';
 
 @Component({
   selector: 'app-select-theme',
@@ -13,7 +14,7 @@ import {SettingsService} from '../../../services/settings.service';
 export class SelectThemeComponent implements OnInit {
 
   public quizList: Quiz[] = [];
-
+  public themeList: Themes[] = [];
   settings: any;
 
   constructor(private quizService: QuizService, public router: Router, public settingsService: SettingsService) {
@@ -36,13 +37,18 @@ export class SelectThemeComponent implements OnInit {
 
   getQuizbyDif(dif: string) {
     this.quizList = [];
+    this.themeList = [];
     this.quizService.quizzes$.subscribe((quiz) => {
        let i = 0 ;
        for ( i ; i < quiz.length; i++) {
         if (quiz[i].difficulte === dif) {
           this.quizList.push(quiz[i]);
+          if ( !this.themeList.includes(quiz[i].theme)) {
+            this.themeList.push(quiz[i].theme);
+          }
         }
       }
+       console.log(this.themeList);
     });
 
 
@@ -58,4 +64,9 @@ export class SelectThemeComponent implements OnInit {
 
   }
 
+
+  getQuizByTheme(theme: Themes) {
+    const i: string = this.quizService.getRandomQuizTheme(theme);
+    this.router.navigate(['/play-quiz/' + i]);
+  }
 }
