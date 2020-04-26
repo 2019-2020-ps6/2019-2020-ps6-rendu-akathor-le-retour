@@ -1,7 +1,9 @@
 <div class="container-fluid">
 <mat-dialog-content [ngStyle]=settings>
 
-<h2 mat-dialog-title>Question: {{data.name}}</h2>
+<h2 *ngIf="data.quest" mat-dialog-title>Question: {{data.name}}</h2>
+  <h2 *ngIf="!data.quest" mat-dialog-title> {{data.name}}</h2>
+
 </mat-dialog-content>
 
 <mat-dialog-actions  [ngStyle]=settings>
