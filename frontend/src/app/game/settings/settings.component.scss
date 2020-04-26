@@ -4,13 +4,10 @@
 h1{
     text-align : center;
     font-size: inherit;
+    margin-bottom: 1em;
 }
 
 .container-fluid{
   transform: scale(0.8) !important;
   transform-origin: top!important;
-}
-
-.row{
-  display: block;
 }

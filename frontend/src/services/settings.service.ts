@@ -15,6 +15,7 @@ export class SettingsService {
   styleSmall = '25px';
   styleMedium = '30px';
   styleBig = '35px';
+  soundAuto = true;
 
   /**
    * GUI PARAMS
@@ -45,14 +46,19 @@ export class SettingsService {
     this.settings['font-size'] = textSize;
     localStorage.setItem('textSize', textSize);
     this.settings$.next(this.settings);
+  }
 
+  swipeSoundAuto() {
+    this.settings.soundAuto = !this.settings.soundAuto;
+    this.settings$.next(this.settings);
   }
 
  initLastSettings() {
    this.settings = {color  : localStorage.getItem('textColor') != null ? localStorage.getItem('textColor') : this.textColor,
      'background-color' : localStorage.getItem('backgroundColor') != null ? localStorage.getItem('backgroundColor') : this.backgroundColor,
      'font-size' : localStorage.getItem('textSize') != null ? localStorage.getItem('textSize') : this.styleBig,
-     'border-color': localStorage.getItem('borderColor') != null ? localStorage.getItem('borderColor') : this.borderColor};
+     'border-color': localStorage.getItem('borderColor') != null ? localStorage.getItem('borderColor') : this.borderColor,
+      soundAuto : localStorage.getItem('soundAuto') != null ? localStorage.getItem('soundAuto') : this.soundAuto };
    this.settings$.next(this.settings);
  }
 

@@ -23,4 +23,8 @@ import {SettingsService} from '../../../services/settings.service';
   changeSize(textSize: string) {
     this.settingsService.changeSize(textSize);
   }
+
+  swipeSound() {
+    this.settingsService.swipeSoundAuto();
+  }
 }

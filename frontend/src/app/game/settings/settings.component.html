@@ -1,40 +1,92 @@
 <div class="container-fluid">
 <div class="row">
 <div class="card col-lg-12"  [ngStyle]="settings">
-  <h1>Réglages</h1>
-  <span>
-    Taille
-  </span>
-  <br> <br>
-  <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
-  <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
-  <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
-  <br> <br>
-  <span>
-    Couleur
-  </span>
-  <br> <br>
-  <button class="smallButton" style="background-color: #000000!important; color:#ffffff!important;" (click)="change('#ffffff', '#000000')">
-    A
-  </button>
+  <div class="row text-center">
+    <div class="col-lg-12">
+  <h1>Apparence des quiz</h1>
+    </div>
+  </div>
+  <br>
+    <div class="row">
+      <div class="col-lg-12">
+      <h1>Taille du texte</h1>
+    </div>
+    </div>
+  <div class="row">
+    <div class="col-lg-12 card no-side-margin text-center">
 
-  <button class="smallButton" style="background-color: #ffff00!important; color:#000000" (click)="change('#000000', '#ffff00')">A</button>
-  <button class="smallButton" style="background-color: #ff0000!important; color:#ffffff!important;" (click)="change('#ffffff', '#ff0000')">
-    A
-  </button>
-  <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
-    A
-  </button>
-  <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
-  <br> <br>
-  Lecture automatique :
+      <div class="row">
+        <div class="col-lg-4">
+        <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
+        </div>
+        <div class="col-lg-4">
+        <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
+        </div>
+        <div class="col-lg-4">
+        <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
+        </div>
+      </div>
+  </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+  <div class="col-lg-12">
+    <h1>Couleur</h1></div>
+</div>
+  <div class="row">
+    <div class="col-lg-12 card no-side-margin text-center">
 
-  <h1>
+      <div class="row">
+      <div class="col-lg-4"> <button class="smallButton" style="background-color: #000000!important; color:#ffffff!important;" (click)="change('#ffffff', '#000000')">
+        A
+      </button></div>
+      <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #ffff00!important; color:#000000" (click)="change('#000000', '#ffff00')">A</button>
+      </div>
+      <div class="col-lg-4">
+
+        <button class="smallButton" style="background-color: #ff0000!important; color:#ffffff!important;" (click)="change('#ffffff', '#ff0000')">
+          A
+        </button>
+      </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
+          A
+        </button>
+      </div>
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
+      </div>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Lecture automatique du texte</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+      <div class="col-lg-12">
+        <button (click)="swipeSound()" class="button-card">{{settings.soundAuto ? 'Activer' : 'Désactiver'}}</button>
+      </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-lg-12">
     <a href="/select-theme">
-      <button class="button-card">Confirmer
+      <button class="button-card"> Prêt pour un quiz !
       </button>
     </a>
-  </h1>
+    </div>
+  </div>
 </div>
   </div>
 <!--
