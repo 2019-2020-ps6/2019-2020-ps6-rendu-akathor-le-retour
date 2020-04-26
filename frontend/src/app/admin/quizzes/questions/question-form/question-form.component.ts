@@ -15,6 +15,12 @@ export class QuestionFormComponent  {
   quiz: Quiz;
   private questionForm: FormGroup;
 
+  private valide = false ;
+  private videAnsewer = false ;
+  private videIndex = 0 ;
+  private labelVide = false;
+  private  OneCorrect = false ;
+
 
   constructor(public formBuilder: FormBuilder, private quizEdit: QuizEditComponent) {
   this.initializeQuestionForm();
@@ -26,6 +32,7 @@ export class QuestionFormComponent  {
     label: [''],
     answers: this.formBuilder.array([])
   });
+  this.initializeCheck() ;
   }
 
 
@@ -42,12 +49,45 @@ export class QuestionFormComponent  {
 
   addAnswer() {
        this.answers.push(this.createAnswer());
+       if ( this.answers.length >= 4) {
+         this.valide = true ; }
     }
 
   createQuestion() {
     const questionToCreate: Question = this.questionForm.getRawValue() as Question;
-    this.quizEdit.addQuestion(questionToCreate);
-    this.initializeQuestionForm();
+    let count = 0 ;
+    this.initializeCheck() ;
+    this.labelVide = questionToCreate.label === '' ;
+    questionToCreate.answers.forEach((value, index) => {
+        if (value.value === '') {
+          this.videAnsewer = true ;
+          this.videIndex = index ;
+        }
+        if (value.isCorrect) {
+          count++; }}) ;
+    if ( count !== 1) {
+      this.OneCorrect = true ;
+    }
+    if (count === 1 && !this.videAnsewer && !this.labelVide) {
+      this.quizEdit.addQuestion(questionToCreate);
+      this.initializeQuestionForm();
+    } else {
+      console.log('nombre de mauvaise réponse ') ; }
     }
 
-}
+
+  initializeCheck() {
+    this.valide = false ;
+    this.videAnsewer = false ;
+    this.videIndex = 0 ;
+    this.labelVide = false;
+    this.OneCorrect = false ;
+  }
+
+  remove(index) {
+    console.log(index);
+    this.answers.removeAt(index);
+  }
+  }
+
+
