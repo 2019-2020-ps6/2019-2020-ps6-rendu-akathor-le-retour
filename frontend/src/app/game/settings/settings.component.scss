@@ -4,6 +4,7 @@
 h1{
     text-align : center;
     font-size: inherit;
+    margin-bottom: 1em;
 }
 
 .container-fluid{
@@ -11,6 +12,6 @@ h1{
   transform-origin: top!important;
 }
 
-.row{
-  display: block;
+.sameHeight{
+  height: 4em;
 }

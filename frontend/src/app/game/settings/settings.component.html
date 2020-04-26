@@ -1,40 +1,121 @@
 <div class="container-fluid">
 <div class="row">
 <div class="card col-lg-12"  [ngStyle]="settings">
-  <h1>Réglages</h1>
-  <span>
-    Taille
-  </span>
-  <br> <br>
-  <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
-  <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
-  <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
-  <br> <br>
-  <span>
-    Couleur
-  </span>
-  <br> <br>
-  <button class="smallButton" style="background-color: #000000!important; color:#ffffff!important;" (click)="change('#ffffff', '#000000')">
-    A
-  </button>
+  <div class="row text-center">
+    <div class="col-lg-12">
+  <h1>Apparence des quiz</h1>
+    </div>
+  </div>
+  <br>
 
-  <button class="smallButton" style="background-color: #ffff00!important; color:#000000" (click)="change('#000000', '#ffff00')">A</button>
-  <button class="smallButton" style="background-color: #ff0000!important; color:#ffffff!important;" (click)="change('#ffffff', '#ff0000')">
-    A
-  </button>
-  <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
-    A
-  </button>
-  <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
-  <br> <br>
-  Lecture automatique :
+  <ng-template [ngIf]="step==1">
+  <div class="row">
+  <div class="col-lg-12">
+    <h1>Choissisez la couleur qui vous convient le mieux</h1></div>
+</div>
+  <div class="row">
+    <div class="col-lg-12 card no-side-margin text-center">
 
-  <h1>
+      <div class="row">
+      <div class="col-lg-4"> <button class="smallButton" style="background-color: #000000!important; color:#ffffff!important;" (click)="change('#ffffff', '#000000')">
+        A
+      </button></div>
+      <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #ffff00!important; color:#000000" (click)="change('#000000', '#ffff00')">A</button>
+      </div>
+      <div class="col-lg-4">
+
+        <button class="smallButton" style="background-color: #ff0000!important; color:#ffffff!important;" (click)="change('#ffffff', '#ff0000')">
+          A
+        </button>
+      </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
+          A
+        </button>
+      </div>
+
+        <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
+      </div>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  </ng-template>
+  <ng-template [ngIf]="step==2">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Quel taille de texte vous convient le mieux ?</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 card no-side-margin text-center">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <button class="smallButton" (click)="changeSize(settingsService.styleSmall)">Petit</button>
+          </div>
+          <div class="col-lg-4">
+            <button class="smallButton" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
+          </div>
+          <div class="col-lg-4">
+            <button class="smallButton" (click)="changeSize(settingsService.styleBig)">Grand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </ng-template>
+  <ng-template [ngIf]="step==3">
+    <div class="row">
+    <div class="col-lg-12">
+      <h1>Souhaitez-vous que les questions et réponses vous soit dictées à l'oral automatiquement</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+      <div class="col-lg-12">
+        <button (click)="swipeSound()" class="button-card">{{settings.soundAuto ? 'Désactiver' : 'Activer'}}</button>
+      </div>
+  </div>
+  </ng-template>
+  <div class="row text-center">
+    <ng-template [ngIf]="step>1">
+      <div class="col-lg-6">
+          <button class="button-card sameHeight" (click)="previousStep()"> Revenir{{step==3 ? ' au choix de la taille' : ' au choix de la couleur'}}
+          </button>
+      </div>
+      <ng-template [ngIf]="step<3">
+        <div class="col-lg-6">
+          <button class="button-card sameHeight" (click)="nextStep()"> Continuer
+          </button>
+        </div>
+      </ng-template>
+    <ng-template [ngIf]="step==3">
+    <div class="col-lg-6">
     <a href="/select-theme">
-      <button class="button-card">Confirmer
+      <button class="button-card sameHeight"> Prêt à jouer !
       </button>
     </a>
-  </h1>
+    </div>
+  </ng-template>
+    </ng-template>
+
+    <ng-template [ngIf]="step==1">
+      <div class="col-lg-12">
+          <button class="button-card" (click)="nextStep()"> Continuer
+          </button>
+      </div>
+    </ng-template>
+  </div>
+
 </div>
   </div>
 <!--

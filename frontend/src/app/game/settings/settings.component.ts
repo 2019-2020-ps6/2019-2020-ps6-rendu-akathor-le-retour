@@ -8,9 +8,11 @@ import {SettingsService} from '../../../services/settings.service';
   })
   export class SettingsComponent implements OnInit {
   settings: any;
+  step: number;
 
   constructor(public settingsService: SettingsService) {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+    this.step = 1;
   }
 
   ngOnInit() {
@@ -22,5 +24,16 @@ import {SettingsService} from '../../../services/settings.service';
 
   changeSize(textSize: string) {
     this.settingsService.changeSize(textSize);
+  }
+
+  swipeSound() {
+    this.settingsService.swipeSoundAuto();
+  }
+
+  nextStep() {
+    this.step++;
+  }
+  previousStep() {
+    this.step--;
   }
 }
