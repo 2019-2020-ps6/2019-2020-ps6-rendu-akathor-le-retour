@@ -11,14 +11,20 @@
 
     <div class="form-row">
       <label>Thème</label>
-      <select formControlName="theme" class="form-control" [ngClass]="{'is-invalid': submitted && f.theme.errors }">
+      <select (change)="addTheme()" formControlName="theme" class="form-control" [ngClass]="{'is-invalid': submitted && f.theme.errors }" [(ngModel)]="currentThemeSelected">
         <option value="">Choisir un thème</option>
         <option *ngFor="let theme of keys(themes)" [ngValue]="themes[theme]">{{theme}}</option>
+        <option formControlName="theme" [ngValue]="'add'">Ajouter un thème</option>
       </select>
-      <div *ngIf="submitted && f.theme.errors" class="invalid-feedback">
-        <div *ngIf="f.theme.errors.required">Veuillez choisir un thème</div>
-      </div>
+</div>
+    <div class="form-group" *ngIf="displayAddTheme">
+      <label for="name">Nouveau thème:</label>
+      <input type="text" class="form-control" formControlName="theme" id="name" ngModel name="theme" required/>
     </div>
+
+    <div *ngIf="submitted && f.theme.errors" class="invalid-feedback">
+        <div *ngIf="f.theme.errors.required">Veuillez choisir un thème</div>
+      </div>  
     <div class="form-row">
       <label>Difficulté</label>
       <select formControlName="difficulte" class="form-control" [ngClass]="{'is-invalid': submitted && f.difficulte.errors }">
