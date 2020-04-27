@@ -19,14 +19,14 @@
           <div class="row">
             <div class="col-lg-2 answerNumber">
               <mat-radio-button [value]="answer" class="curseur"[ngClass]="{'white-progress':settings.color==='#ffffff', 'black-progress':settings.color==='#000000', 'radioCircle':true}">
-                  <h1 >Réponse {{i+1}}</h1>
+                  <h1 class="curseur">Réponse {{i+1}}</h1>
+              </mat-radio-button>
             </div>
             <div class="col-lg-7 no-side-margin text-center bold curseur"><h1> {{answer.value}}</h1></div>
             <div class="col-lg-3 align-self-center" (click)="openAnswer(i)" >
              <h1>Agrandir la réponse</h1>
             </div>
           </div>
-
 
 
         </div>
