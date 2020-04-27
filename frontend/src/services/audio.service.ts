@@ -20,6 +20,8 @@ import {Question, Answer} from '../models/question.model';
         this.speech.init({
              splitSentences: false
      });
+        console.log(this.speech.value('voice'));
+
 
       }
 

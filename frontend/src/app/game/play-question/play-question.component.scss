@@ -32,6 +32,10 @@ div{
   z-index: 10;
 }
 
+.curseur{
+  cursor: url('src/styles/cursor_pointer.cur'), auto!important;
+}
+
 .white-progress .mat-radio-inner-circle {
   background-color: white !important;
 }
@@ -42,4 +46,8 @@ div{
 
 .circleRadio .mat-radio-container{
   transform: scale(1.5)!important;
+}
+.h1{
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+
 }
