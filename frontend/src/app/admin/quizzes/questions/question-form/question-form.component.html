@@ -1,36 +1,49 @@
-
 <div class="card">
-  <h3>Create a new question</h3>
-  <form class="quiz-form" [formGroup]="questionForm">
-    Name of the question: <br>
-    <input class="input-custom" type="text" id="name" [formControlName]="'label'">
-  <br>
+  <h2>Create a new question</h2>
+  <form class="quiz-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <label>Name of the question:</label>
+      <input type="text" [formControlName]="'label'" class="form-control"  [ngClass]="{'is-invalid': submitted && f.label.errors!=null }">
+      <div *ngIf="f.label.value.length >40">
+        <h3>
+          cette question sera modulé
+        </h3>
+      </div>
+      <div *ngIf="submitted && f.label.errors" class="invalid-feedback">
+        <div *ngIf="f.label.errors.required">Veuillez entrer une question </div>
+      </div>
+    </div>
+
+
     <div class="answer" formArrayName="answers">
       <div *ngFor="let answer of answers.controls; let i=index">
         <div class="answer-form" [formGroupName]="i">
-          <label>
-            Answer
-            <input type="text" [formControlName]="'value'">
-            <br>
-            Correct
-            <input type="checkbox" [formControlName]="'isCorrect'">
+          <label> Answer :
+          <input type="text" [formControlName]="'value'" class="form-control"  [ngClass]="{'is-invalid': submitted && !g(i).valid }">
+          <div *ngIf="submitted &&  !g(i).valid" class="invalid-feedback">
+            <div *ngIf="!g(i).valid">Veuillez entrer un titre</div>
+          </div>
+            <input type="checkbox" [formControlName]="'isCorrect'">   Correct
+
           </label>
+          <button class="button-card" type="button" (click)="delete(i)">supprimer</button>
         </div>
-        <button (click)="remove(i)"> Delete </button>
       </div>
     </div>
-    <button class="button-card" [disabled]="valide"(click)="addAnswer()">Add Answer</button>
+    <button class="button-card" type="button"(click)="addAnswer()" >Add Answer</button>
+    <div *ngIf="nombreReponse"  >
+      <h3 >
+        Maximum de réponses atteint
+      </h3>
+    </div>
+
+    <div *ngIf="submitted && checkOneAnswer">
+      <h3>
+        au plus une seul réponse
+      </h3>
+    </div>
     <div *ngIf="answers.length!=0">
-      <button class="button-card" (click)="createQuestion()">Create</button>
-    </div>
-    <div *ngIf="labelVide">
-      <h2> veuillez saisir une question </h2>
-    </div>
-    <div *ngIf="videAnsewer">
-      <h2>une réponse est vide </h2>
-    </div>
-    <div *ngIf="OneCorrect">
-      <h2> au plus une seule réponse doir étre correcte  </h2>
+      <button class="button-card" type="submit">Create</button>
     </div>
   </form>
 </div>
