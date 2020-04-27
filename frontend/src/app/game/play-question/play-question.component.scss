@@ -33,7 +33,7 @@ div{
 }
 
 .curseur{
-  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+  cursor: url('src/styles/cursor_pointer.cur'), auto!important;
 }
 
 .white-progress .mat-radio-inner-circle {
