@@ -24,7 +24,7 @@
 
     <div *ngIf="submitted && f.theme.errors" class="invalid-feedback">
         <div *ngIf="f.theme.errors.required">Veuillez choisir un thème</div>
-      </div>  
+      </div>
     <div class="form-row">
       <label>Difficulté</label>
       <select formControlName="difficulte" class="form-control" [ngClass]="{'is-invalid': submitted && f.difficulte.errors }">

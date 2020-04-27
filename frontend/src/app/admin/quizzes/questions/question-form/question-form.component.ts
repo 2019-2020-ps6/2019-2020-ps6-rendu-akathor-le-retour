@@ -31,6 +31,7 @@ export class QuestionFormComponent  {
       answers: this.formBuilder.array([this.createAnswer()], [Validators.required])
     });
     this.submitted = false ;
+    this.answers.push(this.createAnswer());
   }
 
 
