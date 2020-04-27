@@ -1,15 +1,5 @@
 [
   {
-    "theme": "Cinéma",
-    "name": "Séries",
-    "id": 1583014566035
-  },
-  {
-    "name": "test",
-    "theme": "Sport",
-    "id": 1585594307237
-  },
-  {
     "name": "Culture général",
     "theme": " Culture",
     "difficulte": "difficile",
@@ -20,23 +10,5 @@
     "theme": " Culture",
     "difficulte": "facile",
     "id": 1587454305708
-  },
-  {
-    "name": "test",
-    "theme": "Sport",
-    "difficulte": "moyen",
-    "id": 1587502681509
-  },
-  {
-    "name": "test2",
-    "theme": "Sport",
-    "difficulte": "moyen",
-    "id": 1587526655380
-  },
-  {
-    "name": "ree",
-    "theme": "Sport",
-    "difficulte": "facile",
-    "id": 1587530303346
   }
 ]

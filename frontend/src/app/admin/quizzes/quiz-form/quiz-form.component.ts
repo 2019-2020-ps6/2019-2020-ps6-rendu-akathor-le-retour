@@ -26,6 +26,9 @@ export class QuizFormComponent implements OnInit {
   keys = Object.keys;
   public DIFICULTE: string[] = ['facile', 'moyen', 'difficile'];
   submitted = false;
+  displayAddTheme: boolean;
+  addNewTheme: string;
+  currentThemeSelected: any;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
@@ -40,10 +43,14 @@ export class QuizFormComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.quizForm.invalid) {
       return;
+    }
+    if (!(this.currentThemeSelected  in Themes)) {
+      /**
+       * BACKEND ADD THEME
+       */
     }
     this.addQuiz();
 
@@ -71,5 +78,16 @@ export class QuizFormComponent implements OnInit {
     this.quizService.addQuiz(quizToCreate);
   }
 
+  addTheme() {
+    console.log('theme selected' + this.currentThemeSelected);
+    if (this.currentThemeSelected in this.themes) {
+      console.log('false' + this.currentThemeSelected);
+      this.displayAddTheme = false;
+    }
+    if (this.currentThemeSelected === 'add') {
+      console.log('true' + this.currentThemeSelected);
+      this.displayAddTheme = true;
+    }
+  }
 }
 
