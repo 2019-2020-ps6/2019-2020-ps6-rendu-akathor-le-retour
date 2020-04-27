@@ -13,6 +13,8 @@ import {MatDialog } from '@angular/material';
 import { DisplayComponent } from '../display/display.component';
 import {AudioService} from '../../../services/audio.service';
 import {SettingsService} from '../../../services/settings.service';
+import {MatRadioChange } from '@angular/material';
+
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'app-play-question',
@@ -39,14 +41,17 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   @Output()
   nextAnswer: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  currentAnswer: Answer = null;
+  filter: any;
+  fail = false;
 
   constructor(public dialog: MatDialog, public lecture: AudioService, public settingsService: SettingsService) {
-     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
      console.log(this.question);
 
     }
 
   ngOnInit() {
+    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
     console.log(this.question);
    // this.read();
 
@@ -65,11 +70,20 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     }
   }
 
+  radioChange(event: MatRadioChange) {
+    this.filter.property = event.value;
+    console.log(this.filter);
+  }
 
-
-  answerSomething(answer: Answer) {
-    this.answer.emit(answer);
-
+  answerSomething() {
+    if (this.currentAnswer != null) {
+      console.log('emit ' + this.currentAnswer);
+      this.answer.emit(this.currentAnswer);
+      this.currentAnswer = null;
+      this.fail = false;
+    } else {
+      this.fail = true;
+    }
   }
 
   askNextAnswer() {
@@ -114,7 +128,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         console.log('confirmation');
-        this.answerSomething(this.question.answers[index]);
+       // this.answerSomething(this.question.answers[index]);
       }
     });
 

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './admin/quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './admin/quizzes/quiz/quiz.component';
@@ -30,6 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatAutocompleteModule, MatInputModule} from '@angular/material';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -71,6 +72,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatTooltipModule,
     MatButtonModule,
+    FormsModule,
+    MatRadioModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

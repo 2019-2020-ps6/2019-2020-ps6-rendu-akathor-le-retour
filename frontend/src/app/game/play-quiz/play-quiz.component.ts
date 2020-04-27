@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
@@ -28,9 +28,7 @@ export class PlayQuizComponent implements OnInit {
     private quizService: QuizService,
     private elementRef: ElementRef,
     public settingsService: SettingsService) {
-    this.settingsService.settings$.subscribe((settings) => {
-      this.settings = settings;
-    });
+
     this.save = this.settingsService.saveQuiz;
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quizCalled = quiz;
@@ -49,6 +47,12 @@ export class PlayQuizComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
     console.log('init');
+    this.settingsService.settings$.subscribe((settings) => {
+      this.settings = settings;
+    });
+    document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
+    document.documentElement.style.setProperty('--textColor', this.settings['text-color']);
+
   }
 
 

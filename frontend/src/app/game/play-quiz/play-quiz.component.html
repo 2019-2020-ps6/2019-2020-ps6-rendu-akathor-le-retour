@@ -10,7 +10,7 @@
 
       </div>
         <ng-template [ngIf]="current<questions.length">
-          <mat-progress-bar mode="determinate" value="{{currentProgress}}"></mat-progress-bar>
+          <mat-progress-bar [ngClass]="{'white-progress':settings.color==='#ffffff', 'black-progress':settings.color==='#000000', 'progressCustom':true}" mode="determinate" value="{{currentProgress}}"></mat-progress-bar>
 
           <app-play-question [question]="questions[current]" [mode] ="correctMode" [auto]="automatique"(answer)="answerSomething($event.isCorrect)" (nextAnswer)="nextAnswer()" ></app-play-question>
           </ng-template>

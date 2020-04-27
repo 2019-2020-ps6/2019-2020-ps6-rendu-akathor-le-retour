@@ -31,3 +31,15 @@ div{
   background-color: inherit;
   z-index: 10;
 }
+
+.white-progress .mat-radio-inner-circle {
+  background-color: white !important;
+}
+
+.black-progress .mat-radio-inner-circle {
+  background-color: black !important;
+}
+
+.pgtestt .mat-radio-container{
+  transform: scale(1.5)!important;
+}
