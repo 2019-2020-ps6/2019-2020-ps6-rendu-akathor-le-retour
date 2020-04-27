@@ -12,8 +12,11 @@ h1, h2{
   font-weight: bold;
 }
 
-.tesst{
+.ecartWrap{
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
+}
+.sameHeight{
+  height: 4em;
 }

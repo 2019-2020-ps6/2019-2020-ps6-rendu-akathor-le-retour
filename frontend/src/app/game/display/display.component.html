@@ -1,16 +1,20 @@
 <div class="container-fluid">
 <mat-dialog-content [ngStyle]=settings>
-
-<h2 *ngIf="data.quest" mat-dialog-title>Question: {{data.name}}</h2>
-  <h2 *ngIf="!data.quest" mat-dialog-title> {{data.name}}</h2>
-
+<div class="row">
+  <div class="col-lg-12 text-center zoom">
+    <h2 *ngIf="data.quest" mat-dialog-title>Question: {{data.name}}</h2>
+    <br>
+    <h2 *ngIf="!data.quest" mat-dialog-title>Question: {{data.question}}</h2>
+  <h2 *ngIf="!data.quest" mat-dialog-title>Réponse {{data.id+1}} : {{data.name}}</h2>
+    </div>
+</div>
 </mat-dialog-content>
 
   <div class="col-lg-12 no-side-margin  align-content-center">
     <div class="row text-center">
       <div class="col-lg-6 ">
         <mat-dialog-actions  [ngStyle]=settings>
-          <button  class="button-card mat-button " (click)="close(false)"> Continuer le quiz !</button>
+          <button  class="button-card mat-button " (click)="close(false)"> Voir les autres réponses</button>
         </mat-dialog-actions>
       </div>
 

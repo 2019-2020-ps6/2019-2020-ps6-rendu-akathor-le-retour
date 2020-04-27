@@ -15,12 +15,12 @@
   <code *ngFor="let answer of question.answers; index as i">
     <div class="row">
     <ng-template [ngIf]="!mode">
-        <div class="col-lg-12 no-side-margin button-card text-center answer{{i}}" >
+        <div class="col-lg-12 no-side-margin button-card text-center answer{{i}}" (click)="radioChange(answer)">
           <div class="row">
-            <div class="col-lg-1 answerNumber"><mat-radio-button size="20px" [value]="answer" [ngClass]="{'white-progress':settings.color==='#ffffff', 'black-progress':settings.color==='#000000', 'pgtestt':true}"></mat-radio-button></div>
-             <div class="col-lg-7 no-side-margin text-center bold"> {{answer.value}}</div>
-            <div class="col-lg-2 align-self-center" (click)="openAnswer(i)" >
-              <i class="fas fa-search-plus"></i>
+            <div class="col-lg-2 answerNumber"><mat-radio-button [value]="answer" [ngClass]="{'white-progress':settings.color==='#ffffff', 'black-progress':settings.color==='#000000', 'radioCircle':true}"><h1>Réponse {{i+1}}</h1></mat-radio-button></div>
+            <div class="col-lg-7 no-side-margin text-center bold"><h1> {{answer.value}}</h1></div>
+            <div class="col-lg-3 align-self-center" (click)="openAnswer(i)" >
+             <h1>Agrandir la réponse</h1>
             </div>
           </div>
 
@@ -36,7 +36,7 @@
 
     <ng-template [ngIf]="mode">
       <div class="col-lg-12 no-side-margin button-card align-content-center">
-          <div class="row">
+          <div class="row text-center">
             <div class="col-lg-1 answerNumber">{{i+1}}</div>
           <div class="col-lg-10"> {{answer.value}} </div>
           <div class="col-lg-1">

@@ -70,9 +70,8 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     }
   }
 
-  radioChange(event: MatRadioChange) {
-    this.filter.property = event.value;
-    console.log(this.filter);
+  radioChange(answer: Answer) {
+    this.currentAnswer = answer;
   }
 
   answerSomething() {
@@ -121,14 +120,15 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   openAnswer(index: number) {
     console.log(index);
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
-    const dialogRef = this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '1000px', minWidth: '400px',
-      data: {name: this.question.answers[index].value , quest: false }, backdropClass: 'customDialog', panelClass: 'customContainerDialog',
+    const dialogRef = this.dialog.open(DisplayComponent, {maxWidth: '100%', maxHeight: '1000px', minWidth: '400px',
+      data: {name: this.question.answers[index].value, id: index, question: this.question.label, quest: false },
+      backdropClass: 'customDialog',
+      panelClass: 'customContainerDialog',
       autoFocus: true
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === true) {
-        console.log('confirmation');
-       // this.answerSomething(this.question.answers[index]);
+      if (result === false) {
+        this.currentAnswer = null;
       }
     });
 
