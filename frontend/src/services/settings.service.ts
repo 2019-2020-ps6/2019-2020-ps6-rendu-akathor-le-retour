@@ -14,7 +14,7 @@ export class SettingsService {
   borderColor = 'white';
   styleSmall = '25px';
   styleMedium = '30px';
-  styleBig = '35px';
+  styleBig = '50px';
   soundAuto = false;
 
   /**

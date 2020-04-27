@@ -1,5 +1,5 @@
-  <div class="container-fluid">
-    <div class="row">
+  <div class="container-fluid" [ngStyle]="settings">
+    <div class="row sticky-top fixed">
       <div class="col-lg-12">
       <div mat-raised-button (click)="open()">
       <h1>{{question.label}}</h1>
