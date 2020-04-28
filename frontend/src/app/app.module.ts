@@ -31,6 +31,7 @@ import { MatAutocompleteModule, MatInputModule} from '@angular/material';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
+import { DisplayFailComponent } from './game/display-fail/display-fail.component';
 
 
 @NgModule({
@@ -55,8 +56,9 @@ import {MatRadioModule} from '@angular/material/radio';
     PlayQuestionComponent,
     PlayResultsComponent,
     DisplayComponent,
+    DisplayFailComponent,
   ],
-  entryComponents: [DisplayComponent],
+  entryComponents: [DisplayComponent, DisplayFailComponent],
 
   imports: [
     BrowserModule,

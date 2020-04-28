@@ -5,7 +5,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center" #toRead>
   <div class="col-lg-12">
-  <router-outlet></router-outlet>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
 </div>
 </div>

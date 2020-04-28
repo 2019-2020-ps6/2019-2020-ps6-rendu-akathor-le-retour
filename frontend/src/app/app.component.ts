@@ -23,6 +23,12 @@ export class AppComponent {
     this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
       'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
   }
+
+  onActivate(event) {
+    window.scroll(0, 0);
+
+  }
+
   ngTalk(x: string) {
 
     this.speech.setLanguage('fr-FR');

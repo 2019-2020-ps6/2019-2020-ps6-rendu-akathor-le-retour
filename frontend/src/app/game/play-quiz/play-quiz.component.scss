@@ -48,6 +48,7 @@ div{
 
 .customContainerDialog .mat-dialog-container{
   background-color: var(--backgroundColor);
+  top: 0!important;
   border-style: solid;
 }
 #quizTitle {

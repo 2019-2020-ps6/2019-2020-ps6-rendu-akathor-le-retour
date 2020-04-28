@@ -5,6 +5,8 @@ import {Quiz} from '../../../models/quiz.model';
 import {Answer, Question} from '../../../models/question.model';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {SettingsService} from '../../../services/settings.service';
+import {DisplayFailComponent} from '../display-fail/display-fail.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-play-quiz',
@@ -22,12 +24,13 @@ export class PlayQuizComponent implements OnInit {
   currentProgress: number;
   settings: any;
   private automatique = true ;
-
+  private badAnswerMock: Answer = {value: '', isCorrect: false};
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
     private elementRef: ElementRef,
-    public settingsService: SettingsService) {
+    public settingsService: SettingsService,
+    public dialog: MatDialog) {
 
     this.save = this.settingsService.saveQuiz;
     this.quizService.quizSelected$.subscribe((quiz) => {
@@ -55,15 +58,38 @@ export class PlayQuizComponent implements OnInit {
 
   }
 
+  openFail() {
+    window.scroll(0, 0);
+    document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
+    const dialogRef = this.dialog.open(DisplayFailComponent, {maxWidth: '100%', maxHeight: '1000px', minWidth: '400px',
+      // tslint:disable-next-line:triple-equals
+      data: {quest: 'fail', lastOne: this.quizCalled.questions.length - this.answers.length - 1 == 0},
+      backdropClass: 'customDialog',
+      panelClass: 'customContainerDialog',
+      autoFocus: true
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.answerSomething(this.badAnswerMock);
+      }
+    });
 
-  answerSomething(answer: boolean) {
+    document.documentElement.style.setProperty('--textColor', this.settings.color);
+  }
+
+
+  answerSomething(answer: Answer) {
     console.log('user answer:', answer);
-    this.answers.push(answer);
-    if (this.current < this.questions.length) {
-      this.current++;
-      this.currentProgressUpdate();
+    if (answer != null) {
+      this.answers.push(answer.isCorrect);
+      if (this.current < this.questions.length) {
+        this.current++;
+        this.currentProgressUpdate();
+      }
+      this.saveProgress();
+    } else {
+      this.openFail();
     }
-    this.saveProgress();
   }
 
   seeAnswers(answer: boolean) {

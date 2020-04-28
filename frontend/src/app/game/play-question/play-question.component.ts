@@ -53,14 +53,14 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   ngOnInit() {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
     console.log(this.question);
-   // this.read();
+    this.scrollToAnswer();
+    // this.read();
 
   }
 
   ngOnChanges(simple: SimpleChanges ) {
     console.log('mode ', this.mode);
     if (this.mode === false) {
-      this.stop();
       if (this.auto) {
         console.log(simple);
         this.read();
@@ -75,6 +75,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   }
 
   answerSomething() {
+    this.scrollToAnswer();
     if (this.currentAnswer != null) {
       console.log('emit ' + this.currentAnswer);
       this.answer.emit(this.currentAnswer);
@@ -82,9 +83,18 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
       this.fail = false;
     } else {
       this.fail = true;
+      this.answer.emit(null);
     }
+
   }
 
+  scrollToAnswer() {
+    const element = document.getElementById('question');
+    if (element != null) {
+      element.scrollIntoView({behavior: 'smooth'});
+    } else {
+    }
+  }
   askNextAnswer() {
     this.nextAnswer.emit(true);
   }
@@ -118,6 +128,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   }
 
   openAnswer(index: number) {
+    this.scrollToAnswer();
     console.log(index);
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
     const dialogRef = this.dialog.open(DisplayComponent, {maxWidth: '100%', maxHeight: '1000px', minWidth: '400px',
@@ -129,6 +140,8 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === false) {
         this.currentAnswer = null;
+      } else {
+        this.answerSomething();
       }
     });
 
