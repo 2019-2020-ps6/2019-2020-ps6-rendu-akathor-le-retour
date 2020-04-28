@@ -1,10 +1,10 @@
 import { Question } from './question.model';
-import {Themes} from './themeComponent';
+import { Theme } from './theme.model';
 
 export interface Quiz {
     id: string;
     name: string;
-    theme: Themes;
+    theme: Theme;
     questions: Question[];
     creationDate?: Date;
     difficulte?: string ;
