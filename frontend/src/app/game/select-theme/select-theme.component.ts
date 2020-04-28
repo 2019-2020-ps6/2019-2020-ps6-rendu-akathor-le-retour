@@ -3,7 +3,7 @@ import { QuizService } from 'src/services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import {SettingsService} from '../../../services/settings.service';
-import {Themes} from '../../../models/themeComponent';
+import { Theme } from 'src/models/theme.model';
 
 @Component({
   selector: 'app-select-theme',
@@ -14,7 +14,7 @@ import {Themes} from '../../../models/themeComponent';
 export class SelectThemeComponent implements OnInit {
 
   public quizList: Quiz[] = [];
-  public themeList: Themes[] = [];
+  public themeList: Theme[] = [];
   public currentDifficultie;
   settings: any;
 
@@ -24,6 +24,7 @@ export class SelectThemeComponent implements OnInit {
     this.getQuizbyDif('difficile');
     this.settingsService.quizDone();
     this.currentDifficultie = null;
+    this.quizService.themes$.subscribe((themes) => this.themeList = themes);
   }
 
   ngOnInit() {
@@ -68,7 +69,7 @@ export class SelectThemeComponent implements OnInit {
   }
 
 
-  getQuizByTheme(theme: Themes) {
+  getQuizByTheme(theme: Theme) {
     const i: string = this.quizService.getRandomQuizTheme(theme);
     this.router.navigate(['/play-quiz/' + i]);
   }

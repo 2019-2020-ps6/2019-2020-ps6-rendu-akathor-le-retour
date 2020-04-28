@@ -1,1 +1,10 @@
 @import 'src/styles/card';
+select option[value="add"] {
+  background: black!important;
+  color: white!important;
+}
+
+option {
+  background: transparent;
+  color: inherit;
+}

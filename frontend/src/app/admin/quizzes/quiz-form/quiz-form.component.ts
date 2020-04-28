@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { QuizService } from '../../../../services/quiz.service';
 import { Quiz} from '../../../../models/quiz.model';
-import {Themes} from '../../../../models/themeComponent';
+import {Theme} from '../../../../models/theme.model';
 
 @Component({
   selector: 'app-quiz-form',
@@ -22,13 +22,13 @@ export class QuizFormComponent implements OnInit {
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
-  themes: typeof Themes = Themes;
   keys = Object.keys;
   public DIFICULTE: string[] = ['facile', 'moyen', 'difficile'];
   submitted = false;
   displayAddTheme: boolean;
   addNewTheme: string;
-  currentThemeSelected: any;
+  currentThemeSelected: Theme  ;
+  public themeList: Theme[] = [];
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
@@ -47,10 +47,9 @@ export class QuizFormComponent implements OnInit {
     if (this.quizForm.invalid) {
       return;
     }
-    if (!(this.currentThemeSelected  in Themes)) {
-      /**
-       * BACKEND ADD THEME
-       */
+
+    if (!this.themeList.includes(this.currentThemeSelected)) {
+      this.quizService.addTheme({name: this.quizForm.get('theme').value});
     }
     this.addQuiz();
 
@@ -64,6 +63,8 @@ export class QuizFormComponent implements OnInit {
   get f() { return this.quizForm.controls; }
 
   ngOnInit() {
+    this.quizService.themes$.subscribe((themes) => this.themeList = themes);
+
   }
 
   addQuiz() {
@@ -80,13 +81,10 @@ export class QuizFormComponent implements OnInit {
 
   addTheme() {
     console.log('theme selected' + this.currentThemeSelected);
-    if (this.currentThemeSelected in this.themes) {
-      console.log('false' + this.currentThemeSelected);
-      this.displayAddTheme = false;
-    }
-    if (this.currentThemeSelected === 'add') {
-      console.log('true' + this.currentThemeSelected);
+    if (!this.themeList.includes(this.currentThemeSelected)) {
       this.displayAddTheme = true;
+    } else {
+      this.displayAddTheme = false;
     }
   }
 }

@@ -5,7 +5,8 @@ import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Question} from '../models/question.model';
-import {Themes} from '../models/themeComponent';
+import { Theme} from '../models/theme.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class QuizService {
    * The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = QUIZ_LIST;
+  public  themes: Theme[] = [];
+  public themes$: BehaviorSubject<Theme[]> = new BehaviorSubject(this.themes);
+
+
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
@@ -32,11 +37,26 @@ export class QuizService {
 
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
+  private  themeUrl = serverUrl + '/theme';
 
   private httpOptions = httpOptionsBase;
   constructor(
     private http: HttpClient) {
   this.quizzesFromApi();
+  this.themesFromApi();
+  }
+
+  private themesFromApi() {
+    this.http.get<Theme[]>(this.themeUrl).subscribe((themesList) => {
+    this.themes = themesList;
+    this.themes$.next(this.themes);
+    });
+  }
+
+  addTheme(theme: Theme) {
+    this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => 	this.themesFromApi());
+    console.log('NOUVEAU THEME ' + theme.name);
+    console.log('LISTE : ' + this.themes);
   }
 
   addQuiz(quiz: Quiz) {
@@ -82,7 +102,7 @@ export class QuizService {
 
   return  this.quizzes[val].id ;
   }
-  getQuizzesByTheme(theme: Themes) {
+  getQuizzesByTheme(theme: Theme) {
     const quizzesByTheme: Quiz[] = [];
     this.quizzes.forEach((quiz) => {
       if ( quiz.theme === theme) {
@@ -90,7 +110,7 @@ export class QuizService {
     });
     return quizzesByTheme ;
   }
-  getRandomQuizTheme(theme: Themes) {
+  getRandomQuizTheme(theme: Theme) {
     const min = Math.ceil(0);
     const quizzesByTheme: Quiz[] = this.getQuizzesByTheme(theme);
     const i: number = quizzesByTheme.length;
@@ -99,6 +119,7 @@ export class QuizService {
 
     return  quizzesByTheme[val].id ;
   }
+
 
 
 }
