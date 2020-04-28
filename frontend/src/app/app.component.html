@@ -1,6 +1,7 @@
 <html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
+<ng-template [ngIf]="this.router.url==='/home'||this.router.url==='/quiz-list'||this.router.url==='/administration'|| this.router.url.endsWith('/quiz-edit/',11) ||this.router.url==='/select-theme'">
+<app-header [right]="this.router.url=='/quiz-list' || this.router.url.endsWith('/quiz-edit/',11)"></app-header>
+</ng-template>
 <body>
 <div class="container-fluid">
   <div class="row justify-content-center" #toRead>

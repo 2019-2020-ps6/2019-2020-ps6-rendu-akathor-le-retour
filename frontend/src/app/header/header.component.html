@@ -1,4 +1,16 @@
 <div class="header headerMenu">
-  <a href="/quiz-settings">
-    <button class="button-card">Changer les réglages</button>
-  </a></div>
+  <a href="/home">
+    <button class="button-card" id="accueil">Accueil</button>
+  </a>
+    <ng-template [ngIf]="!right">
+      <a href="/administration">
+      <button class="button-card">Administration (réservé aux encadrants)</button>
+      </a>
+    </ng-template>
+    <ng-template [ngIf]="right">
+
+      <a href="/quiz-list">
+      <button class="button-card">Gestion des quiz</button>
+      </a>
+    </ng-template>
+  </div>

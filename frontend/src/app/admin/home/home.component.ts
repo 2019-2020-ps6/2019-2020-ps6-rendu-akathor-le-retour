@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
     }
 
   ngOnInit() {
+    const element = document.getElementById('title');
+    element.scrollIntoView({behavior: 'smooth'});
+    const accueil = document.getElementById('accueil');
+    accueil.style.display = 'none';
   }
 
   goToAdmin() {
