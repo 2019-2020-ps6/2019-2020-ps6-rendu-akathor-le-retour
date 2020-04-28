@@ -5,6 +5,7 @@ import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import {Question} from '../models/question.model';
+import {Theme} from '../models/theme.model';
 import {Themes} from '../models/themeComponent';
 
 @Injectable({
@@ -21,6 +22,10 @@ export class QuizService {
    * The list is retrieved from the mock.
    */
   private quizzes: Quiz[] = QUIZ_LIST;
+  public  themes: Theme[] = [];
+  public themes$: Subject<Theme[]> = new Subject<Theme[]>();
+
+
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
@@ -32,11 +37,24 @@ export class QuizService {
 
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
+  private  themeUrl = serverUrl + '/theme';
 
   private httpOptions = httpOptionsBase;
   constructor(
     private http: HttpClient) {
   this.quizzesFromApi();
+  this.themesFromApi();
+  }
+
+  private themesFromApi() {
+    this.http.get<Theme[]>(this.themeUrl).subscribe((themeList) => {
+      this.themes = themeList;
+      this.themes$.next(this.themes);
+    });
+  }
+
+  addTheme(theme: Theme) {
+    this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => 	this.themesFromApi());
   }
 
   addQuiz(quiz: Quiz) {
@@ -99,6 +117,7 @@ export class QuizService {
 
     return  quizzesByTheme[val].id ;
   }
+
 
 
 }

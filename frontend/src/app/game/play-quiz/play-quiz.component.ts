@@ -31,7 +31,6 @@ export class PlayQuizComponent implements OnInit {
     private elementRef: ElementRef,
     public settingsService: SettingsService,
     public dialog: MatDialog) {
-
     this.save = this.settingsService.saveQuiz;
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quizCalled = quiz;
