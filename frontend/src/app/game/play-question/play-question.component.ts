@@ -44,6 +44,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   currentAnswer: Answer = null;
   filter: any;
   fail = false;
+  sound = true;
 
   constructor(public dialog: MatDialog, public lecture: AudioService, public settingsService: SettingsService) {
      console.log(this.question);
@@ -113,7 +114,6 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     this.lecture.lectureQuestion(this.question);
     } else {
       this.lecture.lectureReponseCorrecte(this.question);
-
     }
 
   }
@@ -148,4 +148,12 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 
+  runSound() {
+      if (this.sound) {
+        this.stop();
+      } else {
+        this.read();
+      }
+      this.sound = !this.sound;
+  }
 }

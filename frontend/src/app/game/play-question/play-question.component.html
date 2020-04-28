@@ -1,13 +1,14 @@
-  <div class="container-fluid" [ngStyle]="settings">
+
+<div class="container-fluid no-side-margin" [ngStyle]="settings">
     <div class="row sticky-top fixed">
-      <div class="col-lg-12">
+      <div class="col-lg-2 no-margin"><button class="button-card" (click)="runSound()" >{{!sound?'Lecture audio' : 'Arrêter la lecture'}} </button>
+      </div>
+      <div class="col-lg-10 text-center">
       <div  mat-raised-button (click)="open()">
-      <h1>{{question.label}}</h1>
+      <h1 class="no-center">{{question.label}}</h1>
     </div>
   </div>
 
-      <button (click)="read()" class="curseur" >Lecture </button>
-      <button class="curseur" (click)="stop()">Stop </button>
 </div>
 
     <mat-radio-group
