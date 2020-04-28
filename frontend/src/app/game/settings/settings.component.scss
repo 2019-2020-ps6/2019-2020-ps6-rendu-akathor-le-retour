@@ -5,6 +5,7 @@ h1{
     text-align : center;
     font-size: inherit;
     margin-bottom: 1em;
+  font-weight: bold;
 }
 
 .container-fluid{
@@ -14,4 +15,8 @@ h1{
 
 .sameHeight{
   height: 4em;
+}
+
+.smallButton{
+  font-weight: bold;
 }

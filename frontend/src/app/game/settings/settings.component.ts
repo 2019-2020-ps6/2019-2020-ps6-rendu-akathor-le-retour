@@ -9,6 +9,7 @@ import {SettingsService} from '../../../services/settings.service';
   export class SettingsComponent implements OnInit {
   settings: any;
   step: number;
+  sound: any;
 
   constructor(public settingsService: SettingsService) {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
@@ -26,7 +27,12 @@ import {SettingsService} from '../../../services/settings.service';
     this.settingsService.changeSize(textSize);
   }
 
-  swipeSound() {
+  swipeSound(value: boolean) {
+    if (value) {
+      this.sound = 1;
+    } else {
+      this.sound = 2;
+    }
     this.settingsService.swipeSoundAuto();
   }
 
