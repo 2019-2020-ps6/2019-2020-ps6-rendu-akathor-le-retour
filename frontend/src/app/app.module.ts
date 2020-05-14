@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './admin/quizzes/quiz-form/quiz-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import {QuizEditComponent} from './admin/quizzes/quiz-edit/quiz-edit.component';
+import {QuestionEditComponent} from './admin/quizzes/questions/question-edit/question-edit.component';
 import {AppRoutingModule} from './app.routing.module';
 import {QuestionFormComponent} from './admin/quizzes/questions/question-form/question-form.component';
 import {QuestionComponent} from './admin/quizzes/questions/question/question.component';
@@ -42,6 +43,7 @@ import { DisplayFailComponent } from './game/display-fail/display-fail.component
     HeaderComponent,
     QuizFormComponent,
     QuizEditComponent,
+    QuestionEditComponent,
     QuestionComponent,
     QuestionFormComponent,
     QuestionListComponent,
