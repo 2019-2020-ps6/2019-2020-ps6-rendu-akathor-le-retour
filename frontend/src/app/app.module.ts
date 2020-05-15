@@ -26,6 +26,7 @@ import {PlayResultsComponent} from './game/play-results/play-results.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule, MatDialogModule} from '@angular/material';
 import { DisplayComponent } from './game/display/display.component';
+import { DisplayConfirmationComponent } from './admin/quizzes/questions/display-confirmation/display-confirmation.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MatAutocompleteModule, MatInputModule} from '@angular/material';
@@ -59,8 +60,9 @@ import { DisplayFailComponent } from './game/display-fail/display-fail.component
     PlayResultsComponent,
     DisplayComponent,
     DisplayFailComponent,
+    DisplayConfirmationComponent,
   ],
-  entryComponents: [DisplayComponent, DisplayFailComponent],
+  entryComponents: [DisplayComponent, DisplayFailComponent, DisplayConfirmationComponent],
 
   imports: [
     BrowserModule,

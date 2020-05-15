@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from '../../../../../models/question.model';
+import {DisplayConfirmationComponent} from '../display-confirmation/display-confirmation.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -17,16 +19,33 @@ export class QuestionComponent implements OnInit {
 
   @Output()
   questionDeleted: EventEmitter<Question> = new EventEmitter<Question>();
+  private suppr: boolean;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit() {
   }
 
 
-  deleteQuiz() {
-    this.questionDeleted.emit(this.question);
+  deleteConfirm() {
+    this.suppr = true;
+    // this.open();
+}
+
+  deleteQuestion(confirm: boolean) {
+      if (confirm) {
+        this.questionDeleted.emit(this.question);
+      } else {
+        this.suppr = !this.suppr;
+      }
   }
 
+  open() {
+    this.dialog.open(DisplayConfirmationComponent, {
+      data: {
+        question: this.questionDeleted,
+      }
+    });
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { QuizService } from '../../../../../services/quiz.service';
 import {Quiz} from '../../../../../models/quiz.model';
-import {Question} from '../../../../../models/question.model';
+import {Answer, Question} from '../../../../../models/question.model';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
@@ -28,13 +28,15 @@ export class QuestionEditComponent implements OnInit {
     this.quizService.setSelectedQuiz(id);
   }
 
-
+/*
   addQuestion(question: Question): void {
     console.log(question);
     this.questions.push(question);
     this.questions$.next(this.questions);
     this.quizService.addQuestion(this.quizCalled, question);
   }
+
+ */
 
 
 }

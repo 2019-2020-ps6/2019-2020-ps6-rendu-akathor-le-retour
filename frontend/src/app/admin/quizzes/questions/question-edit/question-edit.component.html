@@ -1,11 +1,11 @@
 <body>
-<div *ngIf="questionCalled!=null">
-  <h2>    {{questionCalled.name}}</h2>
-  <app-question-form [quiz]="questionCalled"></app-question-form>
-  <app-question-list [quiz]="questionCalled"></app-question-list>
+<div *ngIf="quizCalled!=null">
+  <h2>    test{{quizCalled.name}}</h2>
+  <app-question-form [quiz]="quizCalled"></app-question-form>
+  <app-question-list [quiz]="quizCalled"></app-question-list>
 </div>
 
-<div *ngIf="questionCalled==null">
+<div *ngIf="quizCalled==null">test2
 </div>
 
 </body>
