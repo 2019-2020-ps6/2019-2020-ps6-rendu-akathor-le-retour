@@ -1,44 +1,63 @@
 <div class="container-fluid">
   <div class="row align-content-center">
     <div class="col-lg-12 card">
-    <div class="row ">
-      <div class="col-lg-12">
-        Nom du quiz: {{quiz.name}}
+      <div class="row ">
+        <div class="col-lg-12">
+          Nom du quiz: {{quiz.name}}
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        Theme: {{quiz.theme}}
+      <div class="row">
+        <div class="col-lg-12">
+          Theme: {{quiz.theme}}
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-      Nombre de questions: {{quiz.questions.length}}
+      <div class="row">
+        <div class="col-lg-12">
+          Nombre de questions: {{quiz.questions.length}}
+        </div>
+      </div>
+      <div class="row" *ngIf="quiz.creationDate!=null">
+        <div class="col-lg-12">
+          Date de création: {{quiz.creationDate | date}}
+        </div>
+      </div>
+      <div class="row d-flex">
+        <ng-template [ngIf]="lecture===true">
+          <div class="col-lg-6 ">
+            <nav>
+              <a routerLink="/quiz-edit/{{quiz.id}}">
+                <button class="button-card no-side-margin">Modifier</button>
+              </a>
+            </nav>
+          </div>
+          <router-outlet></router-outlet>
+        </ng-template>
+
+        <ng-template [ngIf]=!suppr>
+          <ng-template [ngIf]="lecture===true">
+            <div class="col-lg-6 buttonRow">
+              <button class="button-card no-side-margin" (click)="deleteConfirm()">Supprimer</button>
+            </div>
+          </ng-template>
+        </ng-template>
+
+        <ng-template [ngIf]=suppr>
+          <ng-template [ngIf]="lecture===true">
+            <div class="col-lg-6 buttonRow">
+              <button class="button-card no-side-margin" (click)="deleteConfirm()">Supprimer</button>
+
+            </div>
+            <br>
+            Voulez-vous vraiment supprimer le quiz ?
+            <button class="button-card" (click)="deleteQuiz(true)">Oui</button>
+            <button class="button-card" (click)="deleteQuiz(false)">Non</button>
+          </ng-template>
+
+        </ng-template>
+
       </div>
     </div>
-    <div class="row" *ngIf="quiz.creationDate!=null">
-      <div class="col-lg-12">
-      Date de création: {{quiz.creationDate | date}}
-      </div>
-      </div>
-  <div class="row d-flex">
-    <ng-template [ngIf]="lecture===true">
-      <div class="col-lg-6 ">
-       <nav>
-        <a routerLink="/quiz-edit/{{quiz.id}}">
-          <button class="button-card no-side-margin" >Modifier</button>
-        </a>
-      </nav>
-      </div>
-      <router-outlet></router-outlet>
-    </ng-template>
-      <ng-template [ngIf]="lecture===true">
-        <div class="col-lg-6 buttonRow">
-        <button class="button-card no-side-margin" (click)="deleteQuiz()">Supprimer</button>
-         </div>
-  </ng-template></div>
-    </div>
-</div>
+  </div>
 </div>

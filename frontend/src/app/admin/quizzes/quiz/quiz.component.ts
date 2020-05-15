@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../../models/quiz.model';
 import { Theme } from '../../../../models/theme.model';
-import {DisplayComponent} from "../../../game/display/display.component";
-import {MatDialog} from "@angular/material/dialog";
-import {DisplayConfirmationComponent} from "../questions/display-confirmation/display-confirmation.component";
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-quiz',
@@ -37,17 +35,15 @@ export class QuizComponent implements OnInit {
     console.log('child ', this.quiz.id);
   }
 
-  deleteQuiz() {
+  deleteConfirm() {
     this.suppr = true;
-    // this.quizDeleted.emit(this.quiz);
-    // this.open();
   }
 
-  open() {
-    this.dialog.open(DisplayConfirmationComponent, {
-      data: {
-        quiz: this.quizDeleted,
-      }});
+  deleteQuiz(confirm: boolean) {
+    if (confirm) {
+      this.quizDeleted.emit(this.quiz);
+    } else {
+      this.suppr = !this.suppr;
+    }
   }
-
 }
