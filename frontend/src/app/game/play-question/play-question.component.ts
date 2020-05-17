@@ -13,7 +13,6 @@ import {MatDialog } from '@angular/material';
 import { DisplayComponent } from '../display/display.component';
 import {AudioService} from '../../../services/audio.service';
 import {SettingsService} from '../../../services/settings.service';
-import {MatRadioChange } from '@angular/material';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -33,7 +32,14 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
 
   @Input() auto: boolean ;
 
+  @Input()
+  answers: boolean[];
 
+  @Input()
+  reponse: Answer[];
+
+  @Input()
+  current: number;
 
   @Output()
   answer: EventEmitter<Answer> = new EventEmitter<Answer>();
@@ -48,7 +54,6 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
 
   constructor(public dialog: MatDialog, public lecture: AudioService, public settingsService: SettingsService) {
      console.log(this.question);
-
     }
 
   ngOnInit() {
@@ -56,7 +61,6 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     console.log(this.question);
     this.scrollToAnswer();
     // this.read();
-
   }
 
   ngOnChanges(simple: SimpleChanges ) {
@@ -98,6 +102,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     }
   }
   askNextAnswer() {
+    this.current++;
     this.nextAnswer.emit(true);
   }
 

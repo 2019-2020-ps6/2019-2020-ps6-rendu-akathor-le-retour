@@ -21,6 +21,9 @@
           <app-play-question [question]="questions[current]"
                              [mode] ="correctMode"
                              [auto]="automatique"
+                             [answers]="answers"
+                             [reponse]="reponse"
+                             [current]="current"
                              (answer)="answerSomething($event)"
                              (nextAnswer)="nextAnswer()" >
           </app-play-question>
