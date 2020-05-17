@@ -33,6 +33,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
 import { DisplayFailComponent } from './game/display-fail/display-fail.component';
+import { HomeAdminComponent } from './admin/homeadmin/home-admin.component';
+import { SettingsEditComponent } from './admin/users/settings-edit/settings-edit.component';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import { DisplayFailComponent } from './game/display-fail/display-fail.component
     PlayResultsComponent,
     DisplayComponent,
     DisplayFailComponent,
+    HomeAdminComponent,
+    SettingsEditComponent,
   ],
   entryComponents: [DisplayComponent, DisplayFailComponent],
 

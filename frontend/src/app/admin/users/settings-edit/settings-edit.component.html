@@ -1,0 +1,87 @@
+<ng-template [ngIf]="!changeSettings">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 card">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+      <h2>Profil de {{userCalled.firstName}} {{userCalled.lastName}} </h2>
+        </div>
+  </div>
+      <div class="row">
+      <div class="col-lg-12">
+        <hr>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <ng-template [ngIf]="!hasSettings">
+            <h1>Pas encore de paramètres</h1>
+            <div class="row">
+              <div class="col-lg-12">
+                <hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <button class="button-card" (click)="displaySettings()">Ajouter des préférences</button>
+              </div>
+            </div>
+
+          </ng-template>
+          <ng-template [ngIf]="hasSettings">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <h1 class="font-weight-bold">Préférences actuelles</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-5 d-flex">
+                <h1 class="settingsTitle">Couleur: </h1>
+              </div>
+              <div class="col-lg-4 button-card text-center settingsButton" [ngStyle]="userCalled.settings">
+               A             </div>
+              <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-5 d-flex">
+                <h1 class="settingsTitle">Taille du texte: </h1>
+              </div>
+              <div class="col-lg-4 button-card text-center settingsButton" [ngStyle]="userCalled.settings">
+                Exemple </div>
+              <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-5 d-flex">
+                <h1 class="settingsTitle">Lecture automatique: </h1>
+              </div>
+              <div class="col-lg-4 button-card text-center settingsButton" [ngStyle]="userCalled.settings">
+                {{userCalled.settings.soundAuto ? 'Activé ' : 'Désactivé'}}            </div>
+              <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <hr>
+              </div>
+            </div>
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                  <button class="button-card" (click)="displaySettings()">Modifier les préférences</button>
+                </div>
+
+              </div>
+          </ng-template>
+
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+</ng-template>
+  <ng-template [ngIf]="changeSettings">
+    <app-settings (updateDone)="settingsDone($event)"></app-settings>
+  </ng-template>
+

@@ -1,0 +1,31 @@
+@import 'src/styles/card';
+h2
+{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:5px;
+
+}
+
+.settingsTitle{
+  margin:auto;
+  font-size: medium;
+  font-weight: bold;
+  box-sizing:border-box ;
+}
+
+.card{
+  height:150%;
+  text-align: justify;
+}
+hr {
+  height: 6px;
+}
+.settingsButton{
+  font-weight: bold;
+  height: 3em;
+  width: 5em;
+  border-style: solid;
+  margin: 0.5em;
+  border-color: inherit;
+}

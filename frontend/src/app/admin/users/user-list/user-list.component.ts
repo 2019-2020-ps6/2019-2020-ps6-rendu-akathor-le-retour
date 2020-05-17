@@ -21,4 +21,8 @@ export class UserListComponent implements OnInit {
   deleteQuiz(user: User) {
     this.userService.deleteUser(user);
   }
+
+  getUser(user: User) {
+    this.userService.getUser(user.id);
+  }
 }

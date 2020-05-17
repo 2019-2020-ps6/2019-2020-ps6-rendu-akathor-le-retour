@@ -1,6 +1,6 @@
 <app-user-form></app-user-form>
 <div class="user-list">
     <div class="user" *ngFor="let user of userList">
-      <app-user [user]="user"  (userDeleted)="deleteQuiz(user)" ></app-user>
+      <app-user [user]="user"  (userDeleted)="deleteQuiz(user)" (userSelected)="getUser($event)" ></app-user>
     </div>
   </div>
