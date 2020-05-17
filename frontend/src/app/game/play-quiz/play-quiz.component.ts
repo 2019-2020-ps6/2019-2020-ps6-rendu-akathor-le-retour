@@ -18,6 +18,7 @@ export class PlayQuizComponent implements OnInit {
   private quizCalled: Quiz;
   private questions: Question[] = [];
   private answers: boolean[] = [];
+  private reponse: Answer[] = [];
   private save: any;
   current: number;
   correctMode: boolean;
@@ -89,6 +90,7 @@ export class PlayQuizComponent implements OnInit {
     console.log('user answer:', answer);
     if (answer != null) {
       this.answers.push(answer.isCorrect);
+      this.reponse.push(answer);
       this.nextAnswer();
       this.saveProgress();
     } else {
@@ -147,7 +149,7 @@ export class PlayQuizComponent implements OnInit {
   }
 
   saveProgress() {
-    this.save = { answers : this.answers, correctMode : this.correctMode, current : this.current , currentProgress : this.currentProgress };
+    this.save = { reponse: this.reponse, answers : this.answers, correctMode : this.correctMode, current : this.current , currentProgress : this.currentProgress };
     this.settingsService.saveQuizProgress(this.save);
   }
 
@@ -157,6 +159,7 @@ export class PlayQuizComponent implements OnInit {
 
   backupProgress() {
     this.answers = this.save.answers;
+    this.reponse = this.save.reponse;
     this.correctMode = this.save.correctMode;
     this.current = this.save.current;
     this.currentProgress = this.save.currentProgress;
