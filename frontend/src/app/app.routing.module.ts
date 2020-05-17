@@ -19,7 +19,10 @@ const routes: Routes = [
   { path: 'quiz-edit/:id/question-edit/:id', component: QuestionEditComponent },
   { path: 'home', component: HomeComponent},
   {path: 'administration', component: AdministrationComponent},
-  {path: 'settings', component: SettingsComponent, data: {animation: 'SettingsPage'} },
+  {path: 'settings', redirectTo: '/settings/color'},
+  {path: 'settings/color', component: SettingsComponent, data: {animation: 'SettingsPage'} },
+  {path: 'settings/textSize', component: SettingsComponent, data: {animation: 'SettingsPage'} },
+  {path: 'settings/tts', component: SettingsComponent, data: {animation: 'SettingsPage'} },
   {path: 'select-theme', component: SelectThemeComponent},
   {path: 'play-quiz/:id', component: PlayQuizComponent}
 
