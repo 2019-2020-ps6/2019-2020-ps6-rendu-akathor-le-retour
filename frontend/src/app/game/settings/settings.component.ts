@@ -68,4 +68,14 @@ import {Router} from '@angular/router';
   navigateToRoute(path: string) {
     this.router.navigate([ path ]);
   }
+
+  getTitle() {
+    if (this.step === 1) {
+      return 'Choix de la couleur';
+    } else if (this.step === 2) {
+      return 'Choix de la taille du texte';
+    } else if (this.step === 3) {
+      return 'Choix de la lecture du texte au format audio';
+    }
+  }
 }

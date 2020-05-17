@@ -64,14 +64,18 @@
   },
   {
     "name": "test saf",
-    "theme": "Culture",
-    "difficulte": "difficile",
+    "theme": {
+      "name": "Culture",
+      "id": 1589675392054
+    },    "difficulte": "Difficile",
     "id": 1588000980404
   },
   {
     "name": "test saf2",
-    "theme": "Culture",
-    "difficulte": "difficile",
+    "theme": {
+      "name": "Culture",
+      "id": 1589675392054
+    },    "difficulte": "Difficile",
     "id": 1588000980405
   }
 ]

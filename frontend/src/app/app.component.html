@@ -6,7 +6,9 @@
 <div class="container-fluid">
   <div class="row justify-content-center" #toRead>
   <div class="col-lg-12">
+    <div [@routeAnimations]="animationState">
     <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
   </div>
 </div>
 </div>
