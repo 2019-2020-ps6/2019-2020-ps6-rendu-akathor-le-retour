@@ -81,14 +81,15 @@
   </div>
   <div class="row text-center">
       <div class="col-lg-6">
-        <button (click)="swipeSound(true)" class="button-card">Oui</button>
+        <button (click)="swipeSound(true)" class="smallButton">Oui</button>
       </div>
     <div class="col-lg-6">
-      <button (click)="swipeSound(false)" class="button-card">Non</button>
+      <button (click)="swipeSound(false)" class="smallButton">Non</button>
     </div>
   </div>
   </ng-template>
   <ng-template [ngIf]="sound>0">
+    <br>
     <div class="row">
       <div class="col-lg-12">
         <h1>La lecture automatique du texte est{{sound==1?' activée ' : ' désactivée'}}.</h1>

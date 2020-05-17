@@ -27,16 +27,14 @@ export class QuizFormComponent implements OnInit {
   submitted = false;
   displayAddTheme: boolean;
   addNewTheme: string;
-  currentThemeSelected: Theme  ;
+  currentThemeSelected: string  ;
   public themeList: Theme[] = [];
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
     this.quizForm = this.formBuilder.group({
       name: ['', Validators.required],
-      theme: this.formBuilder.group({ // make a nested group
-      name: ['', [Validators.required]],
-    }),
+      theme: [''],
       difficulte: ['', Validators.required],
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
@@ -49,9 +47,14 @@ export class QuizFormComponent implements OnInit {
     if (this.quizForm.invalid) {
       return;
     }
-
-    if (!this.themeList.includes(this.currentThemeSelected)) {
-      this.quizService.addTheme(this.quizForm.get('theme').value);
+    let addTheme = true;
+    for (const t of this.themeList) {
+      if (t.name === this.currentThemeSelected) {
+        addTheme = false;
+      }
+    }
+    if (addTheme) {
+      this.quizService.addTheme({name: this.quizForm.get('theme').value});
     }
     this.addQuiz();
 
@@ -72,6 +75,8 @@ export class QuizFormComponent implements OnInit {
   addQuiz() {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+    const theme: Theme = {name: quizToCreate.theme} as unknown as Theme;
+    quizToCreate.theme = theme;
     // Do you need to log your object here in your class? Uncomment the code below
     // and open your console in your browser by pressing F12 and choose the tab "Console".
     // You will see your quiz object when you click on the create button.
@@ -79,14 +84,24 @@ export class QuizFormComponent implements OnInit {
 
     // Now, add your quiz in the list!
     this.quizService.addQuiz(quizToCreate);
+    this.initializeQuizForm();
+  }
+
+  private initializeQuizForm() {
+    this.quizForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      theme: [''],
+      difficulte: ['', Validators.required],
+    });
+    this.submitted = false ;
   }
 
   addTheme() {
-    console.log('theme selected' + this.currentThemeSelected);
-    if (!this.themeList.includes(this.currentThemeSelected)) {
-      this.displayAddTheme = true;
-    } else {
-      this.displayAddTheme = false;
+    this.displayAddTheme = true;
+    for (const t of this.themeList) {
+      if (t.name === this.currentThemeSelected) {
+        this.displayAddTheme = false;
+      }
     }
   }
 }
