@@ -144,7 +144,6 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
         this.answerSomething();
       }
     });
-
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 

@@ -55,8 +55,6 @@ export class QuizService {
 
   addTheme(theme: Theme) {
     this.http.post<Theme>(this.themeUrl, theme, this.httpOptions).subscribe(() => 	this.themesFromApi());
-    console.log('NOUVEAU THEME ' + theme.name);
-    console.log('LISTE : ' + this.themes);
   }
 
   addQuiz(quiz: Quiz) {

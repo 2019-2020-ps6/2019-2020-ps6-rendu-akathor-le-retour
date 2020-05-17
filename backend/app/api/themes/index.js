@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 
 router.get('/:themeId', (req, res) => {
   try {
-    res.status(200).json(Theme.getById(req.params.themeId));
+    res.status(200).json(Theme.getById(req.params.themeId))
   } catch (err) {
     res.status(500).json(err)
   }
@@ -46,10 +46,9 @@ router.put('/:themeId', (req, res) => {
   try {
     res.status(200).json(Theme.update(req.params.themeId, req.body))
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err)
   }
 })
-
 
 
 module.exports = router

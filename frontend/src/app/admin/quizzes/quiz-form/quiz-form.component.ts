@@ -23,7 +23,7 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
   keys = Object.keys;
-  public DIFICULTE: string[] = ['facile', 'moyen', 'difficile'];
+  public difficulties: string[] = ['Facile', 'Moyen', 'Difficile'];
   submitted = false;
   displayAddTheme: boolean;
   addNewTheme: string;
@@ -34,8 +34,10 @@ export class QuizFormComponent implements OnInit {
     // Form creation
     this.quizForm = this.formBuilder.group({
       name: ['', Validators.required],
-      theme: ['', Validators.required],
-      difficulte: ['', Validators.required]
+      theme: this.formBuilder.group({ // make a nested group
+      name: ['', [Validators.required]],
+    }),
+      difficulte: ['', Validators.required],
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
     // More information: https://angular.io/guide/reactive-forms#simple-form-validation
@@ -49,7 +51,7 @@ export class QuizFormComponent implements OnInit {
     }
 
     if (!this.themeList.includes(this.currentThemeSelected)) {
-      this.quizService.addTheme({name: this.quizForm.get('theme').value});
+      this.quizService.addTheme(this.quizForm.get('theme').value);
     }
     this.addQuiz();
 

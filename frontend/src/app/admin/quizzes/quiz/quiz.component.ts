@@ -34,7 +34,9 @@ export class QuizComponent implements OnInit {
   }
 
   deleteQuiz() {
-    this.quizDeleted.emit(this.quiz);
+    if (confirm('Etes vous sûr de vouloir supprimer ce quiz ?')) {
+      this.quizDeleted.emit(this.quiz);
+    }
   }
 
 }
