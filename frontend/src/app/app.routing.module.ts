@@ -19,9 +19,17 @@ const routes: Routes = [
   { path: 'quiz-edit/:id/question-edit/:id', component: QuestionEditComponent },
   { path: 'home', component: HomeComponent},
   {path: 'administration', component: AdministrationComponent},
-  {path: 'settings', component: SettingsComponent, data: {animation: 'SettingsPage'} },
-  {path: 'select-theme', component: SelectThemeComponent},
-  {path: 'play-quiz/:id', component: PlayQuizComponent}
+  {path: 'settings', redirectTo: '/settings/color', pathMatch: 'full'},
+  {path: 'settings/color', component: SettingsComponent, data: {routeIdx: 0} },
+  {path: 'settings/textSize', component: SettingsComponent, data: {routeIdx: 1} },
+  {path: 'settings/tts', component: SettingsComponent, data: {routeIdx: 2} },
+  {path: 'select-theme', redirectTo: '/select-theme/difficulties', pathMatch: 'full'},
+  {path: 'select-theme/difficulties', component: SelectThemeComponent, data: {routeIdx: 3} },
+  {path: 'select-theme/easy', component: SelectThemeComponent, data: {routeIdx: 4} },
+  {path: 'select-theme/intermediate', component: SelectThemeComponent, data: {routeIdx: 4} },
+  {path: 'select-theme/hard', component: SelectThemeComponent, data: {routeIdx: 4} },
+  {path: 'play-quiz/:id', redirectTo: '/play-quiz/:id/1', pathMatch: 'full'},
+  {path: 'play-quiz/:id/:q', component: PlayQuizComponent, data: {routeIdx: -1} },
 
 ];
 

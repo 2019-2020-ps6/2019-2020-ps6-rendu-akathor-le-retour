@@ -155,4 +155,6 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
       }
       this.sound = !this.sound;
   }
+
+
 }

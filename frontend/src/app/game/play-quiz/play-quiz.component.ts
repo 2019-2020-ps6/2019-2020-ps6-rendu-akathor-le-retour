@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {Answer, Question} from '../../../models/question.model';
@@ -28,6 +28,7 @@ export class PlayQuizComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
+    private router: Router,
     private elementRef: ElementRef,
     public settingsService: SettingsService,
     public dialog: MatDialog) {
@@ -35,6 +36,13 @@ export class PlayQuizComponent implements OnInit {
     this.quizService.quizSelected$.subscribe((quiz) => {
       this.quizCalled = quiz;
       this.questions = quiz.questions;
+      if (this.route.snapshot.paramMap.get('q') !== 'result') {
+      this.current = parseInt(this.route.snapshot.paramMap.get('q'), 10) - 1;
+      } else {
+        this.current = quiz.questions.length;
+      }
+      this.currentProgressUpdate(this.current);
+
     });
     if (this.save != null) {
       this.backupProgress();
@@ -52,6 +60,7 @@ export class PlayQuizComponent implements OnInit {
     this.settingsService.settings$.subscribe((settings) => {
       this.settings = settings;
     });
+    console.log(this.current);
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
     document.documentElement.style.setProperty('--textColor', this.settings['text-color']);
 
@@ -61,8 +70,7 @@ export class PlayQuizComponent implements OnInit {
     window.scroll(0, 0);
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
     const dialogRef = this.dialog.open(DisplayFailComponent, {maxWidth: '100%', maxHeight: '1000px', minWidth: '400px',
-      // tslint:disable-next-line:triple-equals
-      data: {quest: 'fail', lastOne: this.quizCalled.questions.length - this.answers.length - 1 == 0},
+      data: {quest: 'fail', lastOne: this.quizCalled.questions.length - this.answers.length - 1 === 0},
       backdropClass: 'customDialog',
       panelClass: 'customContainerDialog',
       autoFocus: true
@@ -81,10 +89,7 @@ export class PlayQuizComponent implements OnInit {
     console.log('user answer:', answer);
     if (answer != null) {
       this.answers.push(answer.isCorrect);
-      if (this.current < this.questions.length) {
-        this.current++;
-        this.currentProgressUpdate();
-      }
+      this.nextAnswer();
       this.saveProgress();
     } else {
       this.openFail();
@@ -95,8 +100,9 @@ export class PlayQuizComponent implements OnInit {
     if (answer) {
       this.current = 0;
       this.correctMode = true;
-      this.currentProgressUpdate();
+      this.currentProgressUpdate(this.current);
       this.saveProgress();
+      this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/' + (this.current + 1));
     }
   }
 
@@ -104,28 +110,36 @@ export class PlayQuizComponent implements OnInit {
     if (answer) {
       this.current = 0;
       this.correctMode = false;
-      this.currentProgressUpdate();
+      this.currentProgressUpdate(this.current);
       this.quizDone();
     }
   }
 
   nextAnswer() {
     if (this.current < this.quizCalled.questions.length) {
-      this.current++;
-      this.currentProgressUpdate();
+      this.current ++;
+      this.currentProgressUpdate(this.current);
+      this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/' + (this.current + 1));
+    } else {
+      this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/result');
     }
   }
 
-  currentProgressUpdate() {
-    this.currentProgress = this.current * 100 / this.questions.length;
+  currentProgressUpdate(cur: number) {
+    if (!isNaN(this.questions.length) && this.questions.length > 0) {
+      this.currentProgress = cur * 100 / this.questions.length;
+    } else {
+      this.currentProgress = 0;
+    }
   }
 
   redoQuiz() {
     this.current = 0;
-    this.currentProgressUpdate();
+    this.currentProgressUpdate(this.current);
     this.correctMode = false;
     this.answers = [];
     this.quizDone();
+    this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/' + (this.current + 1));
   }
 
   changeauto() {
@@ -137,7 +151,7 @@ export class PlayQuizComponent implements OnInit {
     this.settingsService.saveQuizProgress(this.save);
   }
 
-  quizDone() {
+    quizDone() {
     this.settingsService.quizDone();
   }
 
@@ -146,5 +160,10 @@ export class PlayQuizComponent implements OnInit {
     this.correctMode = this.save.correctMode;
     this.current = this.save.current;
     this.currentProgress = this.save.currentProgress;
+  }
+
+  navigateToRoute(path: string) {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate([path]));
   }
 }

@@ -3,7 +3,7 @@
                     <div class="col-lg-12 card no-side-margin" [ngStyle]="settings">
                       <div class="row text-center">
                         <div class="col-lg-12">
-                       <h1>Jouer à un quiz !</h1>
+                       <h1>{{getTitle()}}</h1>
                       </div>
                       </div>
                       <div class="row">
@@ -11,20 +11,20 @@
                       <div class="card col-lg-12 no-side-margin">
                         <div class="row">
                           <div class="col-lg-12 text-center">
-                            <h1> A quel niveau de difficulté souhaitez-vous jouer ?</h1>
+                            <h1> Cliquez sur la difficulté que vous souhaitez</h1>
                           </div>
                         </div>
                       <div class="row text-center">
                       <div class="col-lg-4">
-                            <button class="button-card"(click)="getQuizbyDif('facile')">Facile</button>
+                            <button class="button-card"(click)="getQuizbyDif('Facile')">Facile</button>
                           </div>
 
                           <div class="col-lg-4">
-                          <button class="button-card"(click)="getQuizbyDif('moyen')">Moyen</button>
+                          <button class="button-card"(click)="getQuizbyDif('Intermediaire')">Intermediaire</button>
                           </div>
 
                           <div class="col-lg-4">
-                          <button class="button-card"(click)="getQuizbyDif('difficile')">Difficile</button>
+                          <button class="button-card"(click)="getQuizbyDif('Difficile')">Difficile</button>
                           </div>
                       </div>
                       </div>
@@ -34,7 +34,13 @@
                         <br>
                         <div class="row text-center">
                           <div class="col-lg-12">
-                          <h1> Thèmes disponibles pour des quiz {{currentDifficultie}}</h1>
+                            <ng-template [ngIf]="themeList.length>0">
+                              <h1> Choissisez un thème - Niveau {{currentDifficultie}}</h1>
+                            </ng-template>
+                            <ng-template [ngIf]="themeList.length==0">
+                              <h1> Aucun thèmes disponibles pour le Niveau {{currentDifficultie}}</h1>
+                              <h1> Contactez votre encadrant</h1>
+                            </ng-template>
                           </div>
                         </div>
                       <div class="row d-flex flex-row justify-content-between align-items-center">
@@ -46,8 +52,8 @@
                           <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
                         </div>
                           -->
-                        <div *ngFor="let theme of themeList">
-                            <button class="button-card" (click)="getQuizByTheme(theme)">{{theme}}</button>
+                        <div *ngFor="let theme of asyncThemes | async">
+                            <button class="button-card" (click)="getQuizByTheme(theme)">{{theme.name}}</button>
                             </div>
 
                       </div>
@@ -61,7 +67,7 @@
                         </ng-template>
                         <ng-template [ngIf]="currentDifficultie!=null">
                           <div class="col-lg-6">
-                            <button class="button-card"(click)="currentDifficultie=null">Retour aux choix de difficulté</button>
+                            <button class="button-card"(click)="switchDisplay(null)">Retour aux choix de difficulté</button>
                           </div>
                         </ng-template>
                         <div class="col-lg-6">
