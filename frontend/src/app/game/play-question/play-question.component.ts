@@ -80,6 +80,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
     if (this.currentAnswer != null) {
       console.log('emit ' + this.currentAnswer);
       this.answer.emit(this.currentAnswer);
+      this.stop();
       this.currentAnswer = null;
       this.fail = false;
     } else {
