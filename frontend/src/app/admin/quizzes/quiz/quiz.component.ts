@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../../models/quiz.model';
 import { Theme } from '../../../../models/theme.model';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-quiz',
@@ -20,8 +21,9 @@ export class QuizComponent implements OnInit {
 
   @Output()
   quizDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+  private suppr: boolean;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     console.log(this.lecture);
   }
 
@@ -33,10 +35,15 @@ export class QuizComponent implements OnInit {
     console.log('child ', this.quiz.id);
   }
 
-  deleteQuiz() {
-    if (confirm('Etes vous sûr de vouloir supprimer ce quiz ?')) {
-      this.quizDeleted.emit(this.quiz);
-    }
+  deleteConfirm() {
+    this.suppr = true;
   }
 
+  deleteQuiz(confirm: boolean) {
+    if (confirm) {
+      this.quizDeleted.emit(this.quiz);
+    } else {
+      this.suppr = !this.suppr;
+    }
+  }
 }

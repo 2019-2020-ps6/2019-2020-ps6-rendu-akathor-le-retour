@@ -31,6 +31,7 @@
       <div *ngIf="f.theme.errors.required">Veuillez choisir un thème</div>
     </div>
     </ng-container>
+
     <div class="form-row">
       <label>Difficulté</label>
       <select formControlName="difficulte" class="form-control" [ngClass]="{'is-invalid': submitted && f.difficulte.errors }">
@@ -43,7 +44,7 @@
       </div>
     </div>
 
-    <button type="submit" class="button-card">Créer le quiz</button>
+    <button type="submit" class="button-card" >Créer le quiz</button>
     <br>
   </form></div>
   </div>

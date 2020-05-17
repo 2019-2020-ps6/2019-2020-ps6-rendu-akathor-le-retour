@@ -92,6 +92,15 @@ export class QuizService {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
+
+  editQuestion(quizId: string, question: Question) {
+    const questionUrl = this.quizUrl + '/' + quizId + '/' + this.questionsPath + '/' + question.id;
+    this.http.put<Question>(questionUrl, question, this.httpOptions).subscribe(() => {
+      this.setSelectedQuiz(quizId);
+      this.quizzesFromApi();
+    });
+  }
+
   getRandomId() {
   const min = Math.ceil(0);
   const i: number = this.quizzes.length ;

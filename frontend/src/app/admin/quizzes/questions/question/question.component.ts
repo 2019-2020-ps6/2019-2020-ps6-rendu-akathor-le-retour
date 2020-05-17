@@ -17,6 +17,7 @@ export class QuestionComponent implements OnInit {
 
   @Output()
   questionDeleted: EventEmitter<Question> = new EventEmitter<Question>();
+  private suppr: boolean;
 
   constructor() {
   }
@@ -25,10 +26,15 @@ export class QuestionComponent implements OnInit {
   }
 
 
-  deleteQuiz() {
-    if (confirm('Etes vous sûr de vouloir supprimer la question ?')) {
-      this.questionDeleted.emit(this.question);
-    }
+  deleteConfirm() {
+    this.suppr = true;
   }
 
+  deleteQuestion(confirm: boolean) {
+      if (confirm) {
+        this.questionDeleted.emit(this.question);
+      } else {
+        this.suppr = !this.suppr;
+      }
+  }
 }

@@ -9,5 +9,21 @@
     </li>
   <nav>
   </nav>
-  <button class="button-card" (click)="deleteQuiz()">Supprimer</button>
+  <ng-template [ngIf]=suppr>
+  <a routerLink="/question-edit/{{question.id}}">
+    <button class="button-card no-side-margin" >Modifier</button>
+  </a>
+  <button class="button-card" (click)="deleteConfirm()">Supprimer</button>
+    <br>
+    Voulez-vous vraiment supprimer la question ?
+    <button class="button-card" (click)="deleteQuestion(true)">Oui</button>
+    <button class="button-card" (click)="deleteQuestion(false)">Non</button>
+  </ng-template>
+
+  <ng-template [ngIf]=!suppr>
+    <a routerLink="/question-edit/{{question.id}}">
+      <button class="button-card no-side-margin" >Modifier</button>
+    </a>
+    <button class="button-card" (click)="deleteConfirm()">Supprimer</button>
+  </ng-template>
 </div>
