@@ -34,6 +34,10 @@ border-width: 10px;
   flex: 1 0 49%;
 }
 
+.box{
+  box-sizing: content-box!important;
+}
+
 .card {
   border-radius: 30%;
   overflow: hidden;
