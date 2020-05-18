@@ -1,5 +1,5 @@
 <html>
-<ng-template [ngIf]="this.router.url==='/home'||this.router.url==='/quiz-list'||this.router.url.startsWith('/administration')|| this.router.url.endsWith('/quiz-edit/',11) ||this.router.url==='/select-theme/difficulties'">
+<ng-template [ngIf]="this.router.url==='/home'||this.router.url==='/quiz-list'||this.router.url.startsWith('/administration')|| this.router.url.endsWith('/quiz-edit/',11) ||this.router.url==='/select-theme/difficulties' ||this.router.url==='/load-profile'">
 <app-header [right]="this.router.url=='/quiz-list' || this.router.url.endsWith('/quiz-edit/',11) ||this.router.url.startsWith('/administration/')"></app-header>
 </ng-template>
 <body>

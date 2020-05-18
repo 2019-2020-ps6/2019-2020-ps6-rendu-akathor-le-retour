@@ -20,6 +20,13 @@ export class LoadUserComponent {
   }
 
   launchSession(user: User) {
+    if (user.settings === undefined) {
+      if (confirm('Le profil de ' + user.firstName + ' n\'a pas encore de préférences. Voulez-vous les définir maintenant ?')) {
+        this.settingsService.setUser(user);
+        this.navigateToRoute('/administration/user/' + user.id + '/settings/color');
+        return;
+      }
+    }
     this.settingsService.setUser(user);
     this.settingsService.updateSettings(user.settings);
     this.navigateToRoute('/select-theme/');

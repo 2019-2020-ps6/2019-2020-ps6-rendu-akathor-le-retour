@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {ActivatedRoute, Router, Routes} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../../models/user.model';
 import {UserService} from '../../../../services/user.service';
+import {SettingsService} from '../../../../services/settings.service';
 
 @Component({
   selector: 'app-settings-edit',
@@ -20,6 +21,7 @@ export class SettingsEditComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private router: Router,
+    private settingsService: SettingsService
   ) {
     this.userService.userSelected$.subscribe((user) => {
       this.userCalled = user;
@@ -44,6 +46,7 @@ export class SettingsEditComponent implements OnInit {
 
   displaySettings() {
     this.changeSettings = true;
+    this.settingsService.setUser(this.userCalled);
     this.navigateToRoute('/administration/user/' + this.userCalled.id + '/settings/color');
   }
 

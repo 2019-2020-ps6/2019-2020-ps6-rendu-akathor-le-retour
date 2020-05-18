@@ -58,6 +58,9 @@
         </div>
       </div>
     </div>
+    <label>Indice supplémentaire (optionnel)</label>
+    <input type="text" [formControlName]="'clue'" class="form-control">
+
     <div *ngIf="answers.length<4"  >
 
     <button class="button-card" type="button"(click)="addAnswer()" >Ajouter une réponse</button>
@@ -74,7 +77,7 @@
       </h3>
     </div>
     <div *ngIf="answers.length>1">
-      <button class="button-card" type="submit">Ajouter la question</button>
+      <button class="button-card" type="submit">Enregistrer la question</button>
     </div>
   </form>
 </div>

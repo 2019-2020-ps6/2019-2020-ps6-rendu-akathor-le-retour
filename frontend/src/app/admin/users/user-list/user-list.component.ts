@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
   constructor(public userService: UserService) {
     this.userService.users$.subscribe((user) => {
       this.userList = user;
-      this.userListFiltered = user;
+      this.userListFiltered = this.userList;
     });
   }
 

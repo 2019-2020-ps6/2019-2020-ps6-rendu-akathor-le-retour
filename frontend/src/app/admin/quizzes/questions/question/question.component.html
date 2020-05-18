@@ -1,14 +1,25 @@
-<div class="card">
+<div class="container">
+<div class="card row">
+  <div class="col-lg-12 text-center">
 <h2>
   <i class="fab fa-angular"></i>   {{question.label}}
 </h2>
+  </div>
 
-    <li *ngFor="let answer of question.answers; index as i">
-      {{i+1}} {{answer.value}}      <span *ngIf="answer.isCorrect"> <i class="far fa-check-square"></i></span>
-
-    </li>
-  <nav>
-  </nav>
+    <div *ngFor="let answer of question.answers; index as i">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>{{i+1}}</p> - {{answer.value}}      <span *ngIf="answer.isCorrect"> <i class="far fa-check-square"></i></span>
+        </div>
+      </div>
+    </div>
+<ng-template [ngIf]="question.clue !== undefined">
+  <div class="row">
+    <div class="col-lg-12">
+      <p>Indice</p> - {{question.clue}}
+    </div>
+  </div>
+</ng-template>
   <ng-template [ngIf]=suppr>
   <a routerLink="/question-edit/{{question.id}}">
     <button class="button-card no-side-margin" >Modifier</button>
@@ -26,4 +37,5 @@
     </a>
     <button class="button-card" (click)="deleteConfirm()">Supprimer</button>
   </ng-template>
+</div>
 </div>

@@ -28,6 +28,7 @@ export class QuestionFormComponent  {
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
+      clue: [''],
       answers: this.formBuilder.array([this.createAnswer()], [Validators.required])
     });
     this.submitted = false ;

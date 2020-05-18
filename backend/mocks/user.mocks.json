@@ -1,7 +1,13 @@
 [
   {
     "firstName": "Eddy",
-    "id": 1589780711390
+    "id": 1589780711390,
+    "settings": {
+      "color": "#ffffff",
+      "background-color": "#000000",
+      "font-size": "35px",
+      "border-color": "#ffffff"
+    }
   },
   {
     "firstName": "Mathilde",

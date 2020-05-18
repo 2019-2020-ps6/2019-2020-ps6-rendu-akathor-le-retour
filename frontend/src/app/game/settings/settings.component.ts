@@ -33,8 +33,8 @@ import {UserService} from '../../../services/user.service';
     });
     this.step = this.getStep();
     if (this.modeConf) {
-      this.user = this.userService.userSelected;
-      console.log(this.user.lastName);
+      this.user = this.settingsService.getUser();
+      console.log(this.user.firstName);
     }
   }
 
