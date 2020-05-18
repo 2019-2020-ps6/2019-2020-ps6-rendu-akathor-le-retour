@@ -4,10 +4,11 @@
     "id": 1589780711390,
     "settings": {
       "color": "#ffffff",
-      "background-color": "#000000",
-      "font-size": "35px",
+      "background-color": "#0000ff",
+      "font-size": "25px",
       "border-color": "#ffffff",
-      "soundAuto": false
+      "soundAuto": false,
+      "timer": false
     }
   },
   {
@@ -18,7 +19,8 @@
       "background-color": "#ffff00",
       "font-size": "35px",
       "border-color": "#000000",
-      "soundAuto": true
+      "soundAuto": false,
+      "timer": false
     }
   },
   {

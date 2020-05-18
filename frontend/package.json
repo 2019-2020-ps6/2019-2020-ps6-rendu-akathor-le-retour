@@ -28,6 +28,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.0",
     "md-autocomplete": "0.0.1-alpha.1",
+    "ng-circle-progress": "^1.5.1",
     "rxjs": "~6.4.0",
     "speak-tts": "^2.0.8",
     "tslib": "^1.11.1",

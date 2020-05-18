@@ -39,7 +39,8 @@ import { LoadUserComponent } from './game/load-user/load-user.component';
 import {ThemeListComponent} from './admin/Themes/theme-list/theme-list.component';
 import {ThemeComponent} from './admin/Themes/theme/theme.component';
 import {ThemeFormComponent} from './admin/Themes/theme-form/theme-form.component';
-
+import { DisplayTimerComponent } from './game/display-timer/display-timer.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -71,8 +72,9 @@ import {ThemeFormComponent} from './admin/Themes/theme-form/theme-form.component
     ThemeComponent,
     ThemeFormComponent,
     LoadUserComponent,
+    DisplayTimerComponent,
   ],
-  entryComponents: [DisplayComponent, DisplayFailComponent],
+  entryComponents: [DisplayComponent, DisplayFailComponent, DisplayTimerComponent],
 
   imports: [
     BrowserModule,
@@ -90,6 +92,11 @@ import {ThemeFormComponent} from './admin/Themes/theme-form/theme-form.component
     MatButtonModule,
     FormsModule,
     MatRadioModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      animationDuration: 300,    })
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

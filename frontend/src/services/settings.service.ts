@@ -18,6 +18,7 @@ export class SettingsService {
   styleMedium = '30px';
   styleBig = '35px';
   soundAuto = true;
+  timer = true;
 
   /**
    * GUI PARAMS
@@ -62,12 +63,20 @@ export class SettingsService {
     this.settings$.next(this.settings);
   }
 
+  changeTimer(value: boolean) {
+    this.settings.timer = value;
+    localStorage.setItem('timer', this.settings.timer);
+    this.updateUser();
+    this.settings$.next(this.settings);
+  }
+
  initLastSettings() {
    this.settings = {color  : localStorage.getItem('textColor') != null ? localStorage.getItem('textColor') : this.textColor,
      'background-color' : localStorage.getItem('backgroundColor') != null ? localStorage.getItem('backgroundColor') : this.backgroundColor,
      'font-size' : localStorage.getItem('textSize') != null ? localStorage.getItem('textSize') : this.styleBig,
      'border-color': localStorage.getItem('borderColor') != null ? localStorage.getItem('borderColor') : this.borderColor,
-      soundAuto : localStorage.getItem('soundAuto') != null ? localStorage.getItem('soundAuto') : this.soundAuto };
+     soundAuto : localStorage.getItem('soundAuto') != null ? localStorage.getItem('soundAuto') : this.soundAuto,
+      timer : localStorage.getItem('timer') != null ? localStorage.getItem('timer') : this.timer };
    this.settings$.next(this.settings);
  }
 
@@ -89,6 +98,7 @@ export class SettingsService {
     this.changeColor(settings.color, settings['background-color']);
     this.changeSize(settings['font-size']);
     this.swipeSoundAuto(settings.soundAuto);
+    this.changeTimer(settings.timer);
   }
 
   setUser(user: User) {
@@ -109,6 +119,7 @@ export class SettingsService {
       this.userService.updateSettings(user);
     }
   }
+
 
 
 }

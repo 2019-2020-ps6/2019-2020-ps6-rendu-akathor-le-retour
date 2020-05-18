@@ -88,7 +88,7 @@
     </div>
   </div>
   </ng-template>
-  <ng-template [ngIf]="sound>0">
+  <ng-template [ngIf]="sound>0 && step == 3">
     <br>
     <div class="row">
       <div class="col-lg-12">
@@ -96,20 +96,42 @@
       </div>
     </div>
   </ng-template>
-  <br>
+  <ng-template [ngIf]="step==4">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Souhaitez-vous un temps d'attente entre chaque questions ?</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-lg-6">
+      <button (click)="swipeTimer(true)" class="smallButton">Oui</button>
+    </div>
+    <div class="col-lg-6">
+      <button (click)="swipeTimer(false)" class="smallButton">Non</button>
+    </div>
+  </div>
+  </ng-template>
+  <ng-template [ngIf]="timer>0 && step ==4 ">
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>L'attente entre chaque questions est{{timer==1?' activée ' : ' désactivée'}}.</h1>
+      </div>
+    </div>
+  </ng-template>
   <div class="row text-center">
     <ng-template [ngIf]="step>1">
       <div class="col-lg-6">
-          <button class="button-card sameHeight" (click)="previousStep()"> Revenir{{step==3 ? ' au choix de la taille' : ' au choix de la couleur'}}
+          <button class="button-card sameHeight" (click)="previousStep()"> Revenir{{step==3 ? ' au choix de la taille' : step==4 ? ' au choix de la lecture audio' : ' au choix de la couleur'}}
           </button>
       </div>
-      <ng-template [ngIf]="step<3">
+      <ng-template [ngIf]="step<4">
         <div class="col-lg-6">
           <button class="button-card sameHeight" (click)="nextStep()"> Continuer ->
           </button>
         </div>
       </ng-template>
-    <ng-template [ngIf]="step==3">
+    <ng-template [ngIf]="step==4">
       <ng-template [ngIf]="!modeConf">
       <div class="col-lg-6">
         <a href="/select-theme">

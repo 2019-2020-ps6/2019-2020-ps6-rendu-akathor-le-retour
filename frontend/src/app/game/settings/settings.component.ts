@@ -16,9 +16,9 @@ import {UserService} from '../../../services/user.service';
   step: number;
   modeConf = false;
   sound: any;
-  routes: string [] = ['/settings/color', '/settings/textSize', '/settings/tts', '/user/'];
+  routes: string [] = ['/settings/color', '/settings/textSize', '/settings/tts', '/settings/timer', '/user/'];
   user: User;
-
+  timer: any;
 
   @Output()
   updateDone: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -44,7 +44,7 @@ import {UserService} from '../../../services/user.service';
 
   getStep() {
     console.log(this.router.url);
-    if (this.router.url.includes(this.routes[3])) {
+    if (this.router.url.includes(this.routes[4])) {
       this.modeConf = true;
     }
     if (this.router.url.includes(this.routes[0])) {
@@ -55,6 +55,9 @@ import {UserService} from '../../../services/user.service';
     }
     if (this.router.url.includes(this.routes[2])) {
       return 3;
+    }
+    if (this.router.url.includes(this.routes[3])) {
+      return 4;
     } else {
       console.log('ERROR URL');
       return -1;
@@ -92,7 +95,8 @@ import {UserService} from '../../../services/user.service';
     if (this.modeConf) {
       this.router.navigate(['/administration/user/' + this.user.id.toString() + path]);
     } else {
-    this.router.navigate([ path ]);
+      console.log(path);
+      this.router.navigate([ path ]);
     }
   }
 
@@ -103,11 +107,22 @@ import {UserService} from '../../../services/user.service';
       return 'Choix de la taille du texte';
     } else if (this.step === 3) {
       return 'Choix de la lecture du texte au format audio';
+    } else if (this.step === 4) {
+      return 'Choix de l\'attente entre chaque questions';
     }
   }
 
   saveProfile() {
     this.router.navigate(['/administration/user/' + this.user.id.toString()]);
     this.updateDone.emit(true);
+  }
+
+  swipeTimer(value: boolean) {
+    if (value) {
+      this.timer = 1;
+    } else {
+      this.timer = 2;
+    }
+    this.settingsService.changeTimer(value);
   }
 }

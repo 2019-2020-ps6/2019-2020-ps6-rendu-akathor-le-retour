@@ -54,6 +54,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
   fail = false;
   sound = false;
   start = false;
+
   constructor(public dialog: MatDialog, public lecture: AudioService,
               public settingsService: SettingsService,
               private ref: ChangeDetectorRef) {
@@ -63,8 +64,9 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
   ngOnInit() {
     this.settingsService.settings$.subscribe((settings) => {
       this.settings = settings;
-      this.sound = settings.soundAuto ;
+      this.sound = settings.soundAuto === true ;
     });
+
     this.lecture.start$.subscribe(state => {
       this.start = state;
       this.ref.detectChanges();
@@ -75,8 +77,8 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
     console.log('sound : ', this.sound);
     this.scrollToAnswer();
     if (this.sound) {
-      console.log('lecture normalement');
-      this.read();
+      console.log('lecture normalement car bien sur ' + this.sound);
+      this.wait(1000);
     }
     // this.read();
   }
@@ -109,7 +111,11 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
     }
 
   }
-
+   wait(milliseconds) {
+    setTimeout(() => {
+      this.read();
+    }, milliseconds);
+  }
   scrollToAnswer() {
     const element = document.getElementById('question');
     if (element != null) {
@@ -168,6 +174,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
     });
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
+
 
   runSound() {
       if (this.sound) {

@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {SettingsService} from '../../../services/settings.service';
 import { Theme } from 'src/models/theme.model';
 import {BehaviorSubject, ReplaySubject, Subject} from 'rxjs';
+import {DisplayTimerComponent} from '../display-timer/display-timer.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-select-theme',
@@ -22,7 +24,7 @@ export class SelectThemeComponent implements OnInit {
   settings: any;
   routes: string [] = ['/select-theme/easy', '/select-theme/intermediate', '/select-theme/hard', '/select-theme/difficulties'];
 
-  constructor(private quizService: QuizService, public router: Router, public settingsService: SettingsService) {
+  constructor(private quizService: QuizService, public router: Router, public settingsService: SettingsService, public dialog: MatDialog) {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
     this.settingsService.quizDone();
     this.currentDifficultie = this.getDifficulty();
@@ -96,7 +98,23 @@ export class SelectThemeComponent implements OnInit {
 
   getQuizByTheme(theme: Theme) {
     const i: string = this.quizService.getRandomQuizTheme(theme);
-    this.router.navigate(['/play-quiz/' + i]);
+    this.openTimer(i);
+  }
+
+  openTimer(quizId: string) {
+    window.scroll(0, 0);
+    document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
+    const dialogRef = this.dialog.open(DisplayTimerComponent, {maxWidth: '100%', maxHeight: '1000px', minWidth: '400px',
+      backdropClass: 'customDialog',
+      panelClass: 'customContainerDialog',
+      autoFocus: true,
+      data: {text: 'Début du quiz dans ...'}
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['/play-quiz/' + quizId]);
+    });
+
+    document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 
   getTitle() {

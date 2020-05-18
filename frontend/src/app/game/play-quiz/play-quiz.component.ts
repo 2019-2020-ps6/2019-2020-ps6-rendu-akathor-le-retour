@@ -7,6 +7,7 @@ import {BehaviorSubject, Subscription} from 'rxjs';
 import {SettingsService} from '../../../services/settings.service';
 import {DisplayFailComponent} from '../display-fail/display-fail.component';
 import {MatDialog} from '@angular/material/dialog';
+import {DisplayTimerComponent} from '../display-timer/display-timer.component';
 
 @Component({
   selector: 'app-play-quiz',
@@ -26,6 +27,7 @@ export class PlayQuizComponent implements OnInit {
   settings: any;
   private automatique = true ;
   private badAnswerMock: Answer = {value: '', isCorrect: false};
+  private timer = false;
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
@@ -60,6 +62,7 @@ export class PlayQuizComponent implements OnInit {
     console.log('init');
     this.settingsService.settings$.subscribe((settings) => {
       this.settings = settings;
+      this.timer = settings.timer === true;
     });
     console.log(this.current);
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
@@ -85,7 +88,27 @@ export class PlayQuizComponent implements OnInit {
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
 
+  openTimer() {
+      window.scroll(0, 0);
+      document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
+      const dialogRef = this.dialog.open(DisplayTimerComponent, {maxWidth: '100%', maxHeight: '1000px', minWidth: '400px',
+        backdropClass: 'customDialog',
+        panelClass: 'customContainerDialog',
+        autoFocus: true,
+        data: {text: 'Lecture de la prochaine question dans ...'}
+      });
+      dialogRef.afterClosed().subscribe(() => {
+      this.goNext();
+      });
 
+      document.documentElement.style.setProperty('--textColor', this.settings.color);
+    }
+
+    goNext() {
+      this.current++;
+      this.currentProgressUpdate(this.current);
+      this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/' + (this.current + 1));
+    }
   answerSomething(answer: Answer) {
     console.log('user answer:', answer);
     if (answer != null) {
@@ -118,10 +141,12 @@ export class PlayQuizComponent implements OnInit {
   }
 
   nextAnswer() {
-    if (this.current < this.quizCalled.questions.length) {
-      this.current ++;
-      this.currentProgressUpdate(this.current);
-      this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/' + (this.current + 1));
+    if (this.current + 1 < this.quizCalled.questions.length) {
+      if (this.timer) {
+        this.openTimer();
+      } else {
+        this.goNext();
+      }
     } else {
       this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/result');
     }
