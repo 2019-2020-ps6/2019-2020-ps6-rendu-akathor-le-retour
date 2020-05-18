@@ -73,22 +73,9 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
   }
 
   ngOnChanges(simple: SimpleChanges ) {
-    console.log('mode ', this.mode);
-   // console.log('changement ', simple.isFirstChange());
-
-    console.log('changement ', simple.question.isFirstChange());
-    if (!simple.question.isFirstChange() || !simple.mode.isFirstChange()) {
-     if (this.mode === false) {
-       if (this.auto) {
-         console.log(simple);
-         console.log('onchange actif');
-         // this.read();
-       }
-     } else {
+    if (this.sound) {
        this.read();
-     }
-   }
-
+    }
   }
 
   ngOnDestroy(): void {
