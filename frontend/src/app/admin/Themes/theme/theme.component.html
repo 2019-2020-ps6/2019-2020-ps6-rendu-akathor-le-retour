@@ -1,8 +1,0 @@
-<div class="card">
-  <h3>{{theme.name}} </h3>
-  <button (click)="delete()" class="button-card" > supprimer </button>
-  <button (click)="modifier()" class="button-card"> modifier </button>
-  <div *ngIf="modif">
-      <app-theme-form [mode]="false"></app-theme-form>
-  </div>
-</div>
