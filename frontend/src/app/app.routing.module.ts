@@ -40,6 +40,7 @@ const routes: Routes = [
   {path: 'select-theme/easy', component: SelectThemeComponent, data: {routeIdx: 4} },
   {path: 'select-theme/intermediate', component: SelectThemeComponent, data: {routeIdx: 4} },
   {path: 'select-theme/hard', component: SelectThemeComponent, data: {routeIdx: 4} },
+  {path: 'select-theme/all', component: SelectThemeComponent, data: {routeIdx: 4} },
   {path: 'play-quiz/:id', redirectTo: '/play-quiz/:id/1', pathMatch: 'full'},
   {path: 'play-quiz/:id/:q', component: PlayQuizComponent, data: {routeIdx: -1} },
 

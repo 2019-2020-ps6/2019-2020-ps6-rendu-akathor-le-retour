@@ -1480,29 +1480,6 @@
     "id": 1588000894796
   },
   {
-    "label": "Quel laboratoire a inventé sans le vouloir le viagra ?",
-    "answers": [
-      {
-        "value": "Novartis",
-        "isCorrect": false
-      },
-      {
-        "value": "Merck",
-        "isCorrect": false
-      },
-      {
-        "value": "Pfizer",
-        "isCorrect": true
-      },
-      {
-        "value": "Sanofi-Aventis",
-        "isCorrect": false
-      }
-    ],
-    "quizId": "1588000980403",
-    "id": 1588001024801
-  },
-  {
     "label": "Comment se nommait la première machine à calculer portable ?",
     "answers": [
       {

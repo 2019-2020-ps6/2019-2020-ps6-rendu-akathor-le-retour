@@ -19,20 +19,24 @@ export class SelectThemeComponent implements OnInit {
   public quizList: Quiz[] = [];
   public themeList: Theme[] = [];
   public themes$;
-  public currentDifficultie;
+  public currentDifficultie: string;
   public asyncThemes = new ReplaySubject();
   settings: any;
-  routes: string [] = ['/select-theme/easy', '/select-theme/intermediate', '/select-theme/hard', '/select-theme/difficulties'];
+  routes: string [] = ['/select-theme/easy', '/select-theme/intermediate', '/select-theme/hard',
+    '/select-theme/all', '/select-theme/difficulties'];
 
   constructor(private quizService: QuizService, public router: Router, public settingsService: SettingsService, public dialog: MatDialog) {
     this.settingsService.settings$.subscribe((settings) => this.settings = settings);
     this.settingsService.quizDone();
     this.currentDifficultie = this.getDifficulty();
+    this.quizService.quizzes$.subscribe((quizzes => {
+      this.quizList = quizzes;
+    }));
 
   }
 
   ngOnInit() {
-    if (this.currentDifficultie != null) {
+    if (this.currentDifficultie != null && this.currentDifficultie !== 'Tout') {
       this.getQuizbyDif(this.currentDifficultie);
     }
 
@@ -55,6 +59,9 @@ export class SelectThemeComponent implements OnInit {
     }
     if (this.router.url === this.routes[2]) {
       return 'Difficile';
+    }
+    if (this.router.url === this.routes[3]) {
+      return 'Tout';
     } else {
       return null;
     }
@@ -136,11 +143,20 @@ export class SelectThemeComponent implements OnInit {
       this.navigateToRoute(this.routes[1]);
     } else if (mode === 'Difficile') {
       this.navigateToRoute(this.routes[2]);
-    } else {
+    } else if (mode === 'Tout') {
       this.navigateToRoute(this.routes[3]);
+    } else {
+      this.navigateToRoute(this.routes[4]);
     }
     this.currentDifficultie = mode;
   }
 
 
+  displayQuizzes() {
+    this.switchDisplay('Tout');
+  }
+
+  bigger() {
+    return this.settingsService.getBigger(this.settings['font-size'], 20);
+  }
 }

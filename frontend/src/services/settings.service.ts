@@ -121,5 +121,13 @@ export class SettingsService {
   }
 
 
-
+  getBigger(size: any, increase: number) {
+    let splitSize: string[];
+    splitSize = size.split(/([0-9]+)/);
+    splitSize[1] = String((parseInt(splitSize[1], 10) + increase));
+    let result: string;
+    result = splitSize.join('');
+    return result;
+  }
 }
+
