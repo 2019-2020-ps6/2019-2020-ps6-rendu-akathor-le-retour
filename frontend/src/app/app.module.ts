@@ -36,11 +36,9 @@ import { DisplayFailComponent } from './game/display-fail/display-fail.component
 import { HomeAdminComponent } from './admin/homeadmin/home-admin.component';
 import { SettingsEditComponent } from './admin/users/settings-edit/settings-edit.component';
 import { LoadUserComponent } from './game/load-user/load-user.component';
-import {ThemeListComponent} from './admin/Themes/theme-list/theme-list.component';
-import {ThemeComponent} from './admin/Themes/theme/theme.component';
-import {ThemeFormComponent} from './admin/Themes/theme-form/theme-form.component';
 import { DisplayTimerComponent } from './game/display-timer/display-timer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+
 
 @NgModule({
   declarations: [
@@ -68,9 +66,6 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     DisplayFailComponent,
     HomeAdminComponent,
     SettingsEditComponent,
-    ThemeListComponent,
-    ThemeComponent,
-    ThemeFormComponent,
     LoadUserComponent,
     DisplayTimerComponent,
   ],
