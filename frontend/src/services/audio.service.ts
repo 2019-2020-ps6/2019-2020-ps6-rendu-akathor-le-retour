@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import Speech from 'speak-tts';
 
 import {Question, Answer} from '../models/question.model';
@@ -13,6 +13,7 @@ import {Question, Answer} from '../models/question.model';
   })
   export class AudioService {
     private speech = new Speech();
+  public start$: Subject<boolean> = new Subject<boolean>();
 
       constructor() {
         this.speech.setLanguage('fr-FR');
@@ -47,11 +48,17 @@ import {Question, Answer} from '../models/question.model';
           }
           text = text + (value.value) + '\n . ';
         });
-       this.speech.speak({text,
-          queue: false });
-
-      }
-
+       this.speech.speak({
+        text,
+          queue: false ,
+         listeners: {
+           onstart: () => {
+             this.start$.next(true);
+           },
+           onend: () => {
+             this.start$.next(false);
+           }} });
+       }
 
 
       lectureReponseCorrecte(question: Question) {
@@ -79,13 +86,17 @@ import {Question, Answer} from '../models/question.model';
 
           }
         });
-        this.speech.speak({text,
-          queue: false});
+        this.speech.speak({
+          text,
+          queue: false ,
+          listeners: {
+            onstart: () => {
+              this.start$.next(true);
+            },
+            onend: () => {
+              this.start$.next(false);
+            }} });
 
-      }
-
-      enLecture(): boolean {
-        return  this.speech.speaking() ;
       }
 
   }

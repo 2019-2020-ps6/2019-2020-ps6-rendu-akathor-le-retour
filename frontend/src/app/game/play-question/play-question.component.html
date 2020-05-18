@@ -1,7 +1,14 @@
 
 <div class="container-fluid no-side-margin" [ngStyle]="settings">
     <div class="row sticky-top fixed">
-      <div class="col-lg-3 no-margin"><button class="button-card" (click)="runSound()" >{{!sound?'Lecture audio' : 'Arrêter la lecture'}} </button>
+      <div class="col-lg-3 no-margin"><button class="button-card" (click)="runSound()" >
+        <div *ngIf="this.start">
+          Arrêter la lecture
+        </div>
+        <div *ngIf="!this.start">
+          Lecture audio
+        </div>
+      </button>
       </div>
       <div class="col-lg-9 text-center">
       <div  mat-raised-button (click)="open()">

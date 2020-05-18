@@ -44,6 +44,7 @@ router.delete('/:userId', (req, res) => {
 
 router.put('/:userId', (req, res) => {
   try {
+    console.log(req.body)
     res.status(200).json(User.update(req.params.userId, req.body))
   } catch (err) {
     res.status(500).json(err)
