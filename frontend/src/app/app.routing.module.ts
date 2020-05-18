@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'administration/home', component: HomeAdminComponent},
   {path: 'administration', component: AdministrationComponent},
   {path: 'settings', redirectTo: '/settings/color', pathMatch: 'full'},
-  {path: 'load-profile', component: LoadUserComponent },
+  {path: 'load-profile', component: LoadUserComponent, data: {routeIdx: 0} },
   {path: 'settings/color', component: SettingsComponent, data: {routeIdx: 0} },
   {path: 'settings/textSize', component: SettingsComponent, data: {routeIdx: 1} },
   {path: 'settings/tts', component: SettingsComponent, data: {routeIdx: 2} },

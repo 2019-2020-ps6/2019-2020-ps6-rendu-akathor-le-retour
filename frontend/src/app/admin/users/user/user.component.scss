@@ -1,8 +1,11 @@
 @import 'src/styles/card';
 
-h1 {
-  background: red;
-    // Add some CSS here! What if you try to change the background?
+h2{
+  text-align : center;
+  font-weight: bold;
+  font-size: 30px!important;
 }
 
-
+.card {
+  border-radius: 50%;
+}
