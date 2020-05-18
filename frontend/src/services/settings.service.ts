@@ -17,7 +17,7 @@ export class SettingsService {
   styleSmall = '25px';
   styleMedium = '30px';
   styleBig = '35px';
-  soundAuto = null;
+  soundAuto = true;
 
   /**
    * GUI PARAMS
@@ -52,16 +52,11 @@ export class SettingsService {
     this.settings$.next(this.settings);
   }
 
-  changeAudio(value: any) {
-    this.settings.soundAuto = value;
-    localStorage.setItem('soundAuto', value);
-    this.updateUser();
-    this.settings$.next(this.settings);
-  }
+
 
   swipeSoundAuto(value: boolean) {
     this.settings.soundAuto = value;
-    console.log('service sound test ', this.settings.soundAuto);
+    console.log('service sound test ', value);
     localStorage.setItem('soundAuto', this.settings.soundAuto);
     this.updateUser();
     this.settings$.next(this.settings);
@@ -93,7 +88,7 @@ export class SettingsService {
   updateSettings(settings: any) {
     this.changeColor(settings.color, settings['background-color']);
     this.changeSize(settings['font-size']);
-    this.changeAudio(settings.soundAudio);
+    this.swipeSoundAuto(settings.soundAuto);
   }
 
   setUser(user: User) {

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -51,9 +52,11 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
   currentAnswer: Answer = null;
   filter: any;
   fail = false;
-  sound = null;
-
-  constructor(public dialog: MatDialog, public lecture: AudioService, public settingsService: SettingsService) {
+  sound = false;
+  start = false;
+  constructor(public dialog: MatDialog, public lecture: AudioService,
+              public settingsService: SettingsService,
+              private ref: ChangeDetectorRef) {
      console.log(this.question);
     }
 
@@ -62,10 +65,16 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
       this.settings = settings;
       this.sound = settings.soundAuto ;
     });
+    this.lecture.start$.subscribe(state => {
+      this.start = state;
+      this.ref.detectChanges();
+      console.log('start speaking');
+    });
+
     console.log(this.question);
     console.log('sound : ', this.sound);
     this.scrollToAnswer();
-    if (this.sound ) {
+    if (this.sound) {
       console.log('lecture normalement');
       this.read();
     }
