@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Quiz} from '../models/quiz.model';
+import {User} from '../models/user.model';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +27,10 @@ export class SettingsService {
   saveQuiz: any;
   settings$: BehaviorSubject<any> = new BehaviorSubject(this.settings);
 
-
-  constructor() {
+  constructor(private userService: UserService) {
     this.initLastSettings();
     this.initLastQuiz();
+
   }
 
 
@@ -39,18 +41,28 @@ export class SettingsService {
     localStorage.setItem('textColor', val1);
     localStorage.setItem('borderColor', val1);
     localStorage.setItem('backgroundColor', val2);
+    this.updateUser();
     this.settings$.next(this.settings);
   }
 
   changeSize(textSize: string) {
     this.settings['font-size'] = textSize;
     localStorage.setItem('textSize', textSize);
+    this.updateUser();
+    this.settings$.next(this.settings);
+  }
+
+  changeAudio(value: any) {
+    this.settings.soundAuto = value;
+    localStorage.setItem('soundAuto', value);
+    this.updateUser();
     this.settings$.next(this.settings);
   }
 
   swipeSoundAuto() {
     this.settings.soundAuto = !this.settings.soundAuto;
     localStorage.setItem('soundAuto', this.settings.soundAuto);
+    this.updateUser();
     this.settings$.next(this.settings);
   }
 
@@ -76,4 +88,31 @@ export class SettingsService {
   private initLastQuiz() {
     this.saveQuiz = JSON.parse(localStorage.getItem('inProgress'));
   }
+
+  updateSettings(settings: any) {
+    this.changeColor(settings.color, settings['background-color']);
+    this.changeSize(settings['font-size']);
+    this.changeAudio(settings.soundAudio);
+  }
+
+  setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  removeUser() {
+    localStorage.removeItem('user');
+  }
+  updateUser() {
+    if (this.getUser() !== null) {
+      const user = this.getUser();
+      user.settings = this.settings;
+      this.userService.updateSettings(user);
+    }
+  }
+
+
 }

@@ -26,6 +26,9 @@ export class UserFormComponent implements OnInit {
   addUser() {
     const userToCreate: User = this.userForm.getRawValue() as User;
     console.log('Add user: ', userToCreate);
+    if (userToCreate.lastName === '') {
+      userToCreate.lastName = undefined;
+    }
     this.userService.addUser(userToCreate);
   }
 

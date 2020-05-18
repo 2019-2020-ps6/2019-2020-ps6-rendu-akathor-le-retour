@@ -34,7 +34,7 @@ router.get('/:userId', (req, res) => {
   }
 })
 
-router.delete('/:usernameId', (req, res) => {
+router.delete('/:userId', (req, res) => {
   try {
     res.status(200).json(User.delete(req.params.userId))
   } catch (err) {
@@ -42,9 +42,9 @@ router.delete('/:usernameId', (req, res) => {
   }
 })
 
-router.put('/:usernameId', (req, res) => {
+router.put('/:userId', (req, res) => {
   try {
-    res.status(200).json(User.update(req.params.usernameId, req.body))
+    res.status(200).json(User.update(req.params.userId, req.body))
   } catch (err) {
     res.status(500).json(err)
   }

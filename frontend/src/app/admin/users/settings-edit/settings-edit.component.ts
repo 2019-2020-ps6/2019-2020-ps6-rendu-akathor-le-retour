@@ -57,4 +57,11 @@ export class SettingsEditComponent implements OnInit {
     this.userService.updateSettings(this.userCalled);
     this.navigateToRoute('/administration/user/' + this.userCalled.id);
   }
+
+  delete() {
+    if (confirm('Confirmez-vous la suppression de cette utilisateur ?')) {
+      this.userService.remove(this.userCalled);
+      this.navigateToRoute('/administration/profiles/');
+    }
+  }
 }

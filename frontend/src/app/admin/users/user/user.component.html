@@ -1,18 +1,17 @@
 <div class="container-fluid">
-<div class="row card text-center">
+<div class="row card text-center paddingButton no-side-margin">
 <h2>
-      <br>
-       Prénom: {{user.firstName}}
-      <br>
-      Nom: {{user.lastName}}
+       Profil de {{user.firstName}} {{user.lastName}}
       <br>
 
     </h2>
-  <nav>
-  </nav>
-  <router-outlet></router-outlet>
+  <ng-template [ngIf]="!mode">
   <a href="/administration/user/{{user.id}}">
-  <button class="button-card" (click)="getUser()">Modifier les préférences visuelles</button>
+  <button class="button-card" (click)="getUser()">Modifier</button>
   </a>
+  </ng-template>
+  <ng-template [ngIf]="mode">
+      <button class="button-card" (click)="getUser()">Choisir ce profil</button>
+  </ng-template>
 </div>
 </div>

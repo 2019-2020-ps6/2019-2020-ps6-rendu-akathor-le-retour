@@ -4,7 +4,21 @@ select option[value="add"] {
   color: white!important;
 }
 
+h1
+{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:5px;
+  font-size: 50px!important;
+}
 option {
   background: transparent;
   color: inherit;
+}
+.card{
+  border-color: blue;
+}
+
+.button-card{
+  border-color: blue;
 }

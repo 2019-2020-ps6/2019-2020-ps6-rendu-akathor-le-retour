@@ -5,6 +5,7 @@ import Speech from 'speak-tts';
 import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {left, right} from './animations';
 import {transition, trigger} from '@angular/animations';
+import {SettingsService} from '../services/settings.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class AppComponent {
   private speech = new Speech();
   private animationState: number;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private settingsService: SettingsService) {
     this.setting = {color  : localStorage.getItem('textColor'), 'background-color' : localStorage.getItem('backgroundColor'),
       'font-size' : localStorage.getItem('textSize'), 'border-color': localStorage.getItem('borderColor')};
   }

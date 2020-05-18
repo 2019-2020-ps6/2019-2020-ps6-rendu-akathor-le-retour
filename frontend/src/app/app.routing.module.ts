@@ -11,6 +11,7 @@ import { SelectThemeComponent } from './game/select-theme/select-theme.component
 import { PlayQuizComponent } from './game/play-quiz/play-quiz.component';
 import {HomeAdminComponent} from './admin/homeadmin/home-admin.component';
 import {SettingsEditComponent} from './admin/users/settings-edit/settings-edit.component';
+import {LoadUserComponent} from './game/load-user/load-user.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'administration/home', component: HomeAdminComponent},
   {path: 'administration', component: AdministrationComponent},
   {path: 'settings', redirectTo: '/settings/color', pathMatch: 'full'},
+  {path: 'load-profile', component: LoadUserComponent },
   {path: 'settings/color', component: SettingsComponent, data: {routeIdx: 0} },
   {path: 'settings/textSize', component: SettingsComponent, data: {routeIdx: 1} },
   {path: 'settings/tts', component: SettingsComponent, data: {routeIdx: 2} },

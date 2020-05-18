@@ -71,4 +71,8 @@ export class UserService {
     });
   }
 
+  remove(userCalled: User) {
+    const urlWithId = this.userUrl + '/' + userCalled.id.toString();
+    this.http.delete<User[]>(urlWithId, this.httpOptions).subscribe(() => this.usersFromApi());
+  }
 }
