@@ -9,15 +9,23 @@ import { AdministrationComponent } from './admin/administration/administration.c
 import { SettingsComponent } from './game/settings/settings.component';
 import { SelectThemeComponent } from './game/select-theme/select-theme.component';
 import { PlayQuizComponent } from './game/play-quiz/play-quiz.component';
+import {HomeAdminComponent} from './admin/homeadmin/home-admin.component';
+import {SettingsEditComponent} from './admin/users/settings-edit/settings-edit.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path: 'quiz-list', component: QuizListComponent},
-  {path: 'users', component: UserListComponent},
-  { path: 'quiz-edit/:id', component: QuizEditComponent },
-  { path: 'quiz-edit/:id/question-edit/:id', component: QuestionEditComponent },
+  {path: 'administration/quiz-list', component: QuizListComponent},
+  {path: 'administration/profiles', component: UserListComponent},
+  { path: 'administration/quiz-edit/:id', component: QuizEditComponent },
+  { path: 'administration/quiz-edit/:id/question-edit/:id', component: QuestionEditComponent },
+  { path: 'administration/user/:id', component: SettingsEditComponent },
+  {path: 'administration/user/:id/settings', redirectTo: '/administration/user/:id/settings/color', pathMatch: 'full'},
+  {path: 'administration/user/:id/settings/color', component: SettingsComponent, data: {routeIdx: 0} },
+  {path: 'administration/user/:id/settings/textSize', component: SettingsComponent, data: {routeIdx: 1} },
+  {path: 'administration/user/:id/settings/tts', component: SettingsComponent, data: {routeIdx: 2} },
   { path: 'home', component: HomeComponent},
+  { path: 'administration/home', component: HomeAdminComponent},
   {path: 'administration', component: AdministrationComponent},
   {path: 'settings', redirectTo: '/settings/color', pathMatch: 'full'},
   {path: 'settings/color', component: SettingsComponent, data: {routeIdx: 0} },

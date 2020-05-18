@@ -36,9 +36,9 @@
         <div class="col-lg-2">
         </div>
         <div class="col-lg-4">
-        <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
-          A
-        </button>
+          <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
+            A
+          </button>
       </div>
 
         <div class="col-lg-4">
@@ -110,12 +110,21 @@
         </div>
       </ng-template>
     <ng-template [ngIf]="step==3">
-    <div class="col-lg-6">
-    <a href="/select-theme">
-      <button class="button-card sameHeight"> Prêt à jouer !
-      </button>
-    </a>
-    </div>
+      <ng-template [ngIf]="!modeConf">
+      <div class="col-lg-6">
+        <a href="/select-theme">
+          <button class="button-card sameHeight"> Prêt à jouer !
+          </button>
+        </a>
+      </div>
+      </ng-template>
+      <ng-template [ngIf]="modeConf">
+
+      <div class="col-lg-6">
+          <button (click)="saveProfile()" class="button-card sameHeight"> Enregistrer les préférences
+          </button>
+      </div>
+      </ng-template>
   </ng-template>
     </ng-template>
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import { User } from '../models/user.model';
-import { USER_LIST } from '../mocks/user-list.mock';
+import {httpOptionsBase, serverUrl} from '../configs/server.config';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,16 @@ export class UserService {
    * The list of quiz.
    * The list is retrieved from the mock.
    */
-  private users: User[] = USER_LIST;
+  private users: User[];
+  private userUrl = serverUrl + '/users';
+  private httpOptions = httpOptionsBase;
+  public userSelected$: Subject<User> = new Subject();
+  public userSelected: User;
+  constructor(
+    private http: HttpClient) {
+    this.usersFromApi();
+  }
+
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
@@ -24,26 +34,41 @@ export class UserService {
   public users$: BehaviorSubject<User[]> = new BehaviorSubject(this.users);
 
   addUser(user: User) {
-    console.log('The user \"' + user.username + '\" was successfully created.');
     user.id = (this.users.length + 1).toString();
-    user.creationDate = new Date();
     this.users.push(user);
     this.users$.next(this.users);
-    console.log('The user \"' + user.username + '\" was successfully created.');
+    this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.usersFromApi());
 
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
+  }
+  setSelectedUser(userId: string) {
+    const urlWithId = this.userUrl + '/' + userId;
+    this.http.get<User>(urlWithId).subscribe((user) => {
+      this.userSelected$.next(user);
+      this.userSelected = user;
+    });
+  }
+  updateSettings(user: User) {
+    const userUrl = this.userUrl + '/' + user.id;
+    this.http.put<User>(userUrl, user, this.httpOptions).subscribe(() => this.usersFromApi());
   }
 
   deleteUser(user: User) {
     this.users.splice(this.users.indexOf(user), 1);
     this.users$.next(this.users);
-    console.log('The user \"' + user.username + '\" was successfully deleted.');
 
   }
 
   getUser(id: string): Observable<User> {
-    return of(USER_LIST.find(user => user.id === id));
+    return of(this.users.find(user => user.id === id));
+  }
+
+  private usersFromApi() {
+    this.http.get<User[]>(this.userUrl).subscribe((userList) => {
+      this.users = userList;
+      this.users$.next(this.users);
+    });
   }
 
 }

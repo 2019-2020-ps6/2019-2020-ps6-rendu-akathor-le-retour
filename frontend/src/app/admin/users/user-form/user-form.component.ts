@@ -15,10 +15,8 @@ export class UserFormComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, public userService: UserService) {
     this.userForm = this.formBuilder.group({
-      username: [''],
       firstName: [''],
       lastName: [''],
-      email: ['']
     });
   }
 

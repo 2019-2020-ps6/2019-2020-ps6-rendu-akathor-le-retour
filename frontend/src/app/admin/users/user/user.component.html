@@ -1,18 +1,18 @@
-<div class="card">
+<div class="container-fluid">
+<div class="row card text-center">
 <h2>
-  Username: {{user.username}}
       <br>
-       First name: {{user.firstName}}
+       Prénom: {{user.firstName}}
       <br>
-      Last name : {{user.lastName}}
+      Nom: {{user.lastName}}
       <br>
-      Email: {{user.email}}
-      <div *ngIf="user.creationDate!=null">
-        Joined on: {{user.creationDate | date}}
-      </div>
+
     </h2>
   <nav>
   </nav>
   <router-outlet></router-outlet>
-  <button class="button-card" (click)="deleteUser()">Supprimer</button>
+  <a href="/administration/user/{{user.id}}">
+  <button class="button-card" (click)="getUser()">Modifier les préférences visuelles</button>
+  </a>
+</div>
 </div>

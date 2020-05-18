@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SettingsService} from '../../../services/settings.service';
 import {Router} from '@angular/router';
+import {User} from '../../../models/user.model';
+import {Quiz} from '../../../models/quiz.model';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -11,26 +14,46 @@ import {Router} from '@angular/router';
   export class SettingsComponent implements OnInit {
   settings: any;
   step: number;
+  modeConf = false;
   sound: any;
-  routes: string [] = ['/settings/color', '/settings/textSize', '/settings/tts'];
+  routes: string [] = ['/settings/color', '/settings/textSize', '/settings/tts', '/user/'];
+  user: User;
 
-  constructor(public settingsService: SettingsService, private router: Router) {
-    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+
+  @Output()
+  updateDone: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(public settingsService: SettingsService, private router: Router, private userService: UserService) {
+    this.settingsService.settings$.subscribe((settings) => {
+      this.settings = settings;
+      if (this.modeConf) {
+          this.user.settings = settings;
+          this.userService.updateSettings(this.user);
+      }
+    });
     this.step = this.getStep();
+    if (this.modeConf) {
+      this.user = this.userService.userSelected;
+      console.log(this.user.lastName);
+    }
   }
 
   ngOnInit() {
-    }
+
+  }
 
   getStep() {
     console.log(this.router.url);
-    if (this.router.url === this.routes[0]) {
+    if (this.router.url.includes(this.routes[3])) {
+      this.modeConf = true;
+    }
+    if (this.router.url.includes(this.routes[0])) {
       return 1;
     }
-    if (this.router.url === this.routes[1]) {
+    if (this.router.url.includes(this.routes[1])) {
       return 2;
     }
-    if (this.router.url === this.routes[2]) {
+    if (this.router.url.includes(this.routes[2])) {
       return 3;
     } else {
       console.log('ERROR URL');
@@ -66,7 +89,11 @@ import {Router} from '@angular/router';
 
   /* Function to navigate */
   navigateToRoute(path: string) {
+    if (this.modeConf) {
+      this.router.navigate(['/administration/user/' + this.user.id.toString() + path]);
+    } else {
     this.router.navigate([ path ]);
+    }
   }
 
   getTitle() {
@@ -77,5 +104,10 @@ import {Router} from '@angular/router';
     } else if (this.step === 3) {
       return 'Choix de la lecture du texte au format audio';
     }
+  }
+
+  saveProfile() {
+    this.router.navigate(['/administration/user/' + this.user.id.toString()]);
+    this.updateDone.emit(true);
   }
 }
