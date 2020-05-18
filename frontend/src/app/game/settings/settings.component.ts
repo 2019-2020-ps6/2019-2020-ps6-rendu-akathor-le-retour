@@ -52,7 +52,7 @@ import {Router} from '@angular/router';
     } else {
       this.sound = 2;
     }
-    this.settingsService.swipeSoundAuto();
+    this.settingsService.swipeSoundAuto(value);
   }
 
   nextStep() {

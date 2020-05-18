@@ -61,11 +61,11 @@ import {Question, Answer} from '../models/question.model';
         question.answers.forEach((value, index) => {
           switch (index) {
             case 0 :
-            text = text + 'la première réponse ' + (value .value) + (value.isCorrect ? ' était correcte' : 'était fausse') + '.';
+            text = text + 'la première réponse ' + (value .value) + (value.isCorrect ? ' était correcte' : 'était fausse') + ' .';
             break ;
 
             case 1 :
-              text = text + 'deuxième réponse ' + (value .value) + (value.isCorrect ? ' était correcte' : 'était fausse') + '.';
+              text = text + 'deuxième réponse ' + (value .value) + (value.isCorrect ? ' était correcte' : 'était fausse') + ' .';
               break ;
 
             case 2 :
