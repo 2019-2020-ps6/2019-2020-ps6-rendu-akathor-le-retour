@@ -15,5 +15,17 @@
     "firstName": "Claude ",
     "lastName": "Dupuis",
     "id": 1589746618342
+  },
+  {
+    "firstName": "Mohamed",
+    "lastName": "Fertala",
+    "id": 1589767751716,
+    "settings": {
+      "color": "#000000",
+      "background-color": "#ff0000",
+      "font-size": "35px",
+      "border-color": "#000000",
+      "soundAuto": true
+    }
   }
 ]

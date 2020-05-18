@@ -35,6 +35,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { DisplayFailComponent } from './game/display-fail/display-fail.component';
 import { HomeAdminComponent } from './admin/homeadmin/home-admin.component';
 import { SettingsEditComponent } from './admin/users/settings-edit/settings-edit.component';
+import {ThemeListComponent} from './admin/Themes/theme-list/theme-list.component';
+import {ThemeComponent} from './admin/Themes/theme/theme.component';
+import {ThemeFormComponent} from './admin/Themes/theme-form/theme-form.component';
 
 
 @NgModule({
@@ -63,6 +66,9 @@ import { SettingsEditComponent } from './admin/users/settings-edit/settings-edit
     DisplayFailComponent,
     HomeAdminComponent,
     SettingsEditComponent,
+    ThemeListComponent,
+    ThemeComponent,
+    ThemeFormComponent,
   ],
   entryComponents: [DisplayComponent, DisplayFailComponent],
 
