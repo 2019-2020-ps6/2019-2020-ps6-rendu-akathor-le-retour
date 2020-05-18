@@ -1,3 +1,8 @@
 .question-list {
-  flex-direction: column;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+  }
+.userBox{
+  place-content: center;
 }
