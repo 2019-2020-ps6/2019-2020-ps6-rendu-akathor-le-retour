@@ -72,6 +72,16 @@ export class QuizService {
       this.quizSelected$.next(quiz);
     });
   }
+  changeTheme(ancien: Theme, nouveau: Theme) {
+    this.quizzes.forEach((value => {
+      if (value.theme === ancien) {
+        value.theme = nouveau ;
+      }
+    }));
+    this.quizzes$.next(this.quizzes);
+  }
+  deleteQuizzsTheme(theme: Theme) {
+  }
 
   quizzesFromApi() {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {

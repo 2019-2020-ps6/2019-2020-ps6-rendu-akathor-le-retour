@@ -16,26 +16,20 @@ export class ThemeFormComponent {
   nom: any;
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     this.themeForm = this.formBuilder.group({
-      name: [''],
+      nameTheme: '',
     });
   }
-
-
-  onSubmit() {
-    const themeAdd = this.themeForm.getRawValue()  ;
-    console.log('input ', themeAdd);
-    console.log('input 2 ', this.nom);
+  addTheme() {
+    //       this.quizService.addTheme({name: this.quizForm.get('theme').value});
+  if (this.mode) {
+    this.quizService.addTheme({name: this.themeForm.get('nameTheme').value});
   }
-  sauvegarder() {
-    if (this.mode) {
-      const themeAdd = this.themeForm.getRawValue()  ;
-
-      // const theme: Theme = {name: themeAdd} as unknown as Theme;
-
-
-
-   //   this.quizService.addTheme(themeAdd);
+      // this.themeForm.getRawValue() as Theme;
+   /* if (this.mode) {
+      this.quizService.addTheme(themeadd);
+    } else {
+      console.log('modif', themeadd);
     }
-
+    //console.log('theme add', themeadd);*/
   }
 }
