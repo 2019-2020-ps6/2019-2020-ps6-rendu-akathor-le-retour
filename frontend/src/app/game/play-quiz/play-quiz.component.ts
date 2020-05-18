@@ -149,8 +149,8 @@ export class PlayQuizComponent implements OnInit {
   }
 
   saveProgress() {
-    this.save = { reponse: this.reponse,
-      answers : this.answers, correctMode : this.correctMode, current : this.current , currentProgress : this.currentProgress };
+    this.save = { reponse: this.reponse, answers : this.answers,
+      correctMode : this.correctMode, current : this.current , currentProgress : this.currentProgress };
     this.settingsService.saveQuizProgress(this.save);
   }
 

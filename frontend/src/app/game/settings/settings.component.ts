@@ -75,7 +75,7 @@ import {UserService} from '../../../services/user.service';
     } else {
       this.sound = 2;
     }
-    this.settingsService.swipeSoundAuto();
+    this.settingsService.swipeSoundAuto(value);
   }
 
   nextStep() {

@@ -1,0 +1,7 @@
+<div class="card">
+   <h1> Géstion des thémes  </h1>
+    <app-theme-form [mode]="true"></app-theme-form>
+    <div *ngFor="let theme of themeList">
+      <app-theme [theme]="theme" (themedeleted)="deletetheme(theme)"></app-theme>
+  </div>
+</div>

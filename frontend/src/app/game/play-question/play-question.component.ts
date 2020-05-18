@@ -2,7 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
+  OnChanges, OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
@@ -21,7 +21,8 @@ import {SettingsService} from '../../../services/settings.service';
   styleUrls: ['./play-question.component.scss']
 })
 
-export class PlayQuestionComponent implements OnInit , OnChanges {
+export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
+
   settings: any;
 
   @Input()
@@ -50,29 +51,48 @@ export class PlayQuestionComponent implements OnInit , OnChanges {
   currentAnswer: Answer = null;
   filter: any;
   fail = false;
-  sound = true;
+  sound = null;
 
   constructor(public dialog: MatDialog, public lecture: AudioService, public settingsService: SettingsService) {
      console.log(this.question);
     }
 
   ngOnInit() {
-    this.settingsService.settings$.subscribe((settings) => this.settings = settings);
+    this.settingsService.settings$.subscribe((settings) => {
+      this.settings = settings;
+      this.sound = settings.soundAuto ;
+    });
     console.log(this.question);
+    console.log('sound : ', this.sound);
     this.scrollToAnswer();
+    if (this.sound ) {
+      console.log('lecture normalement');
+      this.read();
+    }
     // this.read();
   }
 
   ngOnChanges(simple: SimpleChanges ) {
     console.log('mode ', this.mode);
-    if (this.mode === false) {
-      if (this.auto) {
-        console.log(simple);
-        this.read();
-      }
-    } else {
-      this.read();
-    }
+   // console.log('changement ', simple.isFirstChange());
+
+    console.log('changement ', simple.question.isFirstChange());
+    if (!simple.question.isFirstChange() || !simple.mode.isFirstChange()) {
+     if (this.mode === false) {
+       if (this.auto) {
+         console.log(simple);
+         console.log('onchange actif');
+         // this.read();
+       }
+     } else {
+       this.read();
+     }
+   }
+
+  }
+
+  ngOnDestroy(): void {
+    this.stop();
   }
 
   radioChange(answer: Answer) {

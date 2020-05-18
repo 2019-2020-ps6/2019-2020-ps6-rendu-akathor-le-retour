@@ -1,0 +1,13 @@
+<div  [ngClass]="{'card' : this.mode }" >
+  <div *ngIf="mode">
+    <h2> nouveau théme </h2>
+  </div>
+  <div *ngIf="!mode">
+    <h2> modifier théme </h2>
+  </div>
+  <form  [formGroup]="themeForm" (ngSubmit)="onSubmit()">
+    <input class="input-custom" type="text" id="name"  [placeholder]="nom" [formControl]="'name'">
+    <button type="submit" class="button-card" >Créer</button>
+  </form>
+
+</div>

@@ -12,6 +12,7 @@ import { PlayQuizComponent } from './game/play-quiz/play-quiz.component';
 import {HomeAdminComponent} from './admin/homeadmin/home-admin.component';
 import {SettingsEditComponent} from './admin/users/settings-edit/settings-edit.component';
 import {LoadUserComponent} from './game/load-user/load-user.component';
+import {ThemeListComponent} from './admin/Themes/theme-list/theme-list.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path: 'select-theme/hard', component: SelectThemeComponent, data: {routeIdx: 4} },
   {path: 'play-quiz/:id', redirectTo: '/play-quiz/:id/1', pathMatch: 'full'},
   {path: 'play-quiz/:id/:q', component: PlayQuizComponent, data: {routeIdx: -1} },
+  {path: 'administration/themes', component: ThemeListComponent }
 
 ];
 

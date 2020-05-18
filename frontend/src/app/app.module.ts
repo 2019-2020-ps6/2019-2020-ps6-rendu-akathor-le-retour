@@ -36,6 +36,9 @@ import { DisplayFailComponent } from './game/display-fail/display-fail.component
 import { HomeAdminComponent } from './admin/homeadmin/home-admin.component';
 import { SettingsEditComponent } from './admin/users/settings-edit/settings-edit.component';
 import { LoadUserComponent } from './game/load-user/load-user.component';
+import {ThemeListComponent} from './admin/Themes/theme-list/theme-list.component';
+import {ThemeComponent} from './admin/Themes/theme/theme.component';
+import {ThemeFormComponent} from './admin/Themes/theme-form/theme-form.component';
 
 
 @NgModule({
@@ -64,6 +67,9 @@ import { LoadUserComponent } from './game/load-user/load-user.component';
     DisplayFailComponent,
     HomeAdminComponent,
     SettingsEditComponent,
+    ThemeListComponent,
+    ThemeComponent,
+    ThemeFormComponent,
     LoadUserComponent,
   ],
   entryComponents: [DisplayComponent, DisplayFailComponent],
