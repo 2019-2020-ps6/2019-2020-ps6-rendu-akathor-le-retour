@@ -58,14 +58,14 @@ export class SettingsService {
   swipeSoundAuto(value: boolean) {
     this.settings.soundAuto = value;
     console.log('service sound test ', value);
-    localStorage.setItem('soundAuto', this.settings.soundAuto);
+    localStorage.setItem('soundAuto', JSON.stringify(value));
     this.updateUser();
     this.settings$.next(this.settings);
   }
 
   changeTimer(value: boolean) {
     this.settings.timer = value;
-    localStorage.setItem('timer', this.settings.timer);
+    localStorage.setItem('timer', JSON.stringify(this.settings.timer));
     this.updateUser();
     this.settings$.next(this.settings);
   }
@@ -75,8 +75,8 @@ export class SettingsService {
      'background-color' : localStorage.getItem('backgroundColor') != null ? localStorage.getItem('backgroundColor') : this.backgroundColor,
      'font-size' : localStorage.getItem('textSize') != null ? localStorage.getItem('textSize') : this.styleBig,
      'border-color': localStorage.getItem('borderColor') != null ? localStorage.getItem('borderColor') : this.borderColor,
-     soundAuto : localStorage.getItem('soundAuto') != null ? localStorage.getItem('soundAuto') : this.soundAuto,
-      timer : localStorage.getItem('timer') != null ? localStorage.getItem('timer') : this.timer };
+     soundAuto : localStorage.getItem('soundAuto') != null ? JSON.parse(localStorage.getItem('soundAuto')) : this.soundAuto,
+      timer : localStorage.getItem('timer') != null ? JSON.parse(localStorage.getItem('timer')) : this.timer };
    this.settings$.next(this.settings);
  }
 
@@ -97,8 +97,8 @@ export class SettingsService {
   updateSettings(settings: any) {
     this.changeColor(settings.color, settings['background-color']);
     this.changeSize(settings['font-size']);
-    this.swipeSoundAuto(settings.soundAuto);
-    this.changeTimer(settings.timer);
+    this.swipeSoundAuto(JSON.parse(settings.soundAuto));
+    this.changeTimer(JSON.parse(settings.timer));
   }
 
   setUser(user: User) {
@@ -118,16 +118,6 @@ export class SettingsService {
       user.settings = this.settings;
       this.userService.updateSettings(user);
     }
-  }
-
-
-  getBigger(size: any, increase: number) {
-    let splitSize: string[];
-    splitSize = size.split(/([0-9]+)/);
-    splitSize[1] = String((parseInt(splitSize[1], 10) + increase));
-    let result: string;
-    result = splitSize.join('');
-    return result;
   }
 }
 

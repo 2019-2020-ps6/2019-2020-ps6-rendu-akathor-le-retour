@@ -4,11 +4,11 @@
     "id": 1589780711390,
     "settings": {
       "color": "#000000",
-      "background-color": "#ff0000",
+      "background-color": "#ffff00",
       "font-size": "35px",
       "border-color": "#000000",
-      "soundAuto": "false",
-      "timer": "true"
+      "soundAuto": true,
+      "timer": true
     }
   },
   {

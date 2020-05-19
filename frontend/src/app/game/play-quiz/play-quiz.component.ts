@@ -105,8 +105,8 @@ export class PlayQuizComponent implements OnInit {
     }
 
     goNext() {
-      this.current++;
       this.currentProgressUpdate(this.current);
+      this.current++;
       this.navigateToRoute('/play-quiz/' + this.quizCalled.id + '/' + (this.current + 1));
     }
   answerSomething(answer: Answer) {

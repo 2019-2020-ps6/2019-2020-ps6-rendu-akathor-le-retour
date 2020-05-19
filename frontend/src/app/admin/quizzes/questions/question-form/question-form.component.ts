@@ -57,6 +57,9 @@ export class QuestionFormComponent  {
 
   createQuestion() {
     const questionToCreate: Question = this.questionForm.getRawValue() as Question;
+    if (questionToCreate.clue === '' ) {
+      questionToCreate.clue = undefined;
+    }
     this.quizEdit.addQuestion(questionToCreate);
     this.initializeQuestionForm();
   }

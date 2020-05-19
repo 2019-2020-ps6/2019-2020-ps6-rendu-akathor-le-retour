@@ -155,8 +155,4 @@ export class SelectThemeComponent implements OnInit {
   displayQuizzes() {
     this.switchDisplay('Tout');
   }
-
-  bigger() {
-    return this.settingsService.getBigger(this.settings['font-size'], 20);
-  }
 }

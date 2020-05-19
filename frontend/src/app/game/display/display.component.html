@@ -7,6 +7,9 @@
         <h2 *ngIf="!data.quest" class="zoom" mat-dialog-title>Question: {{data.question}}</h2>
         <h2 *ngIf="!data.quest" class="zoom" mat-dialog-title>Réponse {{data.id+1}} : {{data.name}}</h2>
       </div>
+      <ng-template [ngIf]="data.questionClue !== undefined && data.quest">
+        <h2 class="zoom" mat-dialog-title>Indice: {{data.questionClue}} </h2>
+      </ng-template>
     </div>
   </mat-dialog-content>
 

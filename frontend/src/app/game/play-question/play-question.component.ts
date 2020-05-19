@@ -128,13 +128,15 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
     this.nextAnswer.emit(true);
   }
 
-  open() {
+  open(clue: string) {
     document.documentElement.style.setProperty('--backgroundColor', this.settings['background-color']);
     this.dialog.open(DisplayComponent, {maxWidth: '1200px', maxHeight: '1000px',
-      data: {name: this.question.label , quest: true  }, backdropClass: 'customDialog', panelClass: 'customContainerDialog', autoFocus: true
+      data: {name: this.question.label , quest: true, questionClue: clue },
+      backdropClass: 'customDialog', panelClass: 'customContainerDialog', autoFocus: true
     });
     document.documentElement.style.setProperty('--textColor', this.settings.color);
   }
+
 
   read() {
     console.log('read ');
@@ -170,6 +172,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
         this.currentAnswer = null;
       } else {
         this.answerSomething();
+        this.stop();
       }
     });
     document.documentElement.style.setProperty('--textColor', this.settings.color);
