@@ -13,7 +13,8 @@ h1{
 }
 
 hr{
-border-width: 10px;
+  border-width: 6px;
+  border-style: solid;
   border-color: inherit;
 }
 
@@ -39,7 +40,7 @@ border-width: 10px;
 }
 
 .card {
-  border-radius: 30%;
+  border-radius: 10%;
   overflow: hidden;
 }
 

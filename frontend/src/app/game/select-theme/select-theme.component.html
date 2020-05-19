@@ -11,7 +11,7 @@
                       <div class="card col-lg-12 no-side-margin">
                         <div class="row">
                           <div class="col-lg-12 text-center">
-                            <h1> Cliquez sur la difficulté que vous souhaitez</h1>
+                            <h1> Cliquez sur la difficulté souhaitée</h1>
                           </div>
                         </div>
                       <div class="row text-center">
@@ -48,6 +48,11 @@
                             </ng-template>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <hr>
+                          </div>
+                        </div>
                       <div class="row d-flex flex-row justify-content-between align-items-center">
 
                         <!--
@@ -77,6 +82,11 @@
                             </ng-template>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <hr>
+                          </div>
+                        </div>
                         <div class="row d-flex flex-row justify-content-between align-items-center">
                           <!--
                              <div class="quiz" *ngFor="let quiz of quizList">
@@ -103,7 +113,11 @@
                           </div>
                         </div>
                       </ng-template>
-
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <hr>
+                        </div>
+                      </div>
                       <div class="row text-center">
                         <ng-template [ngIf]="currentDifficultie==null">
                           <div class="col-lg-6">
@@ -112,7 +126,7 @@
                         </ng-template>
                         <ng-template [ngIf]="currentDifficultie!=null">
                           <div class="col-lg-6">
-                            <button class="button-card"(click)="switchDisplay(null)">Retour aux choix de difficulté</button>
+                            <button class="button-card sameHeight"(click)="switchDisplay(null)">Retour aux choix de difficulté</button>
                           </div>
                         </ng-template>
                         <div class="col-lg-6">

@@ -166,7 +166,7 @@ export class PlayQuestionComponent implements OnInit , OnChanges , OnDestroy {
       autoFocus: true
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === false) {
+      if (!result) {
         this.currentAnswer = null;
       } else {
         this.answerSomething();
