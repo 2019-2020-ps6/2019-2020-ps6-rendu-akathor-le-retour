@@ -1673,35 +1673,5 @@
     ],
     "quizId": "1587453270861",
     "id": 1589550373590
-  },
-  {
-    "label": "g",
-    "answers": [
-      {
-        "value": "g",
-        "isCorrect": false
-      },
-      {
-        "value": "g",
-        "isCorrect": false
-      }
-    ],
-    "quizId": "1588000980404",
-    "id": 1589555512801
-  },
-  {
-    "label": "e",
-    "answers": [
-      {
-        "value": "f",
-        "isCorrect": false
-      },
-      {
-        "value": "g",
-        "isCorrect": false
-      }
-    ],
-    "quizId": "1588000980404",
-    "id": 1589555760248
   }
 ]
