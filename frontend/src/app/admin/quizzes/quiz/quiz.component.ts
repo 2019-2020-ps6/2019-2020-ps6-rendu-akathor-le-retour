@@ -30,11 +30,6 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectQuiz() {
-    this.quizSelected.emit(this.quiz.id);
-    console.log('child ', this.quiz.id);
-  }
-
   deleteConfirm() {
     this.suppr = true;
   }

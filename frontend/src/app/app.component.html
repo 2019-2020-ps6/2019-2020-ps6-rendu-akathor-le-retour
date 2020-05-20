@@ -4,10 +4,10 @@
 </ng-template>
 <body>
 <div class="container-fluid">
-  <div class="row justify-content-center" #toRead>
+  <div class="row justify-content-center">
   <div class="col-lg-12">
     <div [@routeAnimations]="animationState">
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <router-outlet (activate)="onActivate()"></router-outlet>
     </div>
   </div>
 </div>

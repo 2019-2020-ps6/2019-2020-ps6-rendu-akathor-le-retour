@@ -3,11 +3,11 @@
     "firstName": "Eddy",
     "id": 1589780711390,
     "settings": {
-      "color": "#000000",
-      "background-color": "#ffff00",
-      "font-size": "35px",
-      "border-color": "#000000",
-      "soundAuto": true,
+      "color": "#ffffff",
+      "background-color": "#0000ff",
+      "font-size": "25px",
+      "border-color": "#ffffff",
+      "soundAuto": false,
       "timer": true
     }
   },

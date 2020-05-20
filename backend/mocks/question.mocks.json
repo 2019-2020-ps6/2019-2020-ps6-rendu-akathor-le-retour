@@ -1703,5 +1703,21 @@
     ],
     "quizId": "1588000980404",
     "id": 1589555760248
+  },
+  {
+    "label": "Question avec indice !",
+    "clue": "ceci est l'indice",
+    "answers": [
+      {
+        "value": "indice 1",
+        "isCorrect": true
+      },
+      {
+        "value": "indice 2",
+        "isCorrect": false
+      }
+    ],
+    "quizId": "1587454305708",
+    "id": 1589847583027
   }
 ]

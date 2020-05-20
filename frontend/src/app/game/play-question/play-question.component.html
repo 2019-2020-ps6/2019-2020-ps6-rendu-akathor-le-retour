@@ -2,8 +2,8 @@
 <div class="container-fluid no-side-margin" [ngStyle]="settings">
     <div class="row sticky-top fixed">
       <div class="col-lg-12 card">
-        <div class="row">
-      <div class="col-lg-3 no-margin"><button class="button-card" (click)="runSound()" >
+        <div class="row ">
+      <div class="col-lg-3 col-md-border border-right-custom"><button class="button-card" (click)="runSound()" >
         <div *ngIf="this.start">
           Arrêter la lecture
         </div>
@@ -25,9 +25,9 @@
       </div>
           </ng-template>
           <ng-template [ngIf]="question.clue === undefined">
-            <div class="col-lg-2 text-center">
+            <div class="col-lg-2 text-center border-left-custom">
               <div  mat-raised-button (click)="open(undefined)">
-                <button class=" button-card">Agrandir la question</button>
+                <button class="button-card">Agrandir la question</button>
               </div>
             </div>
           </ng-template>
@@ -50,7 +50,7 @@
               </mat-radio-button>
             </div>
             <div class="col-lg-6 no-side-margin bold curseur"><h1> {{answer.value}}</h1></div>
-            <div class="col-lg-3 align-self-center button-card no-margin" (click)="openAnswer(i)" >
+            <div class="col-lg-3 align-self-center button-card no-margin answerZoom" (click)="openAnswer(i)" >
              <h1>Agrandir la réponse</h1>
             </div>
           </div>

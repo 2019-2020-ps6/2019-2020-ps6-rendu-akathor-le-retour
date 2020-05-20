@@ -12,8 +12,6 @@ import {SettingsService} from '../../../../services/settings.service';
 })
 export class SettingsEditComponent implements OnInit {
   private userCalled: User;
-  private settings: string;
-  public settings$: BehaviorSubject<string> = new BehaviorSubject(this.settings);
   public changeSettings = false;
   private hasSettings = false;
 
@@ -40,10 +38,6 @@ export class SettingsEditComponent implements OnInit {
   }
 
 
-  updateSettings(): void {
-
-  }
-
   displaySettings() {
     this.changeSettings = true;
     this.settingsService.setUser(this.userCalled);
@@ -55,7 +49,7 @@ export class SettingsEditComponent implements OnInit {
     this.hasSettings = this.userCalled.settings !== undefined;
   }
 
-  settingsDone($event: any) {
+  settingsDone() {
     this.changeSettings = false;
     this.userService.updateSettings(this.userCalled);
     this.navigateToRoute('/administration/user/' + this.userCalled.id);

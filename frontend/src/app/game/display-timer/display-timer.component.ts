@@ -14,7 +14,7 @@ export class DisplayTimerComponent implements OnInit {
   interval;
   settings: any;
   color: any;
-  formatSubtitle = (percent: number) => {
+  formatSubtitle = () => {
     return this.timeLeft.toString(10);
   }
 

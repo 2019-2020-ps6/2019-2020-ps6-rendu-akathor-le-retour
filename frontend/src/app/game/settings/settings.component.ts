@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SettingsService} from '../../../services/settings.service';
 import {Router} from '@angular/router';
 import {User} from '../../../models/user.model';
-import {Quiz} from '../../../models/quiz.model';
 import {UserService} from '../../../services/user.service';
 
 @Component({

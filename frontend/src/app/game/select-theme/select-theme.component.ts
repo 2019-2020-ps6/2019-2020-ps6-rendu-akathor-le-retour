@@ -42,9 +42,6 @@ export class SelectThemeComponent implements OnInit {
 
   }
 
-  goToAdmin() {
-    console.log('goToAdminTest');
-  }
 
   getRandomId() {
     return this.quizService.getRandomId();
@@ -91,15 +88,10 @@ export class SelectThemeComponent implements OnInit {
     this.switchDisplay(this.currentDifficultie);
   }
 
-  quizSelected(selected: string) {
-    console.log('event received from child:', selected);
-    this.router.navigate(['/play-quiz/' + selected]);
-  }
 
   randomQuiz() {
     const i: string = this.getRandomId();
-    this.router.navigate(['/play-quiz/' + i]);
-
+    this.openTimer(i);
   }
 
 
@@ -127,9 +119,11 @@ export class SelectThemeComponent implements OnInit {
   getTitle() {
     if (this.currentDifficultie === null) {
       return 'Choisir la difficulté d\'un quiz';
+    } else if (this.currentDifficultie === 'Tout' ) {
+      return 'Liste des quiz';
     } else {
       return 'Liste des thèmes';
-    }
+ }
   }
 
   navigateToRoute(path: string) {
