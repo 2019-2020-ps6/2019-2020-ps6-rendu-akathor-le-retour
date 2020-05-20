@@ -14,9 +14,9 @@ export class SettingsService {
   textColor = 'black';
   backgroundColor = 'white';
   borderColor = 'white';
-  styleSmall = '12px';
-  styleMedium = '18px';
-  styleBig = '25px';
+  styleSmall = '15px';
+  styleMedium = '23px';
+  styleBig = '30px';
   soundAuto = true;
   timer = true;
 

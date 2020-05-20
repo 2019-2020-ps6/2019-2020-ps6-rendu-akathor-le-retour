@@ -5,10 +5,10 @@
     "settings": {
       "color": "#ffffff",
       "background-color": "#0000ff",
-      "font-size": "25px",
+      "font-size": "30px",
       "border-color": "#ffffff",
       "soundAuto": false,
-      "timer": true
+      "timer": false
     }
   },
   {
