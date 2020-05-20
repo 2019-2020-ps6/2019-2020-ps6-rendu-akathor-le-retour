@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import { QuizService } from '../../../services/quiz.service';
-import {Quiz} from '../../../models/quiz.model';
-import {Answer, Question} from '../../../models/question.model';
+import { QuizService } from '../../../../services/quiz.service';
+import {Quiz} from '../../../../models/quiz.model';
+import {Answer, Question} from '../../../../models/question.model';
 import {BehaviorSubject, Subscription} from 'rxjs';
-import {SettingsService} from '../../../services/settings.service';
+import {SettingsService} from '../../../../services/settings.service';
 
 @Component({
   selector: 'app-play-results',

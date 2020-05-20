@@ -1,13 +1,12 @@
-import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { QuizService } from '../../../services/quiz.service';
-import {Quiz} from '../../../models/quiz.model';
-import {Answer, Question} from '../../../models/question.model';
-import {BehaviorSubject, Subscription} from 'rxjs';
-import {SettingsService} from '../../../services/settings.service';
-import {DisplayFailComponent} from '../display-fail/display-fail.component';
+import { QuizService } from '../../../../services/quiz.service';
+import {Quiz} from '../../../../models/quiz.model';
+import {Answer, Question} from '../../../../models/question.model';
+import {SettingsService} from '../../../../services/settings.service';
+import {DisplayFailComponent} from '../../display-fail/display-fail.component';
 import {MatDialog} from '@angular/material/dialog';
-import {DisplayTimerComponent} from '../display-timer/display-timer.component';
+import {DisplayTimerComponent} from '../../display-timer/display-timer.component';
 
 @Component({
   selector: 'app-play-quiz',

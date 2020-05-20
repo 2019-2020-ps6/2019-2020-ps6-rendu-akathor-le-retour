@@ -118,7 +118,14 @@
                         </div>
                       </div>
                       <div class="row text-center">
+
+
                         <ng-template [ngIf]="currentDifficultie==null">
+                          <div class="col-lg-6">
+                            <a href="/settings">
+                              <button class="button-card sameHeight">Changer les réglages</button>
+                            </a>
+                          </div>
                           <div class="col-lg-6">
                           <button class="button-card sameHeight"(click)="randomQuiz()">Quiz aléatoire</button>
                           </div>
@@ -128,11 +135,7 @@
                             <button class="button-card sameHeight"(click)="switchDisplay(null)">Retour aux choix de difficulté</button>
                           </div>
                         </ng-template>
-                        <div class="col-lg-6">
-                          <a href="/settings">
-                            <button class="button-card sameHeight">Changer les réglages</button>
-                          </a>
-                        </div>
+
                         </div>
 
 

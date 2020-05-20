@@ -12,20 +12,20 @@
         </div>
       </button>
       </div>
-      <div class="col-lg-7 text-center">
+      <div class="col-lg-6 text-center">
       <div  mat-raised-button (click)="open(undefined)">
       <h1 class="no-center">Question: {{question.label}}</h1>
     </div>
   </div>
           <ng-template [ngIf]="question.clue !== undefined">
-      <div class="col-lg-2 text-center">
+      <div class="col-lg-3 text-center">
         <div  mat-raised-button (click)="open(question.clue)">
           <button class="no-center button-card">Indice</button>
         </div>
       </div>
           </ng-template>
           <ng-template [ngIf]="question.clue === undefined">
-            <div class="col-lg-2 text-center border-left-custom">
+            <div class="col-lg-3 text-center border-left-custom">
               <div  mat-raised-button (click)="open(undefined)">
                 <button class="button-card">Agrandir la question</button>
               </div>

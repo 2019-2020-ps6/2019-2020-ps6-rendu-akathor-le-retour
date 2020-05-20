@@ -3,10 +3,10 @@
     "firstName": "Eddy",
     "id": 1589780711390,
     "settings": {
-      "color": "#ffffff",
-      "background-color": "#0000ff",
+      "color": "#000000",
+      "background-color": "#ff0000",
       "font-size": "30px",
-      "border-color": "#ffffff",
+      "border-color": "#000000",
       "soundAuto": false,
       "timer": false
     }
@@ -42,8 +42,7 @@
       "background-color": "#0000ff",
       "font-size": "25px",
       "border-color": "#ffffff",
-      "soundAuto": true,
-      "timer": true
+      "soundAuto": false
     }
   }
 ]

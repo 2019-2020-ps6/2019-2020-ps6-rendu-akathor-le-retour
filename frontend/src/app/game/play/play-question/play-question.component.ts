@@ -9,11 +9,11 @@ import {
   SimpleChanges,
   ViewEncapsulation
 } from '@angular/core';
-import {Answer, Question} from '../../../models/question.model';
+import {Answer, Question} from '../../../../models/question.model';
 import {MatDialog } from '@angular/material';
-import { DisplayComponent } from '../display/display.component';
-import {AudioService} from '../../../services/audio.service';
-import {SettingsService} from '../../../services/settings.service';
+import { DisplayComponent } from '../../display/display.component';
+import {AudioService} from '../../../../services/audio.service';
+import {SettingsService} from '../../../../services/settings.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
