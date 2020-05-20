@@ -42,7 +42,8 @@
       "background-color": "#0000ff",
       "font-size": "25px",
       "border-color": "#ffffff",
-      "soundAuto": false
+      "soundAuto": true,
+      "timer": true
     }
   }
 ]

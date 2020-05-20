@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {QuizListComponent} from './admin/quizzes/quiz-list/quiz-list.component';
 import {QuizEditComponent} from './admin/quizzes/quiz-edit/quiz-edit.component';
-import {QuestionEditComponent} from './admin/quizzes/questions/question-edit/question-edit.component';
 import {UserListComponent} from './admin/users/user-list/user-list.component';
 import {HomeComponent} from './admin/home/home.component';
 import { AdministrationComponent } from './admin/administration/administration.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
   {path: 'administration/quiz-list', component: QuizListComponent},
   {path: 'administration/profiles', component: UserListComponent},
   { path: 'administration/quiz-edit/:id', component: QuizEditComponent },
-  { path: 'administration/quiz-edit/:id/question-edit/:id', component: QuestionEditComponent },
   { path: 'administration/user/:id', component: SettingsEditComponent },
   {path: 'administration/user/:id/settings', redirectTo: '/administration/user/:id/settings/color', pathMatch: 'full'},
   {path: 'administration/user/:id/settings/color', component: SettingsComponent, data: {routeIdx: 0} },
