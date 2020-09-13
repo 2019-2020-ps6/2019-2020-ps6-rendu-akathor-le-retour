@@ -1,0 +1,16 @@
+<div class="card">
+  <h2><i class="fas fa-user"></i> Créer un nouveau profil </h2>
+
+  <form class="quiz-form" [formGroup]="userForm">
+    <div></div>
+    <br>
+    Prénom: <br>
+    <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
+    <br>
+    Nom: <br>
+<input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
+    <br>
+    <button type="submit" class="button-card" (click)="addUser()">Créer</button>
+    <br>
+  </form>
+</div>

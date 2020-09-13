@@ -1,0 +1,33 @@
+@import "./variables";
+
+.card {
+  background: inherit;
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 4px;
+  display: inline-block;
+  margin: 1rem;
+  position: center;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  border-color: inherit;
+  padding: 1em 1em;
+}
+
+.button-card {
+  background-color: inherit;
+  border-style: solid;
+  border-color:inherit;
+  border-radius: 10px;
+  border-width: 4px;
+  color: inherit;
+  line-height: 100%;
+  font-weight: bold;
+  padding: 1em 1em;
+  margin: 1em 1em 1em 1em;
+}
+
+.button-card:hover {
+  color: inherit;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+}
+

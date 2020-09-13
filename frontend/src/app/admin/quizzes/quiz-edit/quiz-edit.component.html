@@ -1,0 +1,22 @@
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+<div *ngIf="quizCalled!=null">
+ <h1>  Modification d'un quiz -  {{quizCalled.name}}</h1>
+</div>
+      <div class="row">
+        <div class="col-lg-4">
+          <app-question-form [quiz]="quizCalled"></app-question-form>
+        </div>
+
+  <app-question-list [quiz]="quizCalled"></app-question-list>
+      </div>
+
+    </div>
+
+<div *ngIf="quizCalled==null">
+</div>
+</div>
+</div>
+</body>

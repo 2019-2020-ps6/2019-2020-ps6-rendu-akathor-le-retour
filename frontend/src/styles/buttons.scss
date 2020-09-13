@@ -1,0 +1,55 @@
+@import "./variables";
+
+#body{
+  padding : 0.3em;
+}
+
+.bigButton{
+  background: #ffffff;
+  border-radius: 10px;
+  margin: auto;
+  margin-right : 5em;
+  font-size : 20px;
+
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 0 1em 1em 1em;
+  width : 25em;
+  height : 20em;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+}
+
+.smallButton{
+  background: inherit;
+  border-radius: 10px;
+  margin: auto;
+  margin-right : 1em;
+  font-size : inherit;
+  position: relative;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  width : 6em;
+  height : 2em;
+  border-color: inherit;
+  color:inherit;
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+}
+
+.buttonRow{
+  margin-top : 5em;
+  padding : 5em;
+  text-align : center;
+}
+
+.button-card {
+  background-color: inherit;
+  border: solid 1px inherit;
+  color: inherit;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  margin: 1em 1em 1em 1em;
+}
+
+.button-card:hover {
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+}
+

@@ -1,0 +1,145 @@
+<div class="container-fluid">
+        <div class="row">
+                    <div class="col-lg-12 card no-side-margin" [ngStyle]="settings">
+                      <div class="row text-center">
+                        <div class="col-lg-12">
+                       <h1>{{getTitle()}}</h1>
+                      </div>
+                      </div>
+                      <div class="row">
+                        <ng-template [ngIf]="currentDifficultie==null">
+                      <div class="card col-lg-12 no-side-margin">
+                        <div class="row">
+                          <div class="col-lg-12 text-center">
+                            <h1> Cliquez sur la difficulté souhaitée</h1>
+                          </div>
+                        </div>
+                      <div class="row text-center">
+                      <div class="col-lg-6">
+                            <button class="button-card"(click)="getQuizbyDif('Facile')">Facile</button>
+                          </div>
+
+                          <div class="col-lg-6">
+                          <button class="button-card"(click)="getQuizbyDif('Intermediaire')">Intermediaire</button>
+                          </div>
+                      </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                          <button class="button-card"(click)="getQuizbyDif('Difficile')">Difficile</button>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <button class="button-card"(click)="displayQuizzes()">N'importe quel difficulté</button>
+                        </div>
+                      </div>
+                      </div>
+                        </ng-template>
+                      </div>
+                      <ng-template [ngIf]="currentDifficultie!=null && currentDifficultie !=='Tout'">
+                        <br>
+                        <div class="row text-center">
+                          <div class="col-lg-12">
+                            <ng-template [ngIf]="themeList.length>0">
+                              <h1> Choissisez un thème - Niveau {{currentDifficultie}}</h1>
+                            </ng-template>
+                            <ng-template [ngIf]="themeList.length==0">
+                              <h1> Aucun thèmes disponibles pour le Niveau {{currentDifficultie}}</h1>
+                              <h1> Contactez votre encadrant</h1>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <hr>
+                          </div>
+                        </div>
+                      <div class="row d-flex flex-row justify-content-between align-items-center">
+
+                        <!--
+                           <div class="quiz" *ngFor="let quiz of quizList">
+                            <!- -Inputs & Output allow communication between parent & child components.-->
+                          <!--More information: https://angular.io/guide/component-interaction- ->
+                          <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
+                        </div>
+                          -->
+                        <div *ngFor="let theme of asyncThemes | async">
+                            <button class="button-card" (click)="getQuizByTheme(theme)">{{theme.name}}</button>
+                            </div>
+
+                      </div>
+                      </ng-template>
+                      <ng-template [ngIf]="currentDifficultie!=null && currentDifficultie ==='Tout'">
+                        <br>
+                        <div class="row text-center">
+                          <div class="col-lg-12">
+                            <ng-template [ngIf]="quizList.length>0">
+                              <h1> Choissisez un Quiz - Cliquez sur une des cases ci-dessous</h1>
+                            </ng-template>
+                            <ng-template [ngIf]="quizList.length==0">
+                              <h2> Aucun quiz disponibles</h2>
+                              <h2> Contactez votre encadrant</h2>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <hr>
+                          </div>
+                        </div>
+                        <div class="row d-flex flex-row justify-content-between align-items-center">
+                          <!--
+                             <div class="quiz" *ngFor="let quiz of quizList">
+                              <!- -Inputs & Output allow communication between parent & child components.-->
+                          <!--More information: https://angular.io/guide/component-interaction- ->
+                          <app-quiz [quiz]="quiz" [lecture]="false" (quizSelected)="quizSelected($event)" ></app-quiz>
+                        </div>
+                          -->
+                          <div *ngFor="let quiz of quizList ">
+                            <button class="button-card sameCard text-justify" (click)="openTimer(quiz.id)">
+                            <div class="row">
+                              <div class="col-lg-12 ">
+                                Nom du quiz: {{quiz.name}}
+                              </div>
+                            </div>
+                              <div class="row-cols-lg-6 mt-5">
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  Thème du quiz: {{quiz.theme.name}}
+                                </div>
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <hr>
+                        </div>
+                      </div>
+                      <div class="row text-center">
+
+
+                        <ng-template [ngIf]="currentDifficultie==null">
+                          <div class="col-lg-6">
+                            <a href="/settings">
+                              <button class="button-card sameHeight">Changer les réglages</button>
+                            </a>
+                          </div>
+                          <div class="col-lg-6">
+                          <button class="button-card sameHeight"(click)="randomQuiz()">Quiz aléatoire</button>
+                          </div>
+                        </ng-template>
+                        <ng-template [ngIf]="currentDifficultie!=null">
+                          <div class="col-lg-6">
+                            <button class="button-card sameHeight"(click)="switchDisplay(null)">Retour aux choix de difficulté</button>
+                          </div>
+                        </ng-template>
+
+                        </div>
+
+
+
+          </div>
+    </div>
+</div>

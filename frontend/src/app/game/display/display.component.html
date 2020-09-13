@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <mat-dialog-content [ngStyle]=settings>
+    <div class="row">
+      <div class="col-lg-12 text-center ">
+        <h2 *ngIf="data.quest" class="zoom" mat-dialog-title>Question: {{data.name}}</h2>
+        <br>
+        <h2 *ngIf="!data.quest" class="zoom" mat-dialog-title>Question: {{data.question}}</h2>
+        <h2 *ngIf="!data.quest" class="zoom" mat-dialog-title>Réponse {{data.id+1}} : {{data.name}}</h2>
+      </div>
+      <ng-template [ngIf]="data.questionClue !== undefined && data.quest">
+        <h2 class="zoom" mat-dialog-title>Indice: {{data.questionClue}} </h2>
+      </ng-template>
+    </div>
+  </mat-dialog-content>
+
+  <div class="col-lg-12 no-side-margin  align-content-center">
+    <div class="row align-content-center">
+      <div [ngClass]="{'col-lg-3':data.quest}"></div>
+      <div class="col-lg-6">
+        <mat-dialog-actions  [ngStyle]=settings>
+          <button  class="button-card mat-button zoom " (click)="close(false)"> {{data.quest?'Retour aux réponses' : 'Voir les autres réponses'}}</button>
+        </mat-dialog-actions>
+      </div>
+
+      <div  *ngIf=" !data.quest" [ngClass]="{'col-lg-6':!data.quest}">
+        <mat-dialog-actions  [ngStyle]=settings>
+          <button class="button-card mat-button zoom" (click)="close(true)" > Valider cette réponse </button>
+        </mat-dialog-actions>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>

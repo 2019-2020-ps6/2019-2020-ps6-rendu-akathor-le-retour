@@ -1,0 +1,16 @@
+@import 'src/styles/card';
+@import 'src/styles';
+@import 'src/app/game/play/play-quiz/play-quiz.component';
+
+
+.button-card{
+  height: 5em;
+}
+
+h2{
+  font-weight: bold;
+}
+
+.zoom{
+  font-size: 40px!important;
+}

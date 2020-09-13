@@ -1,0 +1,48 @@
+[
+  {
+    "firstName": "Eddy",
+    "id": 1589780711390,
+    "settings": {
+      "color": "#000000",
+      "background-color": "#ff0000",
+      "font-size": "30px",
+      "border-color": "#000000",
+      "soundAuto": false,
+      "timer": false
+    }
+  },
+  {
+    "firstName": "Mathilde",
+    "id": 1589780716474,
+    "settings": {
+      "color": "#000000",
+      "background-color": "#ffff00",
+      "font-size": "35px",
+      "border-color": "#000000",
+      "soundAuto": false,
+      "timer": false
+    }
+  },
+  {
+    "firstName": "Geneviève",
+    "id": 1589780722281,
+    "settings": {
+      "color": "#000000",
+      "background-color": "#ff0000",
+      "font-size": "30px",
+      "border-color": "#000000",
+      "soundAuto": false
+    }
+  },
+  {
+    "firstName": "Jean-claude",
+    "id": 1589780737545,
+    "settings": {
+      "color": "#ffffff",
+      "background-color": "#0000ff",
+      "font-size": "25px",
+      "border-color": "#ffffff",
+      "soundAuto": false
+    }
+  }
+]

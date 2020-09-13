@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1>Liste des profils</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="card-body row no-gutters align-items-center">
+
+          <div class="col">
+            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Rechercher un utilisateur par son nom ..." (keyup)="applyFilter($event.target)" />
+          </div>
+        </div>
+  </div>
+
+    </div>
+<div class="row userBox">
+  <ng-template [ngIf]="!mode">
+  <div class="col-lg-4">
+    <div class="row">
+      <div class="col-lg-12">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <app-user-form></app-user-form>
+      </div>
+    </div>
+</div>
+  </ng-template>
+
+  <div class="user-list">
+    <div class="user text-center align-self-center" *ngFor="let user of userListFiltered">
+      <div class="row d-flex margin-small">
+        <div class="col-lg-12 ">
+      <app-user [mode]="mode" [user]="user"  (userDeleted)="deleteQuiz(user)" (userSelected)="getUser($event)" ></app-user>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  </div>
+</div>

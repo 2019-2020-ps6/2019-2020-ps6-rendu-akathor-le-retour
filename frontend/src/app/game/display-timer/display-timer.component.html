@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12" [ngStyle]="settings">
+      <h1>{{data.text}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <circle-progress
+        [radius]="100"
+        [startFromZero]="false"
+        [percent]="100"
+        [showTitle]="false"
+        [subtitleFormat]="formatSubtitle"
+        [showUnits]="false"
+        [subtitleFontSize]="'40'"
+        [subtitleColor]="color"
+        [subtitleFontWeight]="'bold'"
+        [space]="-30"
+        [outerStrokeWidth]="26"
+        [innerStrokeWidth]="30"
+        [outerStrokeColor]="color"
+        [animation]="true"
+        [animationDuration]="3700"
+      ></circle-progress>    </div>
+  </div>
+</div>

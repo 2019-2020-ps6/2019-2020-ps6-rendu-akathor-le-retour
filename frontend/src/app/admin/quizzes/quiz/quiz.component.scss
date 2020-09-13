@@ -1,0 +1,14 @@
+@import 'src/styles/card';
+
+h1 {
+  background: red;
+    // Add some CSS here! What if you try to change the background?
+}
+
+.row{
+  display: block;
+  min-height: 100%;
+}
+.buttonRow {
+  display: flex!important;
+}

@@ -1,0 +1,37 @@
+<div  class="container-fluid" >
+  <div class="row ">
+    <div class="col-lg-12 card" [ngStyle]="settings">
+      <ng-template [ngIf]="quizCalled!=null">
+       <div class="row">
+        <div class="col-lg-12 text-center" id="quizTitle">
+          <h1>
+            {{quizCalled.name}}
+            <ng-template [ngIf]="current<questions.length">
+              - Question {{current+1}}
+            </ng-template>
+          </h1>
+        </div>
+      </div>
+
+        <ng-template [ngIf]="current<questions.length">
+          <mat-progress-bar [ngClass]="{'white-progress':settings.color==='#ffffff',
+                                        'black-progress':settings.color==='#000000',
+                                        'progressCustom':true}" mode="determinate" value="{{currentProgress}}">
+          </mat-progress-bar>
+          <app-play-question [question]="questions[current]"
+                             [mode] ="correctMode"
+                             [auto]="automatique"
+                             [answers]="answers"
+                             [reponse]="reponse"
+                             [current]="current"
+                             (answer)="answerSomething($event)"
+                             (nextAnswer)="nextAnswer()" >
+          </app-play-question>
+          </ng-template>
+            <ng-template [ngIf]="current==questions.length">
+              <app-play-results [answers]="answers"(askAnswers)="seeAnswers($event)" (askRedoingQuiz)="redoQuiz()"></app-play-results>
+            </ng-template>
+          </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container-fluid">
+<div class="card">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+  <h2>Créer une nouvelle question - Question {{quiz.questions.length+1}}</h2>
+  </div>
+  </div>
+  <form class="quiz-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div class="form-row row">
+      <div class="col-lg-12">
+      <label>Nom de la question:</label>
+      <input type="text" [formControlName]="'label'" class="form-control"  [ngClass]="{'is-invalid': submitted && f.label.errors!=null }">
+      <div *ngIf="f.label.value.length >40">
+        <h3>
+        La longueur de cette question ne donnera pas un résultat optimal
+        </h3>
+      </div>
+      <div *ngIf="submitted && f.label.errors" class="invalid-feedback">
+        <div *ngIf="f.label.errors.required">Veuillez entrer une question </div>
+      </div>
+      </div>
+    </div>
+
+<br>
+    <div class="answer" formArrayName="answers">
+      <div *ngFor="let answer of answers.controls; let i=index">
+        <div class="answer-form" [formGroupName]="i">
+          <label>
+            <div class="row">
+              <div class="col-lg-12">
+            Réponse {{i+1}} :
+                </div>
+        </div>
+            <div class="row text-center">
+              <div class="col-lg-10">
+          <input type="text" [formControlName]="'value'" class="form-control"  [ngClass]="{'is-invalid': submitted && f.value.valid !=null }">
+              </div>
+              <div class="col-lg-1 no-margin ">
+                <ng-template [ngIf]="answers.length>2">
+              <button class="smallButton" type="button" (click)="delete(i)">X</button>
+                  </ng-template>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div *ngIf="submitted && !g(i)" class="invalid-feedback">
+                  <div *ngIf="f.value.errors.required">Veuillez entrer une réponse </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+              <input type="checkbox" [formControlName]="'isCorrect'">   Correct
+            </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <label>Indice supplémentaire (optionnel)</label>
+    <input type="text" [formControlName]="'clue'" class="form-control">
+
+    <div *ngIf="answers.length<4"  >
+
+    <button class="button-card" type="button"(click)="addAnswer()" >Ajouter une réponse</button>
+    </div>
+    <div *ngIf="answers.length==4"  >
+      <h3 >
+        Le nombre maximum de réponse a été atteint.
+      </h3>
+    </div>
+
+    <div *ngIf="submitted && checkOneAnswer">
+      <h3>
+        Veuillez ajouter au moins deux réponses dont une juste
+      </h3>
+    </div>
+    <div *ngIf="answers.length>1">
+      <button class="button-card" type="submit">Enregistrer la question</button>
+    </div>
+  </form>
+</div>
+</div>

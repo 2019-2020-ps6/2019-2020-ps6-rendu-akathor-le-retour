@@ -1,0 +1,47 @@
+@import 'src/styles/buttons';
+@import 'src/styles/card';
+
+h1, h2{
+    text-align : center;
+  font-size: inherit;
+  font-weight: bold;
+  line-height: 2px;
+}
+
+h1{
+  font-size: 50px!important;
+}
+
+hr{
+  border-width: 6px;
+  border-style: solid;
+  border-color: inherit;
+}
+
+.quiz{
+  font-weight: bold;
+}
+
+.ecartWrap{
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+.sameHeight{
+  height: 4em;
+}
+.sameCard{
+  margin-block-start: 100px;
+  flex: 1 0 49%;
+}
+
+.box{
+  box-sizing: content-box!important;
+}
+
+.card {
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+

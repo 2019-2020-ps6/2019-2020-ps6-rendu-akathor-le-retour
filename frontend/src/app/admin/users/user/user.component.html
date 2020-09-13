@@ -1,0 +1,17 @@
+<div class="container-fluid">
+<div [ngStyle]="user.settings" class="row card text-center paddingButton no-side-margin">
+<h2>
+       Profil de {{user.firstName}} {{user.lastName}}
+      <br>
+
+    </h2>
+  <ng-template [ngIf]="!mode">
+  <a href="/administration/user/{{user.id}}">
+  <button class="button-card" (click)="getUser()">Modifier</button>
+  </a>
+  </ng-template>
+  <ng-template [ngIf]="mode">
+    <button class="button-card" (click)="getUser()"><h2>Choisir ce profil</h2></button>
+  </ng-template>
+</div>
+</div>

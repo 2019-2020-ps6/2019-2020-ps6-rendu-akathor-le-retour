@@ -1,0 +1,21 @@
+<div class="header headerMenu">
+  <a href="/home">
+    <button class="button-card" id="accueil">Accueil</button>
+  </a>
+    <ng-template [ngIf]="!right">
+      <a href="/administration">
+      <button class="button-card">Administration (réservé aux encadrants)</button>
+      </a>
+    </ng-template>
+    <ng-template [ngIf]="right">
+
+      <a href="/administration/quiz-list">
+      <button class="button-card">Gestion des quiz</button>
+      </a>
+
+      <a href="/administration/profiles">
+        <button class="button-card">Gestion des profils</button>
+      </a>
+      
+    </ng-template>
+  </div>

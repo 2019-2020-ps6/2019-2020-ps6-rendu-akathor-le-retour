@@ -1,0 +1,168 @@
+<div class="container-fluid">
+<div class="row">
+<div class="card col-lg-12"  [ngStyle]="settings">
+  <div class="row text-center">
+    <div class="col-lg-12">
+  <h1>{{getTitle()}}</h1>
+    </div>
+  </div>
+  <br>
+
+  <ng-template [ngIf]="step==1">
+  <div class="row">
+  <div class="col-lg-12">
+    <h1>Choissisez la couleur qui vous convient le mieux<br> Lorsque vous êtes satisfait, appuyez sur Continuer -></h1></div>
+</div>
+  <div class="row">
+    <div class="col-lg-12 card no-side-margin text-center">
+
+      <div class="row">
+      <div class="col-lg-4"> <button class="smallButton" style="background-color: #000000!important; color:#ffffff!important;" (click)="change('#ffffff', '#000000')">
+        A
+      </button></div>
+      <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #ffff00!important; color:#000000" (click)="change('#000000', '#ffff00')">A</button>
+      </div>
+      <div class="col-lg-4">
+
+        <button class="smallButton" style="background-color: #ff0000!important; color:#000000!important;" (click)="change('#000000', '#ff0000')">
+          A
+        </button>
+      </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-4">
+          <button class="smallButton" style="background-color: #0000ff!important; color:#ffffff!important;" (click)="change('#ffffff', '#0000ff')">
+            A
+          </button>
+      </div>
+
+        <div class="col-lg-4">
+        <button class="smallButton" style="background-color: #ffffff!important; color:#000000" (click)="change('#000000', '#ffffff')">A</button>
+      </div>
+      </div>
+    </div>
+
+  </div>
+  </ng-template>
+  <ng-template [ngIf]="step==2">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Quel taille de texte vous convient le mieux ?</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 card no-side-margin text-center">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <button class="smallButton" [ngStyle]="{'font-size':settingsService.styleSmall}" (click)="changeSize(settingsService.styleSmall)">Petit</button>
+          </div>
+          <div class="col-lg-4">
+            <button class="smallButton" [ngStyle]="{'font-size':settingsService.styleMedium}" (click)="changeSize(settingsService.styleMedium)">Moyen</button>
+          </div>
+          <div class="col-lg-4">
+            <button class="smallButton" [ngStyle]="{'font-size':settingsService.styleBig}" (click)="changeSize(settingsService.styleBig)">Grand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </ng-template>
+  <ng-template [ngIf]="step==3">
+    <div class="row">
+    <div class="col-lg-12">
+      <h1>Souhaitez-vous que les questions et réponses vous soit dictées ?</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+      <div class="col-lg-6">
+        <button (click)="swipeSound(true)" class="smallButton">Oui</button>
+      </div>
+    <div class="col-lg-6">
+      <button (click)="swipeSound(false)" class="smallButton">Non</button>
+    </div>
+  </div>
+  </ng-template>
+  <ng-template [ngIf]="sound>0 && step == 3">
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>La lecture automatique du texte est{{sound==1?' activée ' : ' désactivée'}}.</h1>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="step==4">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Souhaitez-vous un temps d'attente entre chaque questions ?</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-lg-6">
+      <button (click)="swipeTimer(true)" class="smallButton">Oui</button>
+    </div>
+    <div class="col-lg-6">
+      <button (click)="swipeTimer(false)" class="smallButton">Non</button>
+    </div>
+  </div>
+  </ng-template>
+  <ng-template [ngIf]="timer>0 && step ==4 ">
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>L'attente entre chaque questions est{{timer==1?' activée ' : ' désactivée'}}.</h1>
+      </div>
+    </div>
+  </ng-template>
+  <div class="row text-center">
+    <ng-template [ngIf]="step>1">
+      <div class="col-lg-6">
+          <button class="button-card sameHeight" (click)="previousStep()"> Revenir{{step==3 ? ' au choix de la taille' : step==4 ? ' au choix de la lecture audio' : ' au choix de la couleur'}}
+          </button>
+      </div>
+      <ng-template [ngIf]="step<4">
+        <div class="col-lg-6">
+          <button class="button-card sameHeight" (click)="nextStep()"> Continuer ->
+          </button>
+        </div>
+      </ng-template>
+    <ng-template [ngIf]="step==4">
+      <ng-template [ngIf]="!modeConf">
+      <div class="col-lg-6">
+        <a href="/select-theme">
+          <button class="button-card sameHeight"> Choisir un quiz
+          </button>
+        </a>
+      </div>
+      </ng-template>
+      <ng-template [ngIf]="modeConf">
+
+      <div class="col-lg-6">
+          <button (click)="saveProfile()" class="button-card sameHeight"> Enregistrer les préférences
+          </button>
+      </div>
+      </ng-template>
+  </ng-template>
+    </ng-template>
+
+    <ng-template [ngIf]="step==1">
+      <div class="col-lg-12">
+          <button class="button-card sameHeight" (click)="nextStep()"> Continuer ->
+          </button>
+      </div>
+    </ng-template>
+  </div>
+
+</div>
+  </div>
+<!--
+(click)="confirmer()"
+  <link rel="stylesheet" type="text/css" href="settings.component.scss" id="mycss" />
+
+-->
+</div>

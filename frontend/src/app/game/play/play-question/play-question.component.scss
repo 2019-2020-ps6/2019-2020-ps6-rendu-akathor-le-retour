@@ -1,0 +1,79 @@
+@import 'src/styles/card';
+@import 'src/app/game/play/play-quiz/play-quiz.component';
+
+h1{
+  font-weight: bold!important;
+  margin: 1em!important;
+  text-align: center;
+  font-size: inherit!important;
+}
+
+div{
+  letter-spacing: 3px!important;
+}
+
+.far{
+  font-size: inherit;
+}
+
+.paddingButton{
+  padding: 1em!important;
+}
+.answerNumber {
+  border-color: inherit;
+  border-radius: 20px;
+}
+
+.no-center{
+  text-align: left!important;
+}
+.fixed {
+  top:0;
+  left:0;
+  right:0;
+  background-color: inherit;
+  z-index: 10;
+}
+
+.curseur{
+  cursor: url('src/styles/cursor_pointer.cur'), auto!important;
+}
+
+.question{
+  border-style: solid;
+  border-top: inherit;
+  border-bottom: inherit;
+}
+.questionElement{
+  border-style: solid;
+  border-top: inherit;
+}
+.white-progress .mat-radio-inner-circle {
+  background-color: white !important;
+}
+
+.black-progress .mat-radio-inner-circle {
+  background-color: black !important;
+}
+
+.circleRadio .mat-radio-container{
+  transform: scale(1.5)!important;
+}
+.h1{
+  cursor: url('src/styles/cursor_pointer.cur'),  auto;
+
+}
+
+.answerZoom{
+  padding: 0;
+}
+
+.border-right-custom{
+  border-right-color: inherit;
+  border-right-style: solid;
+}
+
+.border-left-custom{
+  border-left-color: inherit;
+  border-left-style: solid;
+}
